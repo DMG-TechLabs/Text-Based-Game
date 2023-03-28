@@ -2,6 +2,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,c++,cmake
 
 out/
+.vscode/
+build/
 
 ### C++ ###
 # Prerequisites
