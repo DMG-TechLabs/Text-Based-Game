@@ -2,11 +2,13 @@
 //
 
 #include "tbg.h"
+#include "./room/room.cpp"
 
 using namespace std;
 
 int main()
 {
 	cout << "Hello CMake." << endl;
+	Room room;
 	return 0;
 }
