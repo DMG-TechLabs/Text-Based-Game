@@ -1,8 +1,5 @@
-class Command
-{
-private:
-    /* data */
-public:
-    Command(/* args */){}
-    ~Command(){}
-};
+#include "command.h"
+
+    Command::Command(/* args */){}
+
+
