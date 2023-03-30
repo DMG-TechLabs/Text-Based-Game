@@ -1,5 +1,5 @@
 #include "command.h"
 
-    Command::Command(/* args */){}
+Command::Command(/* args */){}
 
 

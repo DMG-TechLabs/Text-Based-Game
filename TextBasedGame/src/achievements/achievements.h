@@ -5,14 +5,14 @@ using namespace std;
 
 class Achievements{
 
-public:
-    bool unlocked = false;
-    string name;
+    public:
+        bool unlocked = false;
+        string name;
 
-    Achievements(){}
-    ~Achievements(){}
+        Achievements(){}
+        ~Achievements(){}
 
-    void setName(string name){}
-    string getName(void){}
+        void setName(string name){}
+        string getName(void){}
 
 };

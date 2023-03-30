@@ -1,8 +1,9 @@
 #pragma once
 
 #include <string>
-#include "../inventory/inventory.cpp"
-#include "../movement/movement.cpp"
+#include "../inventory/inventory.h"
+#include "../movement/movement.h"
+#include "../item/item.h"
 
 class Node{
 private:

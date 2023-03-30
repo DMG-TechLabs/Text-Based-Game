@@ -1,17 +1,19 @@
 #pragma once
 
-#include "../item/item.cpp"
+#include "../item/item.h"
 
-int const inventory_size = 32;
+#define INVENTORY_SIZE 32
 
 class Inventory{
 
-private:
-    /* data */
+    private:
+        /* data */
 
-public:
-    Item item;
+    public:
+        Item item[INVENTORY_SIZE];
 
-    Inventory(Item item){}
-    ~Inventory(){}
+        ~Inventory(){}
+
+        Inventory(){}
+           
 };

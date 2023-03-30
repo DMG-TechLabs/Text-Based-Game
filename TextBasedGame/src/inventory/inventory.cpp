@@ -1,4 +1,3 @@
 #include "inventory.h"
-#include "../item/item.cpp"
+#include "../item/item.h"
 
-Inventory::Inventory(Item item){this->item = item;}

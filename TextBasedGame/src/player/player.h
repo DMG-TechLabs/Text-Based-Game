@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../inventory/inventory.cpp"
+#include "../inventory/inventory.h"
 #include <iostream>
 #include <string>
 

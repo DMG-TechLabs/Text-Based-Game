@@ -1,11 +1,10 @@
 #pragma once
 #include <string>
 
-class Command
-{
-private:
-    /* data */
-public:
-    Command(/* args */){}
-    ~Command(){}
+class Command {
+    private:
+        /* data */
+    public:
+        Command(/* args */) {}
+        ~Command() {}
 };
