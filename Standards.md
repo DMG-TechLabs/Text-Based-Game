@@ -12,6 +12,7 @@
 * Comments
 * Descriptive variable names
 * Unit tests
+* Proper indentation
 
 ## Git(hub)
 
