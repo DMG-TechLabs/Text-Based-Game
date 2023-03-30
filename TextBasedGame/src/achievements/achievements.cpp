@@ -1,15 +1,7 @@
 #include "achievements.h"
 
-class achievements{
+    Achievements::Achievements(/* args */){/* What the constructor will do */}
 
-public:
-    bool unlocked = false;
-    string name;
+    void Achievements::setName( string name ){ this->name = name;}
 
-    achievements(/* args */){}
-    ~achievements(){}
-
-    void setName( string name ){ this->name = name;}
-    string getName( void ){return name;}
-
-};
+    std::string Achievements::getName( void ){return this->name;}
