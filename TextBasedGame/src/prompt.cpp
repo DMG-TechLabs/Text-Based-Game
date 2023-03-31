@@ -1,6 +1,6 @@
-#include "utils.h"
 #include <iostream>
 #include <string>
+#include "prompt.h"
 
 void prompt(char promptChar, string message, string acceptedCommands[]){
     string inputCommand;
