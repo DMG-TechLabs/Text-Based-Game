@@ -8,14 +8,16 @@ using namespace std;
 
 class Item{
     private:
-        /* data */
+        string description;
+        //Command commands[];
+
     public:
-        string Description;
-        Command commands[];
-        
         Item(){}
 
-        Item(string description, Command command){}
         ~Item(){}
 
+        Item(string description/*, Command commands[]*/){}
+
+        void setDescription(string description);
+        string getDescription();
 };

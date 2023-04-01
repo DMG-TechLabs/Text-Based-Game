@@ -7,13 +7,16 @@
 class Inventory{
 
     private:
-        /* data */
+        Item item[INVENTORY_SIZE];
 
     public:
-        Item item[INVENTORY_SIZE];
+        Inventory(){}
 
         ~Inventory(){}
 
-        Inventory(){}
-           
+        Inventory(Item item[]){}
+
+        void setItem(Item item[]);
+
+        Item getItem();       
 };
