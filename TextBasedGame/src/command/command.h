@@ -2,11 +2,15 @@
 
 #include <string>
 
+/**
+ * @brief Command class
+ * 
+ */
 class Command {
     private:
-        /* data */
     public:
+        //Constructors
         Command();
-        
+
         ~Command();
 };

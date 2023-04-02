@@ -1,6 +1,7 @@
 #include "player.h"
 #include "inventory.h"
 
+//Constructors
 Player::Player(){}
 
 Player::~Player(){}
@@ -11,6 +12,7 @@ Player::Player(Inventory inventory, string name, int hunger, vector<Command> com
             this -> hunger = hunger;
         }
 
+//Setters getters
 void Player::setInventory(Inventory inventory){
     this -> inventory = inventory;
 }

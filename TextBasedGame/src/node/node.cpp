@@ -1,5 +1,6 @@
 #include "node.h"
 
+//Constructors
 Node::Node(){}
 
 Node::~Node(){}

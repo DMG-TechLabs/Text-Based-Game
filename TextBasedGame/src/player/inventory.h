@@ -4,17 +4,27 @@
 
 using namespace std;
 
+/**
+ * @brief Inventory class
+ * 
+ */
 class Inventory {
     private:
+        //Class variables
         Item* items[32];
         int itemCount;
         
-    public: 
+    public:
+        //Constructors 
         Inventory();
         ~Inventory();
         Inventory(Item* items[]);
         
-        void addItem(Item* item, int i);
+        //Getters
         Item* getItem();
         int getItemCount();
+
+        //Auxilary methods
+        void addItem(Item* item, int i);
+
 };
