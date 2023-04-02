@@ -3,7 +3,7 @@
 
 out/
 .vscode/
-build/
+/build/*
 
 ### C++ ###
 # Prerequisites
