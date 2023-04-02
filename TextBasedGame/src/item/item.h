@@ -7,11 +7,11 @@
 using namespace std;
 
 class Item{
-    private:
-        string description;
-        vector<Command> commands;
+    private:    
 
     public:
+        string description;
+        vector<Command> commands;
         Item();
         ~Item();
         

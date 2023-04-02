@@ -3,6 +3,7 @@
 #include "inventory.h"
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -11,17 +12,12 @@ class Player{
         Inventory inventory;
         string name;
         int hunger;
-        //Command commands[];
+        vector<Command> commands;
 
     public:
         Player();
-        //~Player();
-        
-        Player(Inventory inventory, string name, int hunger/*, Command command[]*/){
-            this -> inventory = inventory;
-            this -> name = name;
-            this -> hunger = hunger;
-        };
+        ~Player();
+        Player(Inventory inventory, string name, int hunger, vector<Command> commands);
 
         void setInventory(Inventory inventory);
         Inventory getInventory();

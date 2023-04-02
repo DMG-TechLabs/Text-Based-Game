@@ -2,6 +2,8 @@
 
 #include "../item/item.h"
 
+using namespace std;
+
 class Inventory {
     private:
         Item* items[32];
@@ -9,15 +11,10 @@ class Inventory {
         
     public: 
         Inventory();
-        //~Inventory();
+        ~Inventory();
+        Inventory(Item* items[]);
         
-        Inventory(Item* items[]){
-            for (int i = 0; i < 32; i++){
-                this -> items[i] = items[i];
-            }
-        };
-        
-        void addItem(Item item);
+        void addItem(Item* item, int i);
         Item* getItem();
         int getItemCount();
 };

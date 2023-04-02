@@ -1,6 +1,7 @@
 #include "achievements.h"
 
-//Achievements::Achievements(){/*What the constructor will do*/}
+Achievements::Achievements(){}
+Achievements::~Achievements(){}
 
 void Achievements::setName( string name ){ 
     this->name = name;}

@@ -9,9 +9,6 @@ int main(int argc, char *argv[]){
 
     prompt('$', "What's your name?", commands);
 
-    
-    
-
     return 0;
 }
 
