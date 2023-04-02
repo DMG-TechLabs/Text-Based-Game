@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-void prompt(char promptChar, string message, string acceptedCommands[]);
+void prompt(char promptChar, string message, vector<string> acceptedCommands);

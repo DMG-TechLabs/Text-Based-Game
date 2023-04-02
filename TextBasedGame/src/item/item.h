@@ -2,7 +2,7 @@
 
 #include <string>
 #include <vector>  
-#include "../command/command.cpp"
+#include "../command/command.h"
 
 using namespace std;
 
