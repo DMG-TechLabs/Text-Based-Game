@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include "../player/inventory.h"
 #include "../player/movement.h"
 #include "../item/item.h"
@@ -11,10 +12,10 @@ private:
 public:
     std::string Description;
     Movement movements;
-    //Item items[];
-    Command commands[];
+    vector<Item> items;
+    vector<Command> commands;
 
     Node();
-    //Node(std::string description, Movement movements, Item item, Command commands[]);
-    ~Node();
-};
+    Node(std::string description, Movement movements, vector<Item> items, vector<Command> commands);
+    //~Node();
+};  

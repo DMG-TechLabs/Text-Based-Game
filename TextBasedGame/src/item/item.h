@@ -10,7 +10,7 @@ using namespace std;
 class Item{
     private:
         string description;
-         vector<Command> commands;
+        vector<Command> commands;
 
     public:
         Item();
