@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 class Item{
     private:
         string description;
@@ -14,10 +13,12 @@ class Item{
 
     public:
         Item();
-
-        ~Item();
-
-        Item(string description, vector<Command> commands);
+        //~Item();
+        
+        Item(string description, vector<Command> commands){
+            this -> description = description;
+            this -> commands = commands;
+        };
 
         void setDescription(string description);
         string getDescription();
