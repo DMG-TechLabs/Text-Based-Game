@@ -2,21 +2,15 @@
 
 #include "../item/item.h"
 
-#define INVENTORY_SIZE 32
-
-class Inventory{
-
-    private:
-        Item item[INVENTORY_SIZE];
-
-    public:
-        Inventory(){}
-
-        ~Inventory(){}
-
-        Inventory(Item item[]){}
-
-        void setItem(Item item[]);
-
-        Item getItem();       
+class Inventory {
+private:
+    Item* items[32];
+    int itemCount;
+public: 
+    Inventory();
+    //~Inventory();
+    Inventory(Item* item[]);
+    void addItem(Item* item);
+    Item getItem();
+    int getItemCount();
 };

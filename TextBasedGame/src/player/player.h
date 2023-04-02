@@ -14,8 +14,8 @@ class Player{
         //Command commands[];
 
     public:
-        Player(Inventory inventory, string name, int hunger/*, Command command[]*/){}
-        ~Player(){}
+        Player(Inventory inventory, string name, int hunger/*, Command command[]*/);
+        ~Player();
 
         void setInventory(Inventory inventory);
         Inventory getInventory();

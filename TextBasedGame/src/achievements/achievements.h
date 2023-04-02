@@ -9,10 +9,10 @@ class Achievements{
         bool unlocked = false;
         string name;
 
-        Achievements(){}
-        ~Achievements(){}
+        //Achievements(){}
+        //~Achievements(){}
 
-        void setName(string name){}
-        string getName(void){}
+        void setName(string name);
+        string getName();
 
 };

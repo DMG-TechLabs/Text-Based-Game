@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>  
 #include "../command/command.cpp"
 
 using namespace std;
@@ -9,14 +10,14 @@ using namespace std;
 class Item{
     private:
         string description;
-        //Command commands[];
+         vector<Command> commands;
 
     public:
-        Item(){}
+        Item();
 
-        ~Item(){}
+        ~Item();
 
-        Item(string description/*, Command commands[]*/){}
+        Item(string description, vector<Command> commands);
 
         void setDescription(string description);
         string getDescription();

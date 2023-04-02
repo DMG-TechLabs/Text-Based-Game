@@ -5,6 +5,6 @@ class Command {
     private:
         /* data */
     public:
-        Command() {}
-        ~Command() {}
+        //Command();
+        //~Command();
 };

@@ -5,6 +5,6 @@ class Movement
 private:
     /* data */
 public:
-    Movement(/* args */){}
-    ~Movement(){}
+    Movement(/* args */);
+    ~Movement();
 };
