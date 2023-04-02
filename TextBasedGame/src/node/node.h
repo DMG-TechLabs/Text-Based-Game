@@ -5,10 +5,11 @@
 #include "../player/inventory.h"
 #include "../player/movement.h"
 #include "../item/item.h"
+#include "../command/command.h"
 
 class Node{
 private:
-    /* data */
+
 public:
     std::string Description;
     vector<Movement> movements;
@@ -18,4 +19,4 @@ public:
     Node();
     Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands);
     ~Node();
-};  
+};      
