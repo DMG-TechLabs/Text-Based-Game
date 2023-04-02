@@ -11,11 +11,11 @@ private:
     /* data */
 public:
     std::string Description;
-    Movement movements;
+    vector<Movement> movements;
     vector<Item> items;
     vector<Command> commands;
 
     Node();
-    Node(std::string description, Movement movements, vector<Item> items, vector<Command> commands);
-    //~Node();
+    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands);
+    ~Node();
 };  

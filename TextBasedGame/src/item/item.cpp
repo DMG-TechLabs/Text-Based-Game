@@ -12,3 +12,7 @@ void Item::setDescription(string description){
 string Item::getDescription(){
     return description;
 }
+
+Item::Item() {}
+
+Item::~Item() {}
