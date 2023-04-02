@@ -13,7 +13,7 @@ class Item{
 
     public:
         Item();
-        //~Item();
+        ~Item();
         
         Item(string description, vector<Command> commands){
             this -> description = description;
