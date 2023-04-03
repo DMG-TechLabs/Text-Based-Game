@@ -23,7 +23,11 @@ class Player{
         //Constructors
         Player();
         ~Player();
-        Player(Inventory inventory, string name, int hunger, vector<Command> commands);
+        Player(Inventory inventory, string name, int hunger, vector<Command> commands){
+            this -> inventory = inventory;
+            this -> name = name;
+            this -> hunger = hunger;
+        };
 
         //Setters getters
         void setInventory(Inventory inventory);

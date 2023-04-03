@@ -1,15 +1,16 @@
+#include <iostream>
+#include <string>
 #include "prompt.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]){
+    string commands[] = {"run", "pick"};
 
-    vector<string> acceptedCommands;
+    prompt('$', "What's your name?", commands);
 
-    acceptedCommands.push_back("run");
-    acceptedCommands.push_back("pick");
-
-    prompt('$', "What's your name?", acceptedCommands);
+    
+    
 
     return 0;
 }

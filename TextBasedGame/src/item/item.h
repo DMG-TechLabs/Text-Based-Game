@@ -12,12 +12,10 @@ using namespace std;
  */
 class Item{
     private:    
-
-    public:
         //Variables
         string description;
         vector<Command> commands;
-
+    public:
         //Constructors
         Item();
         ~Item();
