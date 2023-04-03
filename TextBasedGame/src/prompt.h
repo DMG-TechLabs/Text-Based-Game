@@ -2,11 +2,10 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
 
-void prompt(char promptChar, string message, string acceptedCommands[]);
+string* prompt(char promptChar, string message, string accepted_commands[]);
 
 void print(string message);
