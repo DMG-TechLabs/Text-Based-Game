@@ -4,6 +4,7 @@
 out/
 .vscode/
 /TextBasedGame/build/
+/build/
 
 ### C++ ###
 # Prerequisites
