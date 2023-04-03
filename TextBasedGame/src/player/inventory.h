@@ -10,7 +10,7 @@ using namespace std;
  */
 class Inventory {
     private:
-        //Class variables
+        //Variables
         Item* items[32];
         int itemCount;
         
@@ -18,7 +18,11 @@ class Inventory {
         //Constructors 
         Inventory();
         ~Inventory();
-        Inventory(Item* items[]);
+        Inventory(Item* items[]){
+            for (int i = 0; i < 32; i++){
+                this -> items[i] = items[i];
+            }
+        };
         
         //Getters
         Item* getItem();

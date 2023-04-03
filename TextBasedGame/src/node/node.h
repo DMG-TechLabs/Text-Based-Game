@@ -20,9 +20,13 @@ public:
     vector<Movement> movements;
     vector<Item> items;
     vector<Command> commands;
+    bool accesible;
+    bool inside;
 
     //Constructors
     Node();
-    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands);
+    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands, bool accesible, bool inside);
     ~Node();
+
+    //Auxiliary functions
 };      
