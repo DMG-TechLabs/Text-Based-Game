@@ -16,14 +16,17 @@ private:
 
 public:
     //Class variables
-    bool accesible;
     std::string Description;
     vector<Movement> movements;
     vector<Item> items;
     vector<Command> commands;
+    bool accesible;
+    bool inside;
 
     //Constructors
     Node();
-    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands, bool accesible);
+    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands, bool accesible, bool inside);
     ~Node();
+
+    //Auxiliary functions
 };      
