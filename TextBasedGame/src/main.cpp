@@ -1,19 +1,27 @@
 #include <iostream>
 #include <string>
-#include "prompt.h"
+#include "terminal/terminal.h"
 
 using namespace std;
 
 int main(int argc, char *argv[]){
-    string commands[] = {"move", "inspect"};
 
-    string* ret = prompt('$', "Enter command", commands);
+
+
+    
+    
+
+
+    string commands[] = {"move", "inspect"};
+    Terminal *t = new Terminal('$', commands);
+
+    
+    string* ret = t->getCommand("Type command");
 
     if(ret != NULL){
         cout << "Command: " << *ret << "\nArgument: " << *(ret+1) << endl;
         cout << endl << endl;
     }
-    
 
     return 0;
 }
