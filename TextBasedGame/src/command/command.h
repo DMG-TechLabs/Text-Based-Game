@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include "../item/item.h"
+#include "../player/player.h"
+#include "../node/node.h"
 
 
 #define MAX_ROOMS 5

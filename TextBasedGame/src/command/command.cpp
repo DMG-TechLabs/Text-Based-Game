@@ -7,14 +7,21 @@ Command::Command(){}
 
 Command::~Command(){}
 
+void print(string s){ cout << s << endl;}
+
+template<typename Base, typename T>
+inline bool instanceof(const T *ptr) {
+   return dynamic_cast<const Base*>(ptr) != nullptr;
+}
 
 template<typename T>
 void Command::Run(string *command, T **args){
-    if ( command == NULL || arg == NULL || *command == "") return;
+    if ( command == NULL || args == NULL || *command == "") return;
 
     // Print the description of an item
     if( *command == "inspect") {
         if(instanceof<Item>(*args[0])) cout << *args[0].description << endl;
+        else print("This is not an item!");
 
     /*
         Move the player from one move to onether
@@ -32,7 +39,8 @@ void Command::Run(string *command, T **args){
         if((*args[1] >= 0 || *args[1] < MAX_ROOMS) && instanceof<Player>(*args[0]) && instanceof<Node>(*args[2])) {
             *args[0].possition = *args[1];
             *args[2].setPlayer(*args[0]);
-        }
+        }else print("Wrong command syntax!");
+
     }else if (*command == "")
     {
         /* code */
