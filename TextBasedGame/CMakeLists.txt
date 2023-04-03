@@ -23,7 +23,10 @@ set(SOURCES
     src/main.cpp
     src/prompt.cpp
     src/prompt.h
+    src/day/day.h
+    src/day/day.cpp
+    src/mission/mission.h
+    src/mission/mission.cpp
 )
 
 add_executable(TextBasedGame ${SOURCES})
-
