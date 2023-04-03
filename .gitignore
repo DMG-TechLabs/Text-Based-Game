@@ -3,7 +3,7 @@
 
 out/
 .vscode/
-/build/*
+/TextBasedGame/build/
 
 ### C++ ###
 # Prerequisites
