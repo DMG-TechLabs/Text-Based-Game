@@ -24,9 +24,7 @@ bool contains(string arr[], string str) {
 
 
 string* prompt(char promptChar, string message, string accepted_commands[]){
-    string input;
-    string command;
-    string argument;
+    string input, command, argument;
     
     print(message);
     cout << promptChar << " ";
@@ -35,8 +33,7 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
 
 
     //Getting space index
-    int break_index = 0;
-    int num_spaces = 0;
+    int break_index = 0, num_spaces = 0;
     for (int i = 0; i < input.length(); i++) {
         if(input[i] == ' ') {
             break_index = i;
@@ -52,10 +49,7 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
     command = input.substr(0, break_index);
     argument = input.substr(break_index+1, input.length()-1);
     
-    cout << "Command: " << command << "\nArgument: " << argument << endl;
-    
     //Check if command is accepted;
-
     bool exists = contains(accepted_commands, command);
     if(!exists) {
         print("Doesn't exist");
