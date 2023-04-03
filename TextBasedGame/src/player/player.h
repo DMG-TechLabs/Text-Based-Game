@@ -13,7 +13,6 @@ using namespace std;
  */
 class Player{
     private:
-        //Private variables
         Inventory inventory;
         string name;
         int hunger;
@@ -21,13 +20,13 @@ class Player{
 
     public:
         //Constructors
-        Player();
-        ~Player();
+        Player(){}
+        ~Player(){}
         Player(Inventory inventory, string name, int hunger, vector<Command> commands){
             this -> inventory = inventory;
             this -> name = name;
             this -> hunger = hunger;
-        };
+        }
 
         //Setters getters
         void setInventory(Inventory inventory);
