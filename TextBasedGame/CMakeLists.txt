@@ -21,6 +21,8 @@ set(SOURCES
     src/player/player.h
     src/map/node.cpp
     src/map/node.h
+    src/map/map.cpp
+    src/map/map.h
     src/main.cpp
     src/terminal/prompt.cpp
     src/terminal/prompt.h
