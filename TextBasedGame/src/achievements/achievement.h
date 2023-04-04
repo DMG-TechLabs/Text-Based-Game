@@ -31,6 +31,9 @@ class Achievement{
         void setUnlocked(bool unlocked);
         bool isUnlocked();
 
+        //Methods
+        void unlock();
+
 
 
 };
