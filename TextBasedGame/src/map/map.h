@@ -6,12 +6,15 @@ class Map{
     public:
         vector<Node*> nodes;
 
-        ~Map(){}
-        Map(){
+        Map(){}
+        Map(int day){
             initMap();
         }
+        ~Map(){}
 
         void initMap();
-        void printAMap();
+
+        void printMap();
+
         Node* nameToObject(string name);
 };   

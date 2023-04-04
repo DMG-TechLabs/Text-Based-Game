@@ -16,8 +16,7 @@ class Node{
     public:
         //Class variables
         string description;
-        //vector<Movement> movements;
-        Item *items;
+        vector<Item> items;
         vector<string> accesible_nodes;
         bool accesible;
         bool inside;
@@ -30,8 +29,8 @@ class Node{
         Node(){}
 
         //Constructor for rooms/hallways
-        Node(std::string description, /*vector<Movement> movements,*/ Item *items, vector<string> accesible_nodes, bool accesible, bool inside){
-            this-> description = description;
+        Node(std::string description, vector<Item> items, vector<string> accesible_nodes, bool accesible, bool inside){
+            this-> description = description; 
             //this-> movements = movements;
             this-> items = items;
             this->accesible_nodes = accesible_nodes;
