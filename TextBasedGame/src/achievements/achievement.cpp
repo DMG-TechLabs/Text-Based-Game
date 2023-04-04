@@ -23,3 +23,7 @@ void Achievement::setUnlocked(bool unlocked){
 bool Achievement::isUnlocked(){
     return this->unlocked;
 }
+
+void Achievement::unlock(){
+    Achievement::setUnlocked(true);      
+}
