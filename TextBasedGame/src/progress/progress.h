@@ -6,6 +6,7 @@
 #include "../player/inventory.h"
 #include "../achievements/achievement.h"
 #include "../node/node.h"
+#include "../game_utils.h"
 
 class Save{
     public:
