@@ -34,6 +34,8 @@ set(SOURCES
     src/mission/mission.cpp
     src/progress/progress.h
     src/progress/progress.cpp
+    src/game_utils.h
+    src/game_utils.cpp
 )
 
 add_executable(TextBasedGame ${SOURCES})
