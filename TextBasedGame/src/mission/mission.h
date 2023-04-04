@@ -16,7 +16,10 @@ public:
     bool completed;
 
     //Constructors
-    Mission();
-    Mission(std::string description, bool completed);
-    ~Mission();
+    Mission(){}
+    Mission(std::string description, bool completed){
+        this->description = description;
+        this->completed = completed;
+    }
+    ~Mission(){}
 }; 

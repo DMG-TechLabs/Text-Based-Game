@@ -16,9 +16,9 @@ class Node{
     public:
         //Class variables
         string Description;
-        vector<Movement> movements;
+        //vector<Movement> movements;
         Item *items;
-        //vector<Command> commands;
+        vector<string> accesible_nodes;
         bool accesible;
         bool inside;
 
@@ -27,9 +27,16 @@ class Node{
         void setPlayer(Player *player);
 
         //Constructors
-        Node();
-        Node(std::string description, vector<Movement> movements, Item *items, /*vector<Command> commands,*/ bool accesible, bool inside);
-        ~Node();
+        Node(){}
+        Node(std::string description, /*vector<Movement> movements,*/ Item *items, vector<string> accesible_nodes, bool accesible, bool inside){
+            this-> Description = description;
+            //this-> movements = movements;
+            this-> items = items;
+            this->accesible_nodes = accesible_nodes;
+            this->accesible = accesible;
+            this->inside = inside;
+        }
+        ~Node(){}
 
     //Auxiliary functions
 };      
