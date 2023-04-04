@@ -1,16 +1,30 @@
 #pragma once
 
 #include <string>
+#include <unordered_map>
+
 #include "../player/inventory.h"
 #include "../achievements/achievement.h"
+#include "../node/node.h"
 
 class Save{
     public:
         Inventory *inventory;
         int day;
         AchievementCollection *ac;
+        Node room;
+        unordered_map<std::string, std::string> hash;
         
         ~Save(){}
-        Save(){}
+        Save(Inventory *inventory, int day, AchievementCollection *ac, Node room){
+            this->inventory = inventory;
+            this->day = day;
+            this->ac = ac;
+            this->room = room;
+
+            this->hash = createHashTable();
+        }
+
+        unordered_map<std::string, std::string> createHashTable();
 
 };

@@ -21,8 +21,11 @@ void testTerminal(){
 int main(int argc, char *argv[]){
     AchievementCollection *a = new AchievementCollection();
 
+
+    a->importAchievements("1,1");
+
     a->printAchievements();
 
-
+    cout << endl;
     return 0;
 }
