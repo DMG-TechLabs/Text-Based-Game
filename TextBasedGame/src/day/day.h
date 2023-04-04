@@ -21,7 +21,6 @@ public:
     bool completed;
 
     //Constructors
-    Day(){}
     Day(Map map, vector<Mission> missions ,Player player, bool completed){
         this->map = map;
         this->missions = missions;
