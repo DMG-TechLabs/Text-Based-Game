@@ -7,4 +7,6 @@ unordered_map<std::string, std::string> Save::createHashTable(){
         {"achievemets", " "},
         {"room", to_string(this->room.number)}
     };
+
+    return u;
 }
