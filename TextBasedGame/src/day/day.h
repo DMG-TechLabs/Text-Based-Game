@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "../player/player.h"
-#include "../node/node.h"
+#include "../map/node.h"
 #include "../mission/mission.h"
 
 /**

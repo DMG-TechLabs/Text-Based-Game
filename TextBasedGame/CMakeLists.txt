@@ -19,15 +19,15 @@ set(SOURCES
     src/player/movement.h
     src/player/player.cpp
     src/player/player.h
-    src/node/node.cpp
-    src/node/node.h
+    src/map/node.cpp
+    src/map/node.h
     src/main.cpp
     src/terminal/prompt.cpp
     src/terminal/prompt.h
     src/terminal/terminal.h
     src/terminal/terminal.cpp
-    #src/day/day.h
-    #src/day/day.cpp
+    src/day/day.h
+    src/day/day.cpp
     src/mission/mission.h
     src/mission/mission.cpp
     src/progress/progress.h

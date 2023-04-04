@@ -76,5 +76,5 @@ void runCommand(string command, string arg){
 
     
 
-    c->Run(&command);
+    c->run(&command);
 }
