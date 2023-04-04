@@ -1,13 +1,7 @@
 #include "command.h"
+#include "../terminal/prompt.h"
 
-//instanceof<Item>(argument)
 
-//Constructors
-Command::Command(){}
-
-Command::~Command(){}
-
-void print(string s){ cout << s << endl;}
 
 // template<typename Base, typename T>
 // inline bool instanceof(const T *ptr) {
@@ -35,7 +29,7 @@ void Command::Run(string *command, Player *player, Node *room){
     {
         if(room->number >= 0 || room->number < MAX_ROOMS) {
             player->position = room->number;
-            room->setPlayer(player);
+            //room->setPlayer(player);
         }else print("This room doesn't exist!");
     }else print("Something was wrong!");
 }

@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <map>
 #include "../item/item.h"
 #include "../player/player.h"
 #include "../node/node.h"
@@ -12,20 +11,18 @@
 
 using namespace std;
 
-/**
- * @brief Command class
- * 
- */
+
 class Command {
     private:
     public:
         //string availabe_commands["see"];
         //Constructors
-        Command();
-        ~Command();
+        Command(){};
+        ~Command(){};
 
 
         void Run(string *command, Item *item);
+        void Run(string *command){};
 
         void Run(string *command, Player *player, Node *room);
 

@@ -4,33 +4,32 @@
 #include <vector>
 #include "../player/inventory.h"
 #include "../player/movement.h"
+#include "../player/player.h"
 #include "../item/item.h"
-#include "../command/command.h"
+//#include "../command/command.h"
 
-/**
- * @brief Node class. Each node is a spot on the map where the player can go. 
- * 
- */
+using namespace std;
+
 class Node{
-private:
+    private:
 
-public:
-    //Class variables
-    std::string Description;
-    vector<Movement> movements;
-    vector<Item> items;
-    vector<Command> commands;
-    bool accesible;
-    bool inside;
+    public:
+        //Class variables
+        string Description;
+        vector<Movement> movements;
+        Item *items;
+        //vector<Command> commands;
+        bool accesible;
+        bool inside;
 
-    //This two is for the command to build
-    int number;
-    void setPlayer(Player *player);
+        //This two is for the command to build
+        int number;
+        void setPlayer(Player *player);
 
-    //Constructors
-    Node();
-    Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands, bool accesible, bool inside);
-    ~Node();
+        //Constructors
+        Node();
+        Node(std::string description, vector<Movement> movements, Item *items, /*vector<Command> commands,*/ bool accesible, bool inside);
+        ~Node();
 
     //Auxiliary functions
 };      

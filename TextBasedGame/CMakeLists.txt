@@ -9,18 +9,18 @@ set(SOURCES
     src/achievements/achievement.cpp
     src/achievements/achievement.h
     src/achievements/achievement_collection.cpp
-    #src/command/command.cpp
-    #src/command/command.h
-    #src/item/item.cpp
-    #src/item/item.h
-    #src/player/inventory.cpp
-    #src/player/inventory.h
-    #src/player/movement.cpp
-    #src/player/movement.h
-    #src/player/player.cpp
-    #src/player/player.h
-    #src/node/node.cpp
-    #src/node/node.h
+    src/command/command.cpp
+    src/command/command.h
+    src/item/item.cpp
+    src/item/item.h
+    src/player/inventory.cpp
+    src/player/inventory.h
+    src/player/movement.cpp
+    src/player/movement.h
+    src/player/player.cpp
+    src/player/player.h
+    src/node/node.cpp
+    src/node/node.h
     src/main.cpp
     src/terminal/prompt.cpp
     src/terminal/prompt.h

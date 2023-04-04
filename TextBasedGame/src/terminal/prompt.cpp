@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "prompt.h"
+#include "../command/command.h"
 
 /* ============={Utils}============= */
 
@@ -68,4 +69,12 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
 
 void print(string message){
     cout << message << endl << endl;
+}
+
+void runCommand(string command, string arg){
+    Command *c = new Command();
+
+    
+
+    c->Run(&command);
 }
