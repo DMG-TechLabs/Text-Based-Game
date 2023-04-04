@@ -21,8 +21,10 @@ set(SOURCES
     src/node/node.cpp
     src/node/node.h
     src/main.cpp
-    src/prompt.cpp
-    src/prompt.h
+    src/terminal/prompt.cpp
+    src/terminal/prompt.h
+    src/terminal/terminal.h
+    src/terminal/terminal.cpp
     src/day/day.h
     src/day/day.cpp
     src/mission/mission.h
