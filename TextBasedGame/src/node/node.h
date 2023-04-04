@@ -48,6 +48,8 @@ class Node{
         ~Node(){}
 
         //Auxiliary functions
+        //Need to create function that gets input number and returns the room object
+        //Need to create an init function that depending on the day creates the rooms
 
         /**
          * @brief Will be called when a player tries to enter an inacessible room
@@ -55,4 +57,18 @@ class Node{
          * @return std::string The description of the room the player tried to enter
          */
         std::string inaccessibleRoomDescription();
-};      
+};   
+
+class Map{
+    public:
+        vector<Node*> nodes;
+
+        ~Map(){}
+        Map(){
+            initMap();
+        }
+
+        void initMap();
+        void printAMap();
+        Node* nameToObject(string name);
+};   
