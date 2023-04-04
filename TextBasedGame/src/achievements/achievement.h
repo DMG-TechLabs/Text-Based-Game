@@ -1,0 +1,55 @@
+#pragma once
+#include <string>
+#include <vector>
+
+using namespace std;
+
+
+/**
+ * @brief Achievement class
+ * 
+ */
+class Achievement{
+    private:
+        bool unlocked = false;
+        string name;
+        string description;
+
+    public:
+        ~Achievement(){};
+        Achievement(){};
+        Achievement(string name, string description){
+            this->name = name;
+            this->description = description;
+        };
+
+        //Setters getters
+        void setName(string name);
+        string getName();
+        void setDescription(string name);
+        string getDescription();
+        void setUnlocked(bool unlocked);
+        bool isUnlocked();
+
+        //Methods
+        void unlock();
+
+
+
+};
+
+class AchievementCollection{
+    public:
+        vector<Achievement*> achievements;
+
+        ~AchievementCollection(){}
+        AchievementCollection(){
+            initAchievements();
+        }
+
+        void initAchievements();
+        void printAchievements();
+        Achievement* nameToObject(string name);
+        string exportAchievements();
+        void importAchievements(string str);
+};

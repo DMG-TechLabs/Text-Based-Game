@@ -16,3 +16,12 @@ int Inventory::getItemCount(){
 void Inventory::addItem(Item* item, int i){
     this->items[i] = item;
 }
+
+//For progress
+string Inventory::exportContents(){
+    return "inventory here"; //waiting for Inventory structure to finish
+}
+
+void Inventory::importContents(){
+    
+}

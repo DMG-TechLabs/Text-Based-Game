@@ -2,32 +2,38 @@
 
 #include <iostream>
 #include <string>
-#include <map>
+#include <array> 
+#include <unordered_map>
+#include <cstdarg>
 #include "../item/item.h"
 #include "../player/player.h"
-#include "../node/node.h"
+#include "../map/node.h"
+#include "../terminal/prompt.h"
+#include "../game_utils.h"
 
 
 #define MAX_ROOMS 5
 
 using namespace std;
 
-/**
- * @brief Command class
- * 
- */
+
 class Command {
     private:
     public:
         //string availabe_commands["see"];
         //Constructors
-        Command();
-        ~Command();
+        //unordered_map<string, Item> available_items_for_crafting;
+        Command(){
+            //string valid_commands[1];
+        };
+        ~Command(){};
 
 
-        template<typename T>
-        void Run(string *command,  T **arg);
-
+        void run(string *command);
+        void run(string *command, Item *item);
+        //void run(string *command, Player *player, int number_of_items, ...);
+        void run(string *command, Player *player, Node *room);
+        void run(string *command, Player *player, Item *item);
         
 
 };

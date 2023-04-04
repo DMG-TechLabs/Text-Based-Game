@@ -6,8 +6,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 # Add source files
 set(SOURCES
-    src/achievements/achievements.cpp
-    src/achievements/achievements.h
+    src/achievements/achievement.cpp
+    src/achievements/achievement.h
+    src/achievements/achievement_collection.cpp
     src/command/command.cpp
     src/command/command.h
     src/item/item.cpp
@@ -18,8 +19,10 @@ set(SOURCES
     src/player/movement.h
     src/player/player.cpp
     src/player/player.h
-    src/node/node.cpp
-    src/node/node.h
+    src/map/node.cpp
+    src/map/node.h
+    src/map/map.cpp
+    src/map/map.h
     src/main.cpp
     src/terminal/prompt.cpp
     src/terminal/prompt.h
@@ -29,6 +32,8 @@ set(SOURCES
     src/day/day.cpp
     src/mission/mission.h
     src/mission/mission.cpp
+    src/progress/progress.h
+    src/progress/progress.cpp
 )
 
 add_executable(TextBasedGame ${SOURCES})

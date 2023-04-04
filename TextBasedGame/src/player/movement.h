@@ -10,6 +10,6 @@ private:
 
 public:
     //Constructors
-    Movement();
-    ~Movement();
+    Movement(){}
+    ~Movement(){}
 };

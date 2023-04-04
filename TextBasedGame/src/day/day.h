@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "../player/player.h"
-#include "../node/node.h"
+#include "../map/node.h"
 #include "../mission/mission.h"
 
 /**
@@ -20,7 +20,12 @@ public:
     bool completed;
 
     //Constructors
-    Day();
-    Day(vector<Node> nodes, vector<Mission> missions ,Player player, bool completed);
-    ~Day();
+    Day(){}
+    Day(vector<Node> nodes, vector<Mission> missions ,Player player, bool completed){
+        this->nodes = nodes;
+        this->missions = missions;
+        this->player = player;
+        this->completed = completed;
+    }
+    ~Day(){}
 }; 

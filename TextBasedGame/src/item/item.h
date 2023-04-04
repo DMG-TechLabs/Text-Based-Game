@@ -2,7 +2,6 @@
 
 #include <string>
 #include <vector>  
-#include "../command/command.h"
 
 using namespace std;
 
@@ -11,13 +10,13 @@ class Item{
         string name;
         string item_id;    
         string description;
-        vector<Command> commands;
+        string *commands = new string[10];
         
     public:
         //Constructors
-        Item(){}
         ~Item(){}
-        Item(string description, vector<Command> commands){
+        Item(){}
+        Item(string description, string *commands){
             this -> description = description;
             this -> commands = commands;
         }

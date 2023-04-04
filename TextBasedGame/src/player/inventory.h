@@ -30,5 +30,9 @@ class Inventory {
 
         //Auxilary methods
         void addItem(Item* item, int i);
+        
+        //For progress
+        string exportContents();
+        void importContents();
 
 };

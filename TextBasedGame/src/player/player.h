@@ -16,17 +16,20 @@ class Player{
         Inventory inventory;
         string name;
         int hunger;
-        vector<Command> commands;
+        vector<string> commands;
 
     public:
         //Constructors
         Player(){}
         ~Player(){}
-        Player(Inventory inventory, string name, int hunger, vector<Command> commands){
+        Player(Inventory inventory, string name, int hunger, vector<string> commands){
             this -> inventory = inventory;
             this -> name = name;
             this -> hunger = hunger;
         }
+        
+        //This is to show in which room is the player
+        int position;
 
         //Setters getters
         void setInventory(Inventory inventory);
