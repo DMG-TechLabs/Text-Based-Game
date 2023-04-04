@@ -3,6 +3,7 @@
 #include <vector>
 #include "../player/player.h"
 #include "../map/node.h"
+#include "../map/map.h"
 #include "../mission/mission.h"
 
 /**
@@ -14,15 +15,15 @@ private:
 
 public:
     //Class variables
-    vector<Node> nodes;
+    Map map;
     vector<Mission> missions;
     Player player;
     bool completed;
 
     //Constructors
     Day(){}
-    Day(vector<Node> nodes, vector<Mission> missions ,Player player, bool completed){
-        this->nodes = nodes;
+    Day(Map map, vector<Mission> missions ,Player player, bool completed){
+        this->map = map;
         this->missions = missions;
         this->player = player;
         this->completed = completed;
