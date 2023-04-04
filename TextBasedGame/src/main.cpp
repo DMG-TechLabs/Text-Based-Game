@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "achievements/achievement.h"
 #include "terminal/terminal.h"
 
 using namespace std;
@@ -18,7 +19,9 @@ void testTerminal(){
 }
 
 int main(int argc, char *argv[]){
-    
+    AchievementCollection *a = new AchievementCollection();
+
+    a->printAchievements();
 
     return 0;
 }

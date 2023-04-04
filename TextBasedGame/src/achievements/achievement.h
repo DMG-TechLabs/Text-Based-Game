@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,9 +14,10 @@ class Achievement{
         bool unlocked = false;
         string name;
         string description;
-    public:
 
+    public:
         ~Achievement(){};
+        Achievement(){};
         Achievement(string name, string description){
             this->name = name;
             this->description = description;
@@ -24,6 +26,8 @@ class Achievement{
         //Setters getters
         void setName(string name);
         string getName();
+        void setDescription(string name);
+        string getDescription();
         void setUnlocked(bool unlocked);
         bool isUnlocked();
 
@@ -33,8 +37,7 @@ class Achievement{
 
 class AchievementCollection{
     public:
-        int SIZE = 20;
-        Achievement *achievements;
+        vector<Achievement*> achievements;
 
         ~AchievementCollection(){}
         AchievementCollection(){
@@ -42,4 +45,5 @@ class AchievementCollection{
         }
 
         void initAchievements();
+        void printAchievements();
 };

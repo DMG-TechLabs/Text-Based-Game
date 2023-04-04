@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(SOURCES
     src/achievements/achievement.cpp
     src/achievements/achievement.h
+    src/achievements/achievement_collection.cpp
     #src/command/command.cpp
     #src/command/command.h
     #src/item/item.cpp
