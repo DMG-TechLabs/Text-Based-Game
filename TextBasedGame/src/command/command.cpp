@@ -28,7 +28,7 @@ void Command::Run(string *command, Player *player, Node *room){
     else if (*command == "move")
     {
         if(room->number >= 0 || room->number < MAX_ROOMS) {
-            player->position = room->number;
+            //player->position = room->number;
             //room->setPlayer(player);
         }else print("This room doesn't exist!");
     }else print("Something was wrong!");
