@@ -9,7 +9,7 @@
 #include "../player/player.h"
 #include "../map/node.h"
 #include "../terminal/prompt.h"
-#include "../utils.h"
+#include "../game_utils.h"
 
 
 #define MAX_ROOMS 5
