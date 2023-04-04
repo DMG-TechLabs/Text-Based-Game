@@ -7,7 +7,7 @@
 #include <cstdarg>
 #include "../item/item.h"
 #include "../player/player.h"
-#include "../node/node.h"
+#include "../map/node.h"
 #include "../terminal/prompt.h"
 #include "../game_utils.h"
 
