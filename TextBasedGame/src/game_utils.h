@@ -7,4 +7,4 @@ using std::ofstream;
 
 using namespace std;
 
-void saveToFile();
+void saveToFile(string file_name, string text_data);

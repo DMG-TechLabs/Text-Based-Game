@@ -16,8 +16,8 @@ class Inventory {
         
     public:
         //Constructors 
-        Inventory();
-        ~Inventory();
+        Inventory(){};
+        ~Inventory(){};
         Inventory(Item* items[]){
             for (int i = 0; i < 32; i++){
                 this -> items[i] = items[i];
