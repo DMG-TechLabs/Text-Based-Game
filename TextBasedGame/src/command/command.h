@@ -25,8 +25,9 @@ class Command {
         ~Command();
 
 
-        template<typename T>
-        void Run(string *command,  T **arg);
+        void Run(string *command, Item *item);
+
+        void Run(string *command, Player *player, Node *room);
 
         
 
