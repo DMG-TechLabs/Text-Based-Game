@@ -23,6 +23,10 @@ public:
     bool accesible;
     bool inside;
 
+    //This two is for the command to build
+    int number;
+    void setPlayer(Player *player);
+
     //Constructors
     Node();
     Node(std::string description, vector<Movement> movements, vector<Item> items, vector<Command> commands, bool accesible, bool inside);

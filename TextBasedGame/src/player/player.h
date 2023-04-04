@@ -27,6 +27,9 @@ class Player{
             this -> name = name;
             this -> hunger = hunger;
         }
+        
+        //This is to show in which room is the player
+        int position;
 
         //Setters getters
         void setInventory(Inventory inventory);

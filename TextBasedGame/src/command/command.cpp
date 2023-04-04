@@ -9,42 +9,33 @@ Command::~Command(){}
 
 void print(string s){ cout << s << endl;}
 
-template<typename Base, typename T>
-inline bool instanceof(const T *ptr) {
-   return dynamic_cast<const Base*>(ptr) != nullptr;
+// template<typename Base, typename T>
+// inline bool instanceof(const T *ptr) {
+//    return dynamic_cast<const Base*>(ptr) != nullptr;
+// }
+
+
+// Print the description of an item
+void Command::Run(string *command, Item *item){
+    if ( command == NULL || item == NULL || *command == "") return;
+    else if( *command == "inspect") {
+        cout << item->getDescription() << endl;
+    }else print("Something was wrong!");
 }
-
-template<typename T>
-void Command::Run(string *command, T **args){
-    if ( command == NULL || args == NULL || *command == "") return;
-
-    // Print the description of an item
-    if( *command == "inspect") {
-        if(instanceof<Item>(*args[0])) cout << *args[0].description << endl;
-        else print("This is not an item!");
-
-    /*
-        Move the player from one move to onether
     
-        Change the possition variable (2) of the player (1) into the new room ang
-        set the player into the room (3)
-    */
-    }else if (*command == "move")
+/*
+    Move the player from one move to onether
+
+    Change the possition variable (2) of the player (1) into the new room ang
+    set the player into the room (3)
+*/
+void Command::Run(string *command, Player *player, Node *room){
+    if ( command == NULL || player == NULL || room == NULL || *command == "") return;
+    else if (*command == "move")
     {
-        /*
-        1. args[0] : Player
-        2. args[1] : Room Number
-        3. args[2] : Room
-        */
-        if((*args[1] >= 0 || *args[1] < MAX_ROOMS) && instanceof<Player>(*args[0]) && instanceof<Node>(*args[2])) {
-            *args[0].possition = *args[1];
-            *args[2].setPlayer(*args[0]);
-        }else print("Wrong command syntax!");
-
-    }else if (*command == "")
-    {
-        /* code */
-    }
-    
-    
+        if(room->number >= 0 || room->number < MAX_ROOMS) {
+            player->position = room->number;
+            room->setPlayer(player);
+        }else print("This room doesn't exist!");
+    }else print("Something was wrong!");
 }
