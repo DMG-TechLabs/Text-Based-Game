@@ -49,4 +49,5 @@ class AchievementCollection{
 
         void initAchievements();
         void printAchievements();
+        Achievement* nameToObject(string name);
 };
