@@ -10,24 +10,24 @@ using namespace std;
  */
 class Inventory {
     private:
-        Item* items[32];
+        Item* inventory[32];
         
     public:
         //Constructors 
         Inventory(){};
         ~Inventory(){};
-        Inventory(Item* items[]){
+        Inventory(Item* inventory[]){
             for (int i = 0; i < 32; i++){
-                this -> items[i] = items[i];
+                this -> inventory[i] = inventory[i];
             }
         };
         
         //Getters
-        Item* getItems();
+        Item* getInventory();
 
         //Auxilary methods
-        void addItem(Item* items[], Item* item);
-        Item* getItem(Item* items[], Item* item);
+        void addItem(Item* inventory[], Item* item);
+        Item* getItem(Item* inventory[], Item* item);
         
         //For progress
         string exportContents();
