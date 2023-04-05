@@ -8,13 +8,14 @@ Item* Inventory::getItem(){
     return items[32];
 }
 
-int Inventory::getItemCount(){
-    return this->itemCount;
-}
-
 //Auxiliary functions
-void Inventory::addItem(Item* item, int i){
-    this->items[i] = item;
+void Inventory::addItem(Item* items[], Item* item){
+    for (int i = 0; i < 32; i++){
+        if (items[i] == nullptr){
+            items[i] = item;
+            return;
+        }
+    }
 }
 
 //For progress

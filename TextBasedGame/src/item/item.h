@@ -22,6 +22,12 @@ class Item{
         }
 
         //Setters getters
+        void setName(string name);
+        string getName();
+
+        void setItemId(string item_id);
+        string getItemId();
+
         void setDescription(string description);
-        string getDescription();
+        string getDescription();    
 };

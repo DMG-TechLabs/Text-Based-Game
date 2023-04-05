@@ -10,9 +10,7 @@ using namespace std;
  */
 class Inventory {
     private:
-        //Variables
         Item* items[32];
-        int itemCount;
         
     public:
         //Constructors 
@@ -26,13 +24,11 @@ class Inventory {
         
         //Getters
         Item* getItem();
-        int getItemCount();
 
         //Auxilary methods
-        void addItem(Item* item, int i);
+        void addItem(Item* items[], Item* item);
         
         //For progress
         string exportContents();
         void importContents();
-
 };
