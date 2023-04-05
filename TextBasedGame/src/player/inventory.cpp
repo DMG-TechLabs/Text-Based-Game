@@ -4,7 +4,7 @@
 using namespace std;
 
 //Getters
-Item* Inventory::getItem(){
+Item* Inventory::getItems(){
     return items[32];
 }
 
@@ -14,6 +14,14 @@ void Inventory::addItem(Item* items[], Item* item){
         if (items[i] == nullptr){
             items[i] = item;
             return;
+        }
+    }
+}
+
+Item* Inventory::getItem(Item* items[], Item* item){
+    for (int i = 0; i < 32; i++){
+        if (items[i]->getItemId() == item->getItemId()){
+            return item;
         }
     }
 }

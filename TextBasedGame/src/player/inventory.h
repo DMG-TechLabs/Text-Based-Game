@@ -23,10 +23,11 @@ class Inventory {
         };
         
         //Getters
-        Item* getItem();
+        Item* getItems();
 
         //Auxilary methods
         void addItem(Item* items[], Item* item);
+        Item* getItem(Item* items[], Item* item);
         
         //For progress
         string exportContents();
