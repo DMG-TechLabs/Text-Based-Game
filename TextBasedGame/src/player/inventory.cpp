@@ -28,7 +28,7 @@ Item* Inventory::getItem(Item* inventory[], Item* item){
 
 //For progress
 string Inventory::exportContents(){
-    return "inventory here"; //waiting for Inventory structure to finish
+    return "inventory here"; //logika tha pairneis pleon olo ton pinaka inventory, afou kathe fora tha ananewnetai
 }
 
 void Inventory::importContents(){
