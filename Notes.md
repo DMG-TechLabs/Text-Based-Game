@@ -3,9 +3,12 @@
 ## Commands
 
 * move
-* inspect
-* use
+* inspect (any item)
+* use (???)
 * collect
-* read
-* save
-* craft
+* read (files / notes)
+* save (game)
+* craft (???)
+* enter (terminal / room)
+
+## Achievements
