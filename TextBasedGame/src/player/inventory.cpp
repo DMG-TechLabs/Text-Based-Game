@@ -24,6 +24,7 @@ Item* Inventory::getItem(Item* inventory[], Item* item){
             return item;
         }
     }
+    return NULL;
 }
 
 //For progress
