@@ -1,5 +1,13 @@
 # Notes
 
+## Items
+
+* note
+* terminal
+* file
+* food
+* 
+
 ## Commands
 
 * move
