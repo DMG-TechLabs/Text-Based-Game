@@ -5,8 +5,6 @@
 void AchievementCollection::initAchievements(){
     achievements.push_back(new Achievement("Beginning", "Lorem ipsum..."));
     achievements.push_back(new Achievement("End", "Lorem ipsum..."));
-
-    achievements.at(1)->unlock();
 }
 
 void AchievementCollection::printAchievements(){

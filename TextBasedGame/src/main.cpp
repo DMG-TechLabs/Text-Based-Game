@@ -1,10 +1,11 @@
 #include <iostream>
 #include <string>
 #include "achievements/achievement.h"
-#include "terminal/terminal.h"
+#include "utils/prompt.h"
 #include "player/inventory.h"
 #include "map/node.h"
 #include "progress/progress.h"
+#include "item/item.h"
 
 using namespace std;
 
@@ -21,15 +22,20 @@ void testTerminal(){
     }
 }
 
-int main(int argc, char *argv[]){
-    AchievementCollection *a = new AchievementCollection();
-    int day = 2;
-    Inventory *i = new Inventory();
-    Node *n = new Node();
-    n->number = 3;
+void prototype(){
+    string prompt_commands[] = {"enter", "inspect", "help", "exit", "read"};
+    string* args = prompt('>', "You wake up tired in a room. There is a desk with an open terminal and a note next to it.", prompt_commands);
 
-    Save *s = new Save(i, day, a, n);
+    if(args == NULL) return;
+
     
-    cout << endl;
-    return 0;
+
+    Item *note = new Note("domain.xyz\n\nthe_truth.txt");
+    Item *terminal = new Terminal('$', {});
+
+    runCommand(*args, note);
+}
+
+int main(int argc, char *argv[]){
+    prototype();
 }

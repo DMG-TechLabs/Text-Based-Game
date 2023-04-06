@@ -9,33 +9,43 @@ set(SOURCES
     src/achievements/achievement.cpp
     src/achievements/achievement.h
     src/achievements/achievement_collection.cpp
+
     src/command/command.cpp
     src/command/command.h
+    
     src/item/item.cpp
     src/item/item.h
+    src/item/terminal.cpp
+    src/item/note.cpp
+    
     src/player/inventory.cpp
     src/player/inventory.h
     src/player/movement.cpp
     src/player/movement.h
     src/player/player.cpp
     src/player/player.h
+    
     src/map/node.cpp
     src/map/node.h
     src/map/map.cpp
     src/map/map.h
-    src/main.cpp
-    src/terminal/prompt.cpp
-    src/terminal/prompt.h
-    src/terminal/terminal.h
-    src/terminal/terminal.cpp
+    
     src/day/day.h
     src/day/day.cpp
+    
     src/mission/mission.h
     src/mission/mission.cpp
+    
     src/progress/progress.h
     src/progress/progress.cpp
-    src/game_utils.h
-    src/game_utils.cpp
-)
-
-add_executable(TextBasedGame ${SOURCES})
+    
+    src/utils/prompt.cpp
+    src/utils/prompt.h
+    src/utils/game_utils.h
+    src/utils/game_utils.cpp
+    
+    
+    src/main.cpp
+    )
+    
+    add_executable(TextBasedGame ${SOURCES})

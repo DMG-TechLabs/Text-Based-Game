@@ -6,9 +6,12 @@
 #include "../player/inventory.h"
 #include "../achievements/achievement.h"
 #include "../map/node.h"
-#include "../game_utils.h"
+#include "../utils/game_utils.h"
 
 class Save{
+    private:
+        unordered_map<std::string, std::string> createHashTable();
+        string hashToString();
     public:
         Inventory *inventory;
         int day;
@@ -27,8 +30,4 @@ class Save{
 
             saveToFile("save.txt", hashToString());
         }
-
-        unordered_map<std::string, std::string> createHashTable();
-        string hashToString();
-
 };

@@ -8,8 +8,8 @@
 #include "../item/item.h"
 #include "../player/player.h"
 #include "../map/node.h"
-#include "../terminal/prompt.h"
-#include "../game_utils.h"
+#include "../utils/prompt.h"
+#include "../utils/game_utils.h"
 
 
 #define MAX_ROOMS 5

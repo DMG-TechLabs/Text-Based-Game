@@ -1,6 +1,6 @@
 #include <string>
-#include "./terminal.h"
-#include "./prompt.h"
+#include "./item.h"
+#include "../utils/prompt.h"
 
 using namespace std;
 

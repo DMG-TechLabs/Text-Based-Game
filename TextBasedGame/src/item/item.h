@@ -16,7 +16,8 @@ class Item{
         //Constructors
         ~Item(){}
         Item(){}
-        Item(string description, string *commands){
+        Item(string name, string description, string *commands){
+            this -> name = name;
             this -> description = description;
             this -> commands = commands;
         }
@@ -30,4 +31,33 @@ class Item{
 
         void setDescription(string description);
         string getDescription();    
+};
+
+class Note : public Item {
+    public:
+        ~Note(){}
+        Note(string description){
+            string *note_commands = new string[2];
+            note_commands[0] = "read";
+            note_commands[1] = "save";
+
+            Item("note", description, note_commands);
+        }  
+
+        void saveNote(string note_name);
+};
+
+class Terminal : public Item{
+    public:
+        char prompt_char;
+        string *commands;
+
+        ~Terminal(){}
+        Terminal(char prompt_char, string commands[]){
+            this->prompt_char = prompt_char;
+            this->commands = commands;
+        }
+
+        string* getCommand(string message);
+
 };

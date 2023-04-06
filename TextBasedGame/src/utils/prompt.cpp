@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
+
 #include "prompt.h"
 #include "../command/command.h"
+#include "../item/item.h"
 
 /* ============={Utils}============= */
 
@@ -53,7 +55,7 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
     //Check if command is accepted;
     bool exists = contains(accepted_commands, command);
     if(!exists) {
-        print("Doesn't exist");
+        print("Invalid command");
         return NULL;
     }
 
@@ -71,10 +73,10 @@ void print(string message){
     cout << message << endl << endl;
 }
 
-void runCommand(string command, string arg){
+void runCommand(string command, Item *item){
     Command *c = new Command();
 
     
-
-    c->run(&command);
+    
+    c->run(&command, item);
 }
