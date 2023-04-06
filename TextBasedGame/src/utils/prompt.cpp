@@ -23,6 +23,14 @@ bool contains(string arr[], string str) {
     return exists;
 }
 
+int itemsLength(Item **items){
+    int length_counter = 0;
+    while(items[length_counter])
+        length_counter++;
+
+    return length_counter;
+}
+
 /* ============={End of Utils}============= */
 
 
@@ -73,10 +81,24 @@ void print(string message){
     cout << message << endl << endl;
 }
 
-void runCommand(string command, Item *item){
+void runCommand(string command, string arg, Item **items){
+    //cout << command << endl << arg << endl;
+
     Command *c = new Command();
 
+    int index_to_use = -1;
+    for(int i = 0; i < itemsLength(items); i++){
+        //cout << i << ". " << items[i]->getName() << endl;
+        if(arg == items[i]->getName()){
+            index_to_use = i;
+            break;
+        }
+    }
     
-    
-    c->run(&command, item);
+    //cout << index_to_use << endl;
+    if(index_to_use < 0) return;
+
+
+    c->run(&command, items[index_to_use]);
 }
+

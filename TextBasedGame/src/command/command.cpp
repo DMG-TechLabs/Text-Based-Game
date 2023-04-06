@@ -19,6 +19,10 @@ void Command::run(string *command, Item *item){
     }else if(*command == "save"){
         //saveToFile(item->getName(),item->getDescription());
     }
+    else if(*command == "enter"){
+        print(dynamic_cast<Terminal*>(item)->getDescription());
+        dynamic_cast<Terminal*>(item)->getCommand("");
+    }
     else print("Something was wrong!");
 }
 

@@ -5,5 +5,5 @@
 using namespace std;
 
 string* Terminal::getCommand(string message){
-    return prompt(prompt_char, message, commands);
+    return prompt(prompt_char, message, internal_commands);
 }

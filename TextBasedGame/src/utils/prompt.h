@@ -12,4 +12,4 @@ string* prompt(char promptChar, string message, string accepted_commands[]);
 
 void print(string message);
 
-void runCommand(string command, Item *item);
+void runCommand(string command, string arg, Item **item);

@@ -11,7 +11,7 @@ using namespace std;
 
 void testTerminal(){
     string commands[] = {"move", "inspect"};
-    Terminal *t = new Terminal('$', commands);
+    Terminal *t = new Terminal('$', "Room terminal", commands);
 
     
     string* ret = t->getCommand("Type command");
@@ -28,14 +28,21 @@ void prototype(){
 
     if(args == NULL) return;
 
+    string *linux_commands = new string[2];
+    linux_commands[0] = "ls";
+    linux_commands[1] = "cd";
+
+
+    Item **room_items = new Item*[10];
+    room_items[0] = new Note("domain.xyz\n\nthe_truth.txt");
+    room_items[1] = new Terminal('$', "Linux terminal", linux_commands);
     
 
-    Item *note = new Note("domain.xyz\n\nthe_truth.txt");
-    Item *terminal = new Terminal('$', {});
 
-    runCommand(*args, note);
+
+    runCommand(args[0], args[1], room_items);
 }
 
 int main(int argc, char *argv[]){
-    prototype();
+   prototype();
 }
