@@ -74,6 +74,6 @@ class Terminal : public Item {
             setCommands(terminal_commands);
         }
 
-        string* getCommand(string message);
+        string* terminalPrompt(string message);
 
 };

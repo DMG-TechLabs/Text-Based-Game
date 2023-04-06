@@ -27,7 +27,7 @@ void Command::run(string *command, Item *item){
     }
     else if(*command == "enter"){
         print(dynamic_cast<Terminal*>(item)->getDescription());
-        dynamic_cast<Terminal*>(item)->getCommand("");
+        dynamic_cast<Terminal*>(item)->terminalPrompt("");
     }
     else print("Something was wrong!");
 }

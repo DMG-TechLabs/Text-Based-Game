@@ -7,7 +7,7 @@
 
 /* ============={Utils}============= */
 
-bool contains(string arr[], string str) {
+bool contains(string *arr, string str) {
     int size = 0;
     while (!arr[size].empty())
         ++size;
@@ -34,12 +34,16 @@ int itemsLength(Item **items){
 /* ============={End of Utils}============= */
 
 
-string* prompt(char promptChar, string message, string accepted_commands[]){
+string* prompt(char prompt_char, string *accepted_commands){
+    return prompt(prompt_char, "", accepted_commands);
+}
+
+string* prompt(char prompt_char, string message, string *accepted_commands){
     string input, command, argument;
     string* ret = new string[2];
     
-    print(message);
-    cout << promptChar << " ";
+    if(message != "") print(message);
+    cout << prompt_char << " ";
 
     getline(cin, input);
 
@@ -91,6 +95,8 @@ void runCommand(string command, string arg, Item **items){
 
     Command *c = new Command();
 
+
+    // checking which item from the list to use based from the argument
     int index_to_use = -1;
     for(int i = 0; i < itemsLength(items); i++){
         //cout << i << ". " << items[i]->getName() << endl;
@@ -106,4 +112,14 @@ void runCommand(string command, string arg, Item **items){
 
     c->run(&command, items[index_to_use]);
 }
+/*
+string* arrayToPointer(string array[]){
+    int arr_length = sizeof(array) / sizeof(array[0]);
+    string *pointer = new string[arr_length];
 
+    for (int i = 0; i < arr_length; i++){
+        pointer[i] = array[i];
+    }
+    
+    return pointer;
+}*/
