@@ -19,6 +19,16 @@ using namespace std;
 
 class Command {
     private:
+        string command_list[8] = {
+            "move",
+            "inspect",
+            "enter",
+            "exit",
+            "read",
+            "save",
+            "collect"
+        };
+
     public:
         //string availabe_commands["see"];
         //Constructors
@@ -34,5 +44,7 @@ class Command {
         //void run(string *command, Player *player, int number_of_items, ...);
         void run(string *command, Player *player, Node *room);
         void run(string *command, Player *player, Item *item);
+
+        void getAvailableCommands();
 
 };

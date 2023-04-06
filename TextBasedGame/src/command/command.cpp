@@ -6,7 +6,13 @@
 // }
 
 
-void Command::run(string *command){}
+void Command::run(string *command){
+    if(*command == "" || command == NULL) return;
+
+    if(*command == "help"){
+        getAvailableCommands();
+    }
+}
 
 // Print the description of an item
 void Command::run(string *command, Item *item){
@@ -66,4 +72,12 @@ void Command::run(string *command, Player *player, Item *item){
     else if (*command == "collect"){
         //player->putItemIntoInventory(*item);
     }else print("Something was wrong!");
+}
+
+
+void Command::getAvailableCommands(){
+    print("Available commands");
+    for (int i = 0; i < command_list->size(); i++){
+        cout << command_list[i] << endl;
+    }
 }

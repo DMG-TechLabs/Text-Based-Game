@@ -36,6 +36,7 @@ int itemsLength(Item **items){
 
 string* prompt(char promptChar, string message, string accepted_commands[]){
     string input, command, argument;
+    string* ret = new string[2];
     
     print(message);
     cout << promptChar << " ";
@@ -53,7 +54,11 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
     }
 
     //Check if input is valid
-    if(break_index <= 0 || break_index >= input.length()) return NULL; //no space
+    if(break_index <= 0 || break_index >= input.length()){
+        //return NULL; //no space
+        ret[0] = input;
+        return ret;
+    }
     if(num_spaces > 1) return NULL; //more than one space
 
 
@@ -69,7 +74,7 @@ string* prompt(char promptChar, string message, string accepted_commands[]){
 
     cout << endl << endl;
 
-    string* ret = new string[2];
+    
 
     ret[0] = command;
     ret[1] = argument;
