@@ -48,42 +48,15 @@ void prototype(){
 }
 
 int main(int argc, char *argv[]){
-    print("\n\n");
-/*
-    std::cout << '-' << std::flush;
-    for (;;) {
-        sleep(1);
-        std::cout << "\b\\" << std::flush;
-        sleep(1);
-        std::cout << "\b|" << std::flush;
-        sleep(1);
-        std::cout << "\b/" << std::flush;
-        sleep(1);
-        std::cout << "\b-" << std::flush;
-    }
-*/
-    for (;;) {
+    // AchievementCollection *a = new AchievementCollection();
 
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLOading   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoAding   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoaDing   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadIng   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadiNg   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadinG   " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading.  " << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading.." << std::flush;
-        sleep(1);
-        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading..." << std::flush;
-        sleep(1);
-    }
 
+    // a->importAchievements("1,1");
+
+    // a->printAchievements();
+
+    // cout << endl;
+    string s = "some data";
+    saveToFile("test", s,1);
+    return 0;
 }

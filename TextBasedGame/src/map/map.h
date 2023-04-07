@@ -8,13 +8,9 @@ class Map{
 
         Map(){}
         Map(int day){
-            initMap();
+            initMap(day);
         }
         ~Map(){}
 
-        void initMap();
-
-        void printMap();
-
-        Node* nameToObject(string name);
+        void initMap(int day);
 };   

@@ -16,3 +16,14 @@ string loadFromFile(string file_name){
 
     return text_data;
 }
+
+void saveToFile(string file_name, string data,int i){
+    ofstream file;
+    file.open(file_name, ios::out | ios::binary);
+    file.write((char *) &data, sizeof(string));
+    file.close();
+    if(!file.good()) {
+        cout << "Error occurred at writing time!" << endl;
+        return;
+    }
+}
