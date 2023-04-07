@@ -37,5 +37,15 @@ void prototype(){
 }
 
 int main(int argc, char *argv[]){
-    string *ptr = prompt('>', "Give command", new string[2]{"move", "enter"});
+    // AchievementCollection *a = new AchievementCollection();
+
+
+    // a->importAchievements("1,1");
+
+    // a->printAchievements();
+
+    // cout << endl;
+    string s = "some data";
+    saveToFile("test", s,1);
+    return 0;
 }
