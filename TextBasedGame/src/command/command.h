@@ -22,14 +22,16 @@ class Command {
         
 
     public:
-        string *command_list = new string[8]{
+        string *command_list = new string[10]{
             "move",
             "inspect",
             "enter",
             "exit",
             "read",
             "save",
-            "collect"
+            "collect",
+            "ls",
+            "cd"
         };
         //string availabe_commands["see"];
         //Constructors

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <unistd.h> // for sleep()
+
 #include "achievements/achievement.h"
 #include "utils/prompt.h"
 #include "player/inventory.h"
@@ -17,6 +19,15 @@ void testTerminal(){
     if(ret == NULL) return;
 
     cout << "Command: " << *ret << "\nArgument: " << *(ret+1) << endl << endl;
+}
+
+void testSave(){
+    Inventory *i = new Inventory();
+    int day = 3;
+    Node *n = new Node();
+    AchievementCollection *ac = new AchievementCollection();
+
+    new Save(i, day, ac, n);
 }
 
 void prototype(){
@@ -37,5 +48,42 @@ void prototype(){
 }
 
 int main(int argc, char *argv[]){
-    string *ptr = prompt('>', "Give command", new string[2]{"move", "enter"});
+    print("\n\n");
+/*
+    std::cout << '-' << std::flush;
+    for (;;) {
+        sleep(1);
+        std::cout << "\b\\" << std::flush;
+        sleep(1);
+        std::cout << "\b|" << std::flush;
+        sleep(1);
+        std::cout << "\b/" << std::flush;
+        sleep(1);
+        std::cout << "\b-" << std::flush;
+    }
+*/
+    for (;;) {
+
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLOading   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoAding   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoaDing   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadIng   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadiNg   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoadinG   " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading.  " << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading.." << std::flush;
+        sleep(1);
+        std::cout << "\b\b\b\b\b\b\b\b\b\bLoading..." << std::flush;
+        sleep(1);
+    }
+
 }
