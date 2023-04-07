@@ -13,8 +13,4 @@ class Map{
         ~Map(){}
 
         void initMap();
-
-        void printMap();
-
-        Node* nameToObject(string name);
 };   
