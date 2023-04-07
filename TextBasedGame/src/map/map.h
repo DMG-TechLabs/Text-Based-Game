@@ -8,9 +8,9 @@ class Map{
 
         Map(){}
         Map(int day){
-            initMap();
+            initMap(day);
         }
         ~Map(){}
 
-        void initMap();
+        void initMap(int day);
 };   
