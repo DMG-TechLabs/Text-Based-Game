@@ -49,10 +49,7 @@ string *prompt(char prompt_char, string message, string *accepted_commands) {
 
     int counter = 0, from = 0;
     for (int i = 0; i <= input.length(); i++) {
-        print(input[i]);
         if (input[i] == ' ' || input[i] == '\0') {
-            print(i);
-            print(from);
             ret[counter++] = input.substr(from, i-from);
             from = i+1;
         }
