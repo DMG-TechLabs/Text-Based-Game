@@ -10,16 +10,13 @@
 using namespace std;
 
 void testTerminal(){
-    string commands[] = {"move", "inspect"};
-    Terminal *t = new Terminal('$', "Room terminal", commands);
+    Terminal *t = new Terminal('$', "Room terminal", new string[2]{"move", "inspect"});
 
-    
-    string* ret = t->terminalPrompt("Type command");
+    string *ret = t->terminalPrompt("Type command");
 
-    if(ret != NULL){
-        cout << "Command: " << *ret << "\nArgument: " << *(ret+1) << endl;
-        cout << endl << endl;
-    }
+    if(ret == NULL) return;
+
+    cout << "Command: " << *ret << "\nArgument: " << *(ret+1) << endl << endl;
 }
 
 void prototype(){
@@ -31,18 +28,14 @@ void prototype(){
 
     if(args == NULL) return;
 
-
     Item **room_items = new Item*[2]{
-        room_items[0] = new Note("domain.xyz\n\nthe_truth.txt"),
-        room_items[1] = new Terminal('$', "Linux terminal", new string[2]{"ls, cd"})
+        new Note("domain.xyz\n\njfd73he/;fdshj12"),
+        new Terminal('$', "Linux terminal", new string[2]{"ls", "cd"})
     };
     
-
-
-
     runCommand(args[0], args[1], room_items);
 }
 
 int main(int argc, char *argv[]){
-   prototype();
+    string *ptr = prompt('>', "Give command", new string[1]{"move"});
 }

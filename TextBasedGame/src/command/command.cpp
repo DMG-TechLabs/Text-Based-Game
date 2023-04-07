@@ -18,10 +18,10 @@ void Command::run(string *command){
 void Command::run(string *command, Item *item){
     if ( command == NULL || item == NULL || *command == "") return;
     else if( *command == "inspect") {
-        cout << item->getDescription() << endl;
+        print(item->getDescription());
     }else if (*command == "read"){
         //File *file = (File) item;
-        cout << /*file*/item->getDescription() << endl;
+        print(item->getDescription());
     }else if(*command == "save"){
         //saveToFile(item->getName(),item->getDescription());
     }

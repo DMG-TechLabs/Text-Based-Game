@@ -46,11 +46,7 @@ class Note : public Item {
     public:
         ~Note(){}
         Note(string description) : Item("note", description){
-            string *note_commands = new string[2];
-            note_commands[0] = "read";
-            note_commands[1] = "save";
-
-            setCommands(note_commands);
+            setCommands(new string[2]{"read", "save"});
         }  
 
         void saveNote(string note_name);
@@ -66,12 +62,7 @@ class Terminal : public Item {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
 
-
-            string *terminal_commands = new string[2];
-            terminal_commands[0] = "enter";
-            terminal_commands[1] = "exit";
-
-            setCommands(terminal_commands);
+            setCommands(new string[2]{"enter", "exit"});
         }
 
         string* terminalPrompt(string message);
