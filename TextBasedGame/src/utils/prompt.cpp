@@ -60,10 +60,18 @@ string *prompt(char prompt_char, string message, string *accepted_commands) {
 
     command = ret[0];
 
-    // Check if command is accepted;
-    bool exists = contains(accepted_commands, command);
-    if (!exists) {
+    // Check if command is garbage
+    Command *c = new Command();
+    bool exists = contains(c->command_list, command);
+    if(!exists){
         print("Invalid command");
+        return NULL;
+    }
+
+    // Check if command is accepted
+    bool is_acceptable = contains(accepted_commands, command);
+    if (!is_acceptable) {
+        print("You can't do that here");
         return NULL;
     }
 

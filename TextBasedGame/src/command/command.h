@@ -19,7 +19,10 @@ using namespace std;
 
 class Command {
     private:
-        string command_list[8] = {
+        
+
+    public:
+        string *command_list = new string[8]{
             "move",
             "inspect",
             "enter",
@@ -28,8 +31,6 @@ class Command {
             "save",
             "collect"
         };
-
-    public:
         //string availabe_commands["see"];
         //Constructors
         //unordered_map<string, Item> available_items_for_crafting;

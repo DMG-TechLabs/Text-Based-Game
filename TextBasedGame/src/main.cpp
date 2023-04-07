@@ -37,5 +37,5 @@ void prototype(){
 }
 
 int main(int argc, char *argv[]){
-    string *ptr = prompt('>', "Give command", new string[1]{"move"});
+    string *ptr = prompt('>', "Give command", new string[2]{"move", "enter"});
 }
