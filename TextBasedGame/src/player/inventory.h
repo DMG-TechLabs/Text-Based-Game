@@ -28,6 +28,7 @@ class Inventory {
         //Auxilary methods
         void addItem(Item* inventory[], Item* item);
         Item* getItem(Item* inventory[], Item* item);
+        string* getStacks(Item inventory[], string items[]);
         
         //For progress
         string exportContents();
