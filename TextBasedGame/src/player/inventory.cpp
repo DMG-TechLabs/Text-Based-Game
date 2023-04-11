@@ -41,7 +41,7 @@ string* Inventory::getStacks(Item inventory[], string items[]){
             k++;
         }
 
-        items[i] = to_string(item_count) + " " + inventory[i].getName();
+        items[i] = to_string(item_count) + " " + inventory[i].getItemId();
         item_count = 1;
         k = i + 2;
     }
