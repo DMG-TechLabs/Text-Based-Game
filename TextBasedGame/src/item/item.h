@@ -22,7 +22,14 @@ class Item {
             this -> description = description;
         }
 
-        Item(string name, string description, string *commands){
+        Item(string item_id, string name, string description){
+            this ->item_id = item_id;
+            this -> name = name;
+            this -> description = description;
+        }
+
+        Item(string item_id, string name, string description, string *commands){
+            this ->item_id = item_id;
             this -> name = name;
             this -> description = description;
             this -> commands = commands;
