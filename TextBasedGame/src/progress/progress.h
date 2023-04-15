@@ -32,15 +32,7 @@ class Save{
 
             this->hash = createHashTable();
 
-            
- 
-            std::time_t now = std::time(NULL);
-            std::tm * ptm = std::localtime(&now);
-            char buffer[32];
-            std::strftime(buffer, 32, "%a, %d.%m.%Y %H:%M:%S", ptm);  
-            
-            string s(buffer);
-            string date = s;
-            saveToFile("../saves/save_" + date + ".txt", hashToString());
+            saveToFile("../saves/save_" + getCurrentDate() + ".txt", hashToString());
         }
+        string getCurrentDate();
 };
