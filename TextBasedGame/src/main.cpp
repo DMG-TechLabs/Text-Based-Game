@@ -8,6 +8,7 @@
 #include "map/node.h"
 #include "progress/progress.h"
 #include "item/item.h"
+#include "sound/sound.h"
 
 using namespace std;
 
@@ -48,15 +49,8 @@ void prototype(){
 }
 
 int main(int argc, char *argv[]){
-    // AchievementCollection *a = new AchievementCollection();
+    Sound *s = new Sound("../sound_effects/mixkit-asteroid-space-atmosphere-2004.wav");
+    s->play();
 
-
-    // a->importAchievements("1,1");
-
-    // a->printAchievements();
-
-    // cout << endl;
-    string s = "some data";
-    saveToFile("test", s,1);
     return 0;
 }
