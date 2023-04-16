@@ -4,8 +4,9 @@
 #include <iostream>
 #include <cstring>
 
-#include "../../soloud/include/soloud.h"
-#include "../../soloud/include/soloud_wav.h"
+#include "soloud.h"
+#include "soloud_wav.h"
+#include "soloud_thread.h"
 
 using namespace std;
 

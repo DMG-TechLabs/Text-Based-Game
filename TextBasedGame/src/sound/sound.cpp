@@ -6,6 +6,8 @@ void Sound::play(float volume, float speed){
     this->handle = soloud.play(sample);         // Play the sound
     soloud.setVolume(handle, volume);           // Set volume; 1.0f is "normal"
     soloud.setRelativePlaySpeed(handle, speed);
+
+    while (soloud.getActiveVoiceCount() > 0){/* do nothing */}
 }
 
 void Sound::pause(){
