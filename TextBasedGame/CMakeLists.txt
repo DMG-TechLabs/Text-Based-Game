@@ -4,6 +4,9 @@ project(TextBasedGame)
 
 set(CMAKE_CXX_STANDARD 11)
 
+include(soloud/contrib/CMakeLists.txt)
+
+
 # Add source files
 set(SOURCES
     src/achievements/achievement.cpp
@@ -44,8 +47,21 @@ set(SOURCES
     src/utils/game_utils.h
     src/utils/game_utils.cpp
     
-    
+    src/sound/sound.h
+    src/sound/sound.cpp
+
     src/main.cpp
-    )
-    
-    add_executable(TextBasedGame ${SOURCES})
+)
+
+message("SoLoud: ${SOLOUD_SRC}")
+
+option(WITH_SDL2 "Enable SDL2 audio backend" OFF)
+set(WITH_SDL2_DYNAMIC FALSE CACHE BOOL "Build SDL2 dynamically")
+set(WITH_SDL2_STATIC FALSE CACHE BOOL "Build SDL2 statically")
+
+message("WITH_SDL2: ${WITH_SDL2}")
+
+add_executable(TextBasedGame ${SOURCES})
+target_link_libraries(TextBasedGame soloud)
+
+

@@ -1,5 +1,11 @@
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudio,visualstudiocode,c++,cmake
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,visualstudiocode,c++,cmake
+# Don't include SoLoud except its CMake folder
+/TextBasedGame/soloud/bin/
+/TextBasedGame/soloud/build/
+/TextBasedGame/soloud/demos/
+/TextBasedGame/soloud/doc/
+/TextBasedGame/soloud/include/
+/TextBasedGame/soloud/scripts/
+/TextBasedGame/soloud/src/
 
 /TextBasedGame/saves/
 *.sh
