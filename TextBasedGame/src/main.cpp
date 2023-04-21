@@ -3,16 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "achievements/achievement.h"
-#include "item/item.h"
-#include "map/node.h"
-#include "player/inventory.h"
-#include "progress/progress.h"
-#include "soloud.h"
-#include "soloud_speech.h"
-#include "soloud_thread.h"
-#include "sound/sound.h"
-#include "utils/prompt.h"
+#include "engine.h"
 
 using namespace std;
 
@@ -54,9 +45,26 @@ void prototype() {
 }
 
 int main(int argc, char *argv[]) {
-    Sound *s = new Sound("../sound_effects/bass.wav");
-    s->play();
-    s->terminate();
+    // Sound *s = new Sound("../sound_effects/bass.wav");
+    // s->play();
+    // s->terminate();
+
+    Soloud *soloud = Soloud_create();
+Speech *speech = Speech_create();
+
+Speech_setText(speech, "Hello c-api");
+
+Soloud_initEx(soloud, SOLOUD_CLIP_ROUNDOFF | SOLOUD_ENABLE_VISUALIZATION, 
+              SOLOUD_AUTO, SOLOUD_AUTO, SOLOUD_AUTO, SOLOUD_AUTO);
+Soloud_setGlobalVolume(soloud, 4);
+Soloud_play(soloud, speech);
+
+// ...
+
+Soloud_deinit(soloud);
+    
+Speech_destroy(speech);
+Soloud_destroy(soloud);
 
     return 0;
 }
