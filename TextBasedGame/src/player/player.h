@@ -15,17 +15,18 @@ class Player{
     private:
         Inventory inventory;
         string name;
-        int hunger;
+        vector<int> stats;
         vector<string> commands;
 
     public:
         //Constructors
         Player(){}
         ~Player(){}
-        Player(Inventory inventory, string name, int hunger, vector<string> commands){
+        Player(Inventory inventory, string name, vector<string> commands, vector<int> stats){
             this -> inventory = inventory;
             this -> name = name;
-            this -> hunger = hunger;
+            this -> commands = commands;
+            this -> stats = stats;
         }
         
         //This is to show in which room is the player
@@ -37,7 +38,4 @@ class Player{
 
         void setName(string name);
         string getName();
-
-        void setHunger(int hunger);
-        int getHunger();
     };
