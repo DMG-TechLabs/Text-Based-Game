@@ -19,8 +19,6 @@ set(SOURCES
     
     src/player/inventory.cpp
     src/player/inventory.h
-    src/player/movement.cpp
-    src/player/movement.h
     src/player/player.cpp
     src/player/player.h
     

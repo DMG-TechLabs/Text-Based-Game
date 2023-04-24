@@ -6,7 +6,6 @@
 #include "map/map.h"
 #include "map/node.h"
 #include "player/inventory.h"
-#include "player/movement.h"
 #include "player/player.h"
 #include "progress/progress.h"
 #include "utils/game_utils.h"
