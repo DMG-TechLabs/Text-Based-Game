@@ -2,7 +2,6 @@
     boost/1.81.0
 
 [options]
-    addr2line_location=/usr/bin/addr2line
     asio_no_deprecated=False
     buildid=None
     bzip2=True
@@ -63,3 +62,7 @@
     zlib=True
     zstd=False
 
+
+
+[generators]
+    cmake

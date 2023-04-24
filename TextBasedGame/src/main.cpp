@@ -13,6 +13,7 @@
 #include "soloud_thread.h"
 #include "sound/sound.h"
 #include "utils/prompt.h"
+#include "utils/game_utils.h"
 
 using namespace std;
 
@@ -53,10 +54,21 @@ void prototype() {
     runCommand(args[0], args[1], room_items);
 }
 
+<<<<<<< Updated upstream
 int main(int argc, char *argv[]) {
     Sound *s = new Sound("../sound_effects/bass.wav");
     s->play();
     s->terminate();
 
+=======
+int main(int argc, char *argv[]){
+    cout << "starting Main" << endl;          
+    boost::thread workerThread(ThreadworkerFunc);    
+      
+    cout << "main  waiting for thread" <<endl;          
+    workerThread.join();    
+      
+    cout << "main Finished" << endl;          
+>>>>>>> Stashed changes
     return 0;
 }

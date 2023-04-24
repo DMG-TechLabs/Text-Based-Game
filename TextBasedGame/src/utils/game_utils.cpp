@@ -27,3 +27,14 @@ void saveToFile(string file_name, string data,int i){
         return;
     }
 }
+
+
+void ThreadworkerFunc()  
+{  
+    boost::posix_time::seconds workTime(5);          
+    cout << "ThreadWorker: running" << endl;    
+      
+    // Pretend to do something useful... 
+    boost::this_thread::sleep(workTime);          
+    cout << "ThreadWorker: finished" << endl;  
+}    

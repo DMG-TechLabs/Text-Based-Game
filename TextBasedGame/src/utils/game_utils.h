@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 // #include <boost/lexical_cast/lexical_cast_old.hpp>
+#include <boost/thread.hpp>   
+#include <boost/date_time.hpp>
 
 using std::ofstream;
 using std::ifstream;
@@ -15,3 +17,5 @@ void saveToFile(string file_name, string text_data);
 string loadFromFile(string file_name);
 
 void saveToFile(string file_name, string data,int i);
+
+void ThreadworkerFunc();
