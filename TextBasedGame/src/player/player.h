@@ -40,6 +40,8 @@ class Player{
         void setName(string name);
         string getName();
 
+        vector<int> getStats();
+
         void setCurrentNode(Node *newNode);
 
         /**
@@ -48,4 +50,4 @@ class Player{
          * @param newNode The node the player tries to move to
          */
         void moveNode(Node *newNode, Node *oldNode);
-    };
+};

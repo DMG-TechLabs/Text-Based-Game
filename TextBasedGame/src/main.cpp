@@ -17,7 +17,17 @@ void testSave() {
 }
 
 int main(int argc, char *argv[]) {
-    print("hello");
+    //saveObject<Item>("test.dat");
 
-    return 0;
 }
+/*
+int main(int argc, char *argv[]){
+    cout << "starting Main" << endl;          
+    boost::thread workerThread(ThreadworkerFunc);    
+      
+    cout << "main  waiting for thread" <<endl;          
+    workerThread.join();    
+      
+    cout << "main Finished" << endl;          
+    return 0;
+}*/

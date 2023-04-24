@@ -18,6 +18,9 @@ string Player::getName(){
     return name;
 }
 
+vector<int> Player::getStats(){
+    return stats;
+}
 void Player::setCurrentNode(Node *newNode){
     this->currentNode = newNode;
 }
