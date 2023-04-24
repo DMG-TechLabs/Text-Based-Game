@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 	
-#include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-project(TextBasedGame)
+project(TextBasedGameEngine)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -41,6 +40,6 @@ set(SOURCES
 
 
 
-add_executable(TextBasedGame ${SOURCES})
+add_library(TextBasedGameEngine ${SOURCES})
 
 
