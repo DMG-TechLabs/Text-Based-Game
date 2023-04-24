@@ -16,6 +16,10 @@ void saveToFile(string file_name, string text_data);
 
 string loadFromFile(string file_name);
 
-void saveToFile(string file_name, string data,int i);
+template <typename T> 
+void saveObject(string filename, T object_to_save);
 
-void ThreadworkerFunc();
+template <typename T> 
+T loadObject(string filename, T object_to_load);
+
+//void ThreadworkerFunc();

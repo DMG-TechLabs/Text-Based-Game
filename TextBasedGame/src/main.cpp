@@ -44,30 +44,11 @@ void prototype() {
     runCommand(args[0], args[1], room_items);
 }
 
-<<<<<<< Updated upstream
 int main(int argc, char *argv[]) {
-    // Sound *s = new Sound("../sound_effects/bass.wav");
-    // s->play();
-    // s->terminate();
+    //saveObject<Item>("test.dat");
 
-    Soloud *soloud = Soloud_create();
-Speech *speech = Speech_create();
-
-Speech_setText(speech, "Hello c-api");
-
-Soloud_initEx(soloud, SOLOUD_CLIP_ROUNDOFF | SOLOUD_ENABLE_VISUALIZATION, 
-              SOLOUD_AUTO, SOLOUD_AUTO, SOLOUD_AUTO, SOLOUD_AUTO);
-Soloud_setGlobalVolume(soloud, 4);
-Soloud_play(soloud, speech);
-
-// ...
-
-Soloud_deinit(soloud);
-    
-Speech_destroy(speech);
-Soloud_destroy(soloud);
-
-=======
+}
+/*
 int main(int argc, char *argv[]){
     cout << "starting Main" << endl;          
     boost::thread workerThread(ThreadworkerFunc);    
@@ -76,6 +57,5 @@ int main(int argc, char *argv[]){
     workerThread.join();    
       
     cout << "main Finished" << endl;          
->>>>>>> Stashed changes
     return 0;
-}
+}*/
