@@ -1,0 +1,3 @@
+[submodule "TextBasedGame/Text-Based-Game-Engine"]
+	path = TextBasedGame/Text-Based-Game-Engine
+	url = https://github.com/DMG-TechLabs/Text-Based-Game-Engine
