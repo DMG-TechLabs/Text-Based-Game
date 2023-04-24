@@ -18,10 +18,28 @@ string Player::getName(){
     return name;
 }
 
-void Player::setHunger(int hunger){
-    this -> hunger = hunger;
+vector<int> Player::getStats(){
+    return stats;
 }
+void Player::setCurrentNode(Node *newNode){
+    this->currentNode = newNode;
+}
+/*
+void Node::moveNode(Node *newNode, Node *oldNode){
+    
+    //If player tries to go to an inaccessible node, it will print the newNode description.
+    if (newNode->accesible == false)
+    {
+        print(newNode -> description);
+    }
+    
+    //If the player tries to enter an accessible node, it marks the current node as not inside and the new node as inside
+    //it also prints the new node  
+    else{
+        this->currentNode = newNode;
+        newNode->inside = true;
+        print(newNode -> description);
+        setCurrentNode(newNode);
+    }
 
-int Player::getHunger(){
-    return hunger;
-}
+} */

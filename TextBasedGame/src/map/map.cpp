@@ -1,6 +1,6 @@
 #include "map.h"
 
-void Map::initMap(){
+void Map::initMap(int day){
     /////////Node1//////////
     std::string N1Description;
     vector<string> N1AccesibleNodes;

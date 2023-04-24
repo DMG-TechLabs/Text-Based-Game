@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Item{
+class Item {
     private:
         string name;
         string item_id;    
@@ -14,14 +14,38 @@ class Item{
         
     public:
         //Constructors
-        ~Item(){}
+        virtual ~Item(){}
         Item(){}
-        Item(string description, string *commands){
+
+        Item(string name, string description){
+            this -> name = name;
+            this -> description = description;
+        }
+
+        Item(string item_id, string name, string description){
+            this ->item_id = item_id;
+            this -> name = name;
+            this -> description = description;
+        }
+
+        Item(string item_id, string name, string description, string *commands){
+            this ->item_id = item_id;
+            this -> name = name;
             this -> description = description;
             this -> commands = commands;
         }
 
         //Setters getters
+        void setName(string name);
+        string getName();
+
+        void setItemId(string item_id);
+        string getItemId();
+
         void setDescription(string description);
-        string getDescription();
+        string getDescription();   
+
+        void setCommands(string *commands);
+        string* getCommands(); 
 };
+

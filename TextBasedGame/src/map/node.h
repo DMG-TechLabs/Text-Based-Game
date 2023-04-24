@@ -3,9 +3,8 @@
 #include <string>
 #include <vector>
 #include "../player/inventory.h"
-#include "../player/movement.h"
-#include "../player/player.h"
 #include "../item/item.h"
+#include "../utils/prompt.h"
 //#include "../command/command.h"
 
 using namespace std;
@@ -15,46 +14,44 @@ class Node{
 
     public:
         //Class variables
+        int number;
         string description;
-        //vector<Movement> movements;
-        Item *items;
-        vector<string> accesible_nodes;
+        vector<Item> *items;
+        vector<Node> *accesible_nodes;
         bool accesible;
         bool inside;
-
-        //This two is for the command to build
-        int number;
-        void setPlayer(Player *player);
 
         //Constructors
         Node(){}
 
+        ~Node(){}
+
         //Constructor for rooms/hallways
-        Node(std::string description, /*vector<Movement> movements,*/ Item *items, vector<string> accesible_nodes, bool accesible, bool inside){
-            this-> description = description;
-            //this-> movements = movements;
+        Node(int number, string description, vector<Item> *items, vector<Node> *accesible_nodes, bool accesible, bool inside){
+            this-> number = number;
+            this-> description = description; 
             this-> items = items;
-            this->accesible_nodes = accesible_nodes;
-            this->accesible = accesible;
-            this->inside = inside;
+            this-> accesible_nodes = accesible_nodes;
+            this-> accesible = accesible;
+            this-> inside = inside;
         }
 
         //Constructor for inacessible rooms
-        Node(std::string description){
+        Node(string description){
             this->accesible = false;
             this->description = description;
         }
 
-        ~Node(){}
-
         //Auxiliary functions
-        //Need to create function that gets input number and returns the room object
-        //Need to create an init function that depending on the day creates the rooms
 
         /**
-         * @brief Will be called when a player tries to enter an inacessible room
+         * @brief Method that moves player to a new node if it is accessible
          * 
-         * @return std::string The description of the room the player tried to enter
+         * @param newNode The node the player tries to move to
          */
-        std::string inaccessibleRoomDescription();
+        void moveNode(Node *newNode);
+
+        //Need to create function that gets input number and returns the room object
+        //Need to create an init function that depending on the day creates the rooms
+        //Need to create a function that makes player move to a different room. Done
 };   

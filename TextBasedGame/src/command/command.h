@@ -8,8 +8,8 @@
 #include "../item/item.h"
 #include "../player/player.h"
 #include "../map/node.h"
-#include "../terminal/prompt.h"
-#include "../game_utils.h"
+#include "../utils/prompt.h"
+#include "../utils/game_utils.h"
 
 
 #define MAX_ROOMS 5
@@ -17,23 +17,28 @@
 using namespace std;
 
 
-class Command {
-    private:
+class CommandAbstract {
     public:
-        //string availabe_commands["see"];
-        //Constructors
-        //unordered_map<string, Item> available_items_for_crafting;
-        Command(){
-            //string valid_commands[1];
-        };
-        ~Command(){};
-
-
-        void run(string *command);
-        void run(string *command, Item *item);
-        //void run(string *command, Player *player, int number_of_items, ...);
-        void run(string *command, Player *player, Node *room);
-        void run(string *command, Player *player, Item *item);
+        string name;
         
+        CommandAbstract(){}
+        virtual ~CommandAbstract(){}
 
+        virtual void run(){}
+        virtual void run(Item *item){}
+        virtual void run(Player *player, Node *room){}
+        virtual void run(Player *player, Item *item){}
+};
+
+class Command : public CommandAbstract {
+    public:
+        ~Command(){}
+        Command(string name){
+            this->name = name;
+        }
+
+        void run() override;
+        void run(Item *item) override;
+        void run(Player *player, Node *room) override;
+        void run(Player *player, Item *item) override;
 };

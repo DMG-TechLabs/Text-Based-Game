@@ -1,31 +1,33 @@
+#include <unistd.h>  // for sleep()
+
 #include <iostream>
 #include <string>
-#include "achievements/achievement.h"
-#include "terminal/terminal.h"
+
+#include "engine.h"
 
 using namespace std;
 
-void testTerminal(){
-    string commands[] = {"move", "inspect"};
-    Terminal *t = new Terminal('$', commands);
+void testSave() {
+    Inventory *i = new Inventory();
+    int day = 3;
+    Node *n = new Node();
+    AchievementCollection *ac = new AchievementCollection();
 
-    
-    string* ret = t->getCommand("Type command");
-
-    if(ret != NULL){
-        cout << "Command: " << *ret << "\nArgument: " << *(ret+1) << endl;
-        cout << endl << endl;
-    }
+    new Save(i, day, ac, n);
 }
 
+int main(int argc, char *argv[]) {
+    //saveObject<Item>("test.dat");
+
+}
+/*
 int main(int argc, char *argv[]){
-    AchievementCollection *a = new AchievementCollection();
-
-
-    a->importAchievements("1,1");
-
-    a->printAchievements();
-
-    cout << endl;
+    cout << "starting Main" << endl;          
+    boost::thread workerThread(ThreadworkerFunc);    
+      
+    cout << "main  waiting for thread" <<endl;          
+    workerThread.join();    
+      
+    cout << "main Finished" << endl;          
     return 0;
-}
+}*/
