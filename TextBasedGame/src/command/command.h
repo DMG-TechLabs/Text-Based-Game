@@ -42,11 +42,11 @@ class Command {
         ~Command(){};
 
 
-        void run(string *command);
-        void run(string *command, Item *item);
+        void run(string *command) {};
+        void run(string *command, Item *item) {};
         //void run(string *command, Player *player, int number_of_items, ...);
-        void run(string *command, Player *player, Node *room);
-        void run(string *command, Player *player, Item *item);
+        void run(string *command, Player *player, Node *room) {};
+        void run(string *command, Player *player, Item *item) {};
 
         void getAvailableCommands();
 
