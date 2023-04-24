@@ -38,4 +38,6 @@ class Player{
 
         void setName(string name);
         string getName();
-    };
+
+        vector<int> getStats();
+};

@@ -17,3 +17,7 @@ void Player::setName(string name){
 string Player::getName(){
     return name;
 }
+
+vector<int> Player::getStats(){
+    return stats;
+}
