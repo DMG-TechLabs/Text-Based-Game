@@ -17,11 +17,3 @@ void Player::setName(string name){
 string Player::getName(){
     return name;
 }
-
-void Player::setHunger(int hunger){
-    this -> hunger = hunger;
-}
-
-int Player::getHunger(){
-    return hunger;
-}

@@ -17,37 +17,28 @@
 using namespace std;
 
 
-class Command {
-    private:
-        
-
+class CommandAbstract {
     public:
-        string *command_list = new string[10]{
-            "move",
-            "inspect",
-            "enter",
-            "exit",
-            "read",
-            "save",
-            "collect",
-            "ls",
-            "cd"
-        };
-        //string availabe_commands["see"];
-        //Constructors
-        //unordered_map<string, Item> available_items_for_crafting;
-        Command(){
-            //string valid_commands[1];
-        };
-        ~Command(){};
+        string name;
+        
+        CommandAbstract(){}
+        virtual ~CommandAbstract(){}
 
+        virtual void run(){}
+        virtual void run(Item *item){}
+        virtual void run(Player *player, Node *room){}
+        virtual void run(Player *player, Item *item){}
+};
 
-        void run(string *command);
-        void run(string *command, Item *item);
-        //void run(string *command, Player *player, int number_of_items, ...);
-        void run(string *command, Player *player, Node *room);
-        void run(string *command, Player *player, Item *item);
+class Command : public CommandAbstract {
+    public:
+        ~Command(){}
+        Command(string name){
+            this->name = name;
+        }
 
-        void getAvailableCommands();
-
+        void run() override;
+        void run(Item *item) override;
+        void run(Player *player, Node *room) override;
+        void run(Player *player, Item *item) override;
 };
