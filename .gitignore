@@ -1,5 +1,5 @@
 
-/TextBasedGame/Text-Based-Game-Engine/
+/TextBasedGame/Text-Based-Game-Engine/CMakeLists.txt
 
 /TextBasedGame/saves/
 *.sh
