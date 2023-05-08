@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Text-Based-Game-Engine/Engine/src/item/item.h";
+#include "../../Text-Based-Game-Engine/Engine/src/item/item.h"
 
 class Note : public Item {
     public:

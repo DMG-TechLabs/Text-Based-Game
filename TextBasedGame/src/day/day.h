@@ -2,8 +2,8 @@
 
 #include <vector>
 #include "../../Text-Based-Game-Engine/Engine/src/player/player.h"
-#include "../../Text-Based-Game-Engine/Engine/src/map/map.h"
-#include "../../Text-Based-Game-Engine/Engine/src/map/node.h"
+#include "../map/map.h"
+#include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
 #include "../mission/mission.h"
 
 /**

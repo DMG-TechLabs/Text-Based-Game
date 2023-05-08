@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../Text-Based-Game-Engine/Engine/src/map/node.h"
+#include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
 
 class Map{
     public:

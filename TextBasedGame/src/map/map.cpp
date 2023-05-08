@@ -1,5 +1,7 @@
 #include "map.h"
 
+#include "../items/items.h"
+
 void Map::initMap(int day){
     /////////Node1//////////
     std::string N1Description;
@@ -35,5 +37,12 @@ void Map::initMap(int day){
     /////////Node11//////////
     vector<string> N11AccesibleNodes;
 
-    //nodes.push_back(new Node("Dark room", items, N1AccesibleNodes, accessible, inside));
+    // nodes.push_back(new Node(
+    //     1,
+    //     "Starting room",
+    //     vector<Item*>{new Terminal('$', "This is a linux terminal", new string[2]{"ls", "cd"})},
+    //     vector<Node*>{new Node()},
+    //     true,
+    //     false
+    //     ));
 }
