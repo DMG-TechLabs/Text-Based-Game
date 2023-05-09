@@ -6,6 +6,6 @@
 
 using namespace std;
 
-string* Terminal::terminalPrompt(string message){
+Response Terminal::terminalPrompt(string message){
     return prompt(prompt_char, message, internal_commands);
 }

@@ -2,7 +2,15 @@
 
 #include "../items/items.h"
 
-void Map::initMap(int day){
+bool exists(vector<int> vector, int s) {
+    for (size_t i = 0; i < vector.size(); i++) {
+        if (vector.at(i) == s) return true;
+    }
+
+    return false;
+}
+
+void Map::initMap(int day) {
     /////////Node1//////////
     std::string N1Description;
     vector<string> N1AccesibleNodes;
@@ -40,9 +48,23 @@ void Map::initMap(int day){
     // nodes.push_back(new Node(
     //     1,
     //     "Starting room",
-    //     vector<Item*>{new Terminal('$', "This is a linux terminal", new string[2]{"ls", "cd"})},
-    //     vector<Node*>{new Node()},
-    //     true,
-    //     false
+    //     vector<Item*>{new Terminal('$', "This is a linux terminal", new
+    //     string[2]{"ls", "cd"})}, vector<Node*>{new Node()}, true, false
     //     ));
+}
+
+void Map::addNode(Node *node, vector<int> connectedTo) {
+    vector<Node *> nodesToConnect;
+    for (int i = 0; i < nodes.size(); i++) {
+        if (exists(connectedTo, nodes.at(i)->id))
+            nodesToConnect.push_back(nodes.at(i));
+    }
+
+
+    for (int i = 0; i < nodesToConnect.size(); i++) {
+        node->addRoute(nodesToConnect.at(i)); // connect other nodes to new node
+        for (int j = 0; j < nodes.size(); j++) {
+            if(nodesToConnect.at(i)->id == nodes.at(j)->id) nodes.at(j)->addRoute(node); // connect new node to other nodes
+        }
+    }
 }

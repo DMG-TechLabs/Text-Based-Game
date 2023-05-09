@@ -1,37 +1,38 @@
 #include <iostream>
 
 #include "../Text-Based-Game-Engine/Engine/src/engine.h"
-#include "./map/map.h"
 #include "./command/command.h"
-/*
-void day_one(Player *player){
-    Map *map = new Map(1);
+#include "./items/items.h"
+#include "./map/map.h"
 
-    player->currentNode = map->nodes.at(0);
-    map->nodes.at(0)->inside = true;
+int main() {
+    // Node *start = new Node(1, "The starting room",
+    // vector<Item>{Note{"dmg-techlabs.thewokpc.com"}, Terminal{'$', "Linux
+    // Terminal", new string[2]{"ls", "cd"}}});
 
-    string *ret = prompt('>', "You wake up in a room with a terminal open and a note by its side.", new string[4]{
-        "move",
-        "help",
-        "enter",
-        "read"
-    });
+    Node *start = new Node();
+    start->setId(1);
+    start->setDescription("The starting room");
+    start->addItem(Note{"dmg-techlabs.theworkpc.com"});
+    start->addItem(Terminal{'$', "Linux Terminal", new string[2]{"ls", "cd"}});
+    start->unlock();
 
-    Game::runCommand(ret[0], ret[1], player->currentNode->items);
+    Map map{};
+    // map.addNode(new Node(2, "A new node", true), vector<int>{1});
 
-    
-}*/
+    Inventory inventory{};
+    inventory.addItem(Note{"1", "test"});
 
-int main(){
-    //Player *p = new Player(Inventory{}, "Mpamphs", new vector<string>{"help", "read", "enter"}, new vector<int>{});
-    Player *p = new Player();
+    Player player{};
+    player.setInventory(inventory);
+    player.addCommand("help");
+    player.addCommand("read");
+    player.addCommand("enter");
+    player.currentNode = start;
 
-    //day_one(p); 
+    player.collectItem(Note{"2", "A note"});
+
+    player.getInventory().printInventory();
 
     return 0;
 }
-
-struct Input{
-    string command;
-    vector<string> args;
-};
