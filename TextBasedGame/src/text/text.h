@@ -11,6 +11,9 @@ class Text{
         static const string bold;
         static const string underline;
 
+        static const string clear;
+        static const string erase_line;
+
         static const string black;
         static const string red;
         static const string green;
@@ -40,5 +43,7 @@ class Text{
         static const string b_cyan;
         static const string b_lgrey;
         static const string b_dgrey;
+
+        static string color(string where, int color);
 };
 

@@ -35,11 +35,17 @@ int main() {
 
 */
 
+    
     cout << "This is some " << Text::bold << "bold" << Text::normal << " text" << endl;
     cout << "This is some " << Text::underline << "underline" << Text::normal << " text" << endl;
     cout << "This is " << Text::red << "red" << Text::normal << " colored" << endl;
     cout << "This is " << Text::u_blue << "underlined blue" << Text::normal << " colored" << endl;
     cout << "This is " << Text::b_yellow << "bold yellow" << Text::normal << " colored" << endl;
+
+    cout << Text::color("bg", 1) << "something" << Text::normal << endl;
+
+    print("Hello world");
+    println(Text::erase_line);
 
     return 0;
 }

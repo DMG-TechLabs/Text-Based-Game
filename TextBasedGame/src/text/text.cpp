@@ -1,9 +1,11 @@
 #include "text.h"
 
-
 const string Text::normal = "\e[0;39m";
 const string Text::bold = "\e[1m";
 const string Text::underline = "\033[4m";
+
+const string Text::clear = "\e[2J";
+const string Text::erase_line = "\e[2K";
 
 const string Text::black = "\e[0;30m";
 const string Text::red = "\e[0;31m";
@@ -34,3 +36,19 @@ const string Text::b_purple = "\e[1;35m";
 const string Text::b_cyan = "\e[1;36m";
 const string Text::b_lgrey = "\e[1;37m";
 const string Text::b_dgrey = "\e[1;38m";
+
+string Text::color(string where, int color) {
+    if (where != "bg" && where != "fg") return "";
+
+    int a = where == "bg" ? 0 : 1;
+
+    switch (a) {
+        case 1:
+            return "\e[38;5;" + to_string(color) + "m";
+        case 0:
+            return "\e[48;5;" + to_string(color) + "m";
+
+    }
+
+    return "";
+}
