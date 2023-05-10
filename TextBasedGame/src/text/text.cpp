@@ -39,16 +39,7 @@ const string Text::b_dgrey = "\e[1;38m";
 
 string Text::color(string where, int color) {
     if (where != "bg" && where != "fg") return "";
-
-    int a = where == "bg" ? 0 : 1;
-
-    switch (a) {
-        case 1:
-            return "\e[38;5;" + to_string(color) + "m";
-        case 0:
-            return "\e[48;5;" + to_string(color) + "m";
-
-    }
-
-    return "";
+    if(color < 0 || color > 255) return "";
+    
+    return (where == "bg") ? "\e[48;5;" + to_string(color) + "m" : "\e[38;5;" + to_string(color) + "m";
 }
