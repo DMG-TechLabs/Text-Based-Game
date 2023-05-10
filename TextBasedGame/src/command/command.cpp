@@ -90,7 +90,7 @@ void Command::run(string command, Player *player, Node *room) {
     if (&command == NULL || player == NULL || room == NULL || command == "")
         return;
     else if (command == "move") {
-        if (room->number >= 0 || room->number < MAX_ROOMS) {
+        if (room->id >= 0 || room->id < MAX_ROOMS) {
             // player->position = room->number;
             // room->setPlayer(player);
         } else

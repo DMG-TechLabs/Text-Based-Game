@@ -5,11 +5,10 @@
 #include "./items/items.h"
 #include "./map/map.h"
 
-int main() {
-    // Node *start = new Node(1, "The starting room",
-    // vector<Item>{Note{"dmg-techlabs.thewokpc.com"}, Terminal{'$', "Linux
-    // Terminal", new string[2]{"ls", "cd"}}});
+#include "./text/text.h"
 
+int main() {
+/*
     Node *start = new Node();
     start->setId(1);
     start->setDescription("The starting room");
@@ -33,6 +32,14 @@ int main() {
     player.collectItem(Note{"2", "A note"});
 
     player.getInventory().printInventory();
+
+*/
+
+    cout << "This is some " << Text::bold << "bold" << Text::normal << " text" << endl;
+    cout << "This is some " << Text::underline << "underline" << Text::normal << " text" << endl;
+    cout << "This is " << Text::red << "red" << Text::normal << " colored" << endl;
+    cout << "This is " << Text::u_blue << "underlined blue" << Text::normal << " colored" << endl;
+    cout << "This is " << Text::b_yellow << "bold yellow" << Text::normal << " colored" << endl;
 
     return 0;
 }

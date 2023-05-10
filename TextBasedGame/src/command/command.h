@@ -6,11 +6,7 @@
 #include <string>
 #include <unordered_map>
 
-#include "../../Text-Based-Game-Engine/Engine/src/item/item.h"
-#include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
-#include "../../Text-Based-Game-Engine/Engine/src/player/player.h"
-#include "../../Text-Based-Game-Engine/Engine/src/utils/game_utils.h"
-#include "../../Text-Based-Game-Engine/Engine/src/utils/prompt.h"
+#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
 #define MAX_ROOMS 5
 
