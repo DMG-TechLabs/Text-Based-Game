@@ -1,6 +1,7 @@
 #include "../../Text-Based-Game-Engine/Engine/src/command/command.h"
-#include "./command.h"
+
 #include "../items/items.h"
+#include "./command.h"
 
 /* ============={Utils}============= */
 
@@ -39,24 +40,24 @@ void Command::run(string command) {
     if (command == "" || &command == NULL) return;
 
     if (command == "help") {
-        //getAvailableCommands();
+        // getAvailableCommands();
     }
 }
 
 // Print the description of an item
-void Command::run(string command, Item *item) {
-    if (&command == NULL || item == NULL || command == "")
+void Command::run(string command, Item item) {
+    if (&command == NULL || &item == NULL || command == "")
         return;
     else if (command == "inspect") {
-        print(item->getDescription());
+        print(item.getDescription());
     } else if (command == "read") {
         // File *file = (File) item;
-        print(item->getDescription());
+        print(item.getDescription());
     } else if (command == "save") {
         // saveToFile(item->getName(),item->getDescription());
     } else if (command == "enter") {
-        print(dynamic_cast<Terminal *>(item)->getDescription());
-        dynamic_cast<Terminal *>(item)->terminalPrompt("");
+        print(dynamic_cast<Terminal *>(&item)->getDescription());
+        dynamic_cast<Terminal *>(&item)->terminalPrompt("");
     } else
         print("Something was wrong!");
 }
@@ -86,8 +87,8 @@ void Command::run(string command, Item *item) {
     Change the possition variable (2) of the player (1) into the new room ang
     set the player into the room (3)
 */
-void Command::run(string command, Player *player, Node *room) {
-    if (&command == NULL || player == NULL || room == NULL || command == "")
+void Command::run(string command, Player player, Node *room) {
+    if (&command == NULL || &player == NULL || room == NULL || command == "")
         return;
     else if (command == "move") {
         if (room->id >= 0 || room->id < MAX_ROOMS) {
@@ -99,8 +100,8 @@ void Command::run(string command, Player *player, Node *room) {
         print("Something was wrong!");
 }
 
-void Command::run(string command, Player *player, Item *item) {
-    if (&command == NULL || player == NULL || item == NULL || command == "")
+void Command::run(string command, Player player, Item item) {
+    if (&command == NULL || &player == NULL || &item == NULL || command == "")
         return;
     else if (command == "collect") {
         // player->putItemIntoInventory(*item);
@@ -108,31 +109,36 @@ void Command::run(string command, Player *player, Item *item) {
         print("Something was wrong!");
 }
 
-/*
+
 void getAvailableCommands() {
     print("Available commands");
-    for (int i = 0; i < ; i++) {
-        cout << command_list[i] << endl;
+    for (int i = 0; i < command_list.size(); i++) {
+        cout << command_list.at(i) << endl;
     }
-}*/
+}
 
-void Game::runCommand(string command, string arg, vector<Item*> items) {
-    // cout << command << endl << arg << endl;
+void runCommand(Response r, vector<Item> items) {
+    runCommand(r.command, r.args, items);
+}
 
-    Command *c = new Command();
+void runCommand(string command, vector<string> args, vector<Item> items) {
+    Command c;
 
-    // checking which item from the list to use based from the argument
     int index_to_use = -1;
-    for (int i = 0; i < items.size(); i++) {
-        // cout << i << ". " << items[i]->getName() << endl;
-        if (arg == items.at(i)->getName()) {
-            index_to_use = i;
-            break;
+    if (args.size() == 1) {
+        // checking which item from the list to use based on the argument
+        for (int i = 0; i < items.size(); i++) {
+            // cout << i << ". " << items[i]->getName() << endl;
+            if (args.at(0) == items.at(i).getName()) {
+                index_to_use = i;
+                break;
+            }
         }
-    }
+    } 
 
-    // cout << index_to_use << endl;
+    // Different handling for 2 args...
+
     if (index_to_use < 0) return;
 
-    //c->run(&command, items.at(index_to_use));
+    c.run(command, items.at(index_to_use));
 }

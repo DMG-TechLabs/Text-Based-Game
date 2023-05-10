@@ -60,7 +60,6 @@ void Map::addNode(Node *node, vector<int> connectedTo) {
             nodesToConnect.push_back(nodes.at(i));
     }
 
-
     for (int i = 0; i < nodesToConnect.size(); i++) {
         node->addRoute(nodesToConnect.at(i)); // connect other nodes to new node
         for (int j = 0; j < nodes.size(); j++) {

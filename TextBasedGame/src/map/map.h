@@ -14,5 +14,5 @@ class Map{
 
         void initMap(int day);
 
-        void addNode(Node *node, vector<int> connectedTo);
+        void addNode(Node *node, vector<int> connectedTo = {});
 };   

@@ -19,10 +19,10 @@ class Note : public Item {
 class Terminal : public Item {
     public:
         char prompt_char;
-        string *internal_commands;
+        vector<string> internal_commands;
 
         ~Terminal() {}
-        Terminal(char prompt_char, string description, string *internal_commands) : Item("terminal", description) {
+        Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
 
