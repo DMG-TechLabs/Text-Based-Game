@@ -1,25 +1,36 @@
 #pragma once
 
-#include <vector>
-#include <string>
+#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
+#include "Objective.h"
 
 /**
  * @brief Mission class
  * 
  */
 class Mission{
-private:
+    private:
+        string name;
+        string description;
+        vector<Objective> objectives;
+        bool completed = false;
 
-public:
-    //Class variables
-    std::string description;
-    bool completed;
+    public:
+        Mission(){}
+        ~Mission(){}
+        
+        Mission(string name, string description, bool completed, vector<Objective> objectives){
+            this->name = name;
+            this->description = description;
+            this->completed = completed;
+            this->objectives = objectives;
+        }
 
-    //Constructors
-    Mission(){}
-    Mission(std::string description, bool completed){
-        this->description = description;
-        this->completed = completed;
-    }
-    ~Mission(){}
+        void setName(string name);
+        string getName();
+
+        void setDescription(string description);
+        string getDescription();
+
+        void setStatus(bool completed);
+        bool isCompleted();
 }; 
