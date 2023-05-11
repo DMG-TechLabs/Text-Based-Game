@@ -19,6 +19,8 @@ set(SOURCES
 
     src/mission/mission.h
     src/mission/mission.cpp
+    src/mission/Objective.h
+    src/mission/Objective.cpp
 
     src/map/map.h
     src/map/map.cpp
