@@ -13,10 +13,11 @@ using namespace std;
 #define MAX_ROOMS 5
 
 static const vector<string> command_list = {
-    "move",
     "help",
+    "move",
     "read",
-    "collect"
+    "collect",
+    "inventory"
 };
 
 void runCommand(Response r, vector<Item> items);
