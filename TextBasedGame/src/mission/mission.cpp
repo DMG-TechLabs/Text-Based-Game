@@ -28,11 +28,13 @@ bool Mission::isCompleted(){
             count++;
             continue;
         }
-        return completed;
+        break;
     }
 
     if(count == objectives.size() - 1){ 
         Mission::setStatus(true);
         return completed;
     }
+
+    return completed;
 }

@@ -1,4 +1,4 @@
-#include "mission.h"
+#include "Objective.h"
 
 void Objective::setDescription(string description){
     this->description = description;

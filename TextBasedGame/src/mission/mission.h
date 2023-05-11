@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
+#include "Objective.h"
 
 /**
  * @brief Mission class
@@ -33,23 +34,3 @@ class Mission{
         void setStatus(bool completed);
         bool isCompleted();
 }; 
-
-class Objective : public Mission{
-    private:
-        string description;
-        bool completed = false;
-    
-    public:
-        Objective(){}
-        ~Objective(){}
-
-        Objective(string description){
-            this->description = description;
-        }
-
-        void setDescription(string description);
-        string getDescription();
-
-        void setStatus(bool completed);
-        bool isCompleted();
-};
