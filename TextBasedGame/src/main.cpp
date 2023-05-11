@@ -39,6 +39,5 @@ int main() {
     //runCommand(r, player.currentNode->items);
 
 
-
     return 0;
 }

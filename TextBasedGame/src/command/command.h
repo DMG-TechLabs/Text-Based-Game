@@ -15,7 +15,8 @@ using namespace std;
 static const vector<string> command_list = {
     "move",
     "help",
-    "read"
+    "read",
+    "collect"
 };
 
 void runCommand(Response r, vector<Item> items);

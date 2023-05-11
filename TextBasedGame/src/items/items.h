@@ -5,7 +5,8 @@
 
 class Note : public Item {
     public:
-        ~Note() { setCommands(new string[2]{"read", "save"}); }
+        ~Note() {}
+        Note() { setCommands(new string[2]{"read", "save"}); }
         Note(string id, string description) : Item(id, "note", description) {
             setCommands(new string[2]{"read", "save"});
         }
@@ -22,6 +23,7 @@ class Terminal : public Item {
         vector<string> internal_commands;
 
         ~Terminal() {}
+        Terminal() {}
         Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
