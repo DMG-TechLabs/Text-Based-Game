@@ -6,6 +6,7 @@ class Objective{
     private:
         string description;
         bool completed = false;
+        int completed_objectives = 0;
     
     public:
         Objective(){}
@@ -17,6 +18,8 @@ class Objective{
 
         void setDescription(string description);
         string getDescription();
+
+        int getCompletedObjectives();
 
         void setStatus(bool completed);
         bool isCompleted();

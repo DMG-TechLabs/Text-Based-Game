@@ -21,17 +21,17 @@ void Mission::setStatus(bool completed){
 }
 
 bool Mission::isCompleted(){
-    int count = 0;
+    int completed_objectives = 0;
 
     for(int i = 0; i < objectives.size(); i++){
         if(objectives.at(i).isCompleted()){
-            count++;
+            completed_objectives++;
             continue;
         }
         break;
     }
 
-    if(count == objectives.size() - 1){ 
+    if(completed_objectives == objectives.size() - 1){ 
         Mission::setStatus(true);
         return completed;
     }

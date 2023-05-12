@@ -8,7 +8,11 @@ string Objective::getDescription(){
     return description;
 }
 
-void Objective::setStatus(bool completed){
+int Objective::getCompletedObjectives(){
+    return completed_objectives;
+}
+
+void Objective::setStatus(bool complete){
     this->completed = completed;
 }
 
