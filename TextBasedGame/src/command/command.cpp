@@ -91,7 +91,6 @@ void Engine::Command::run(Response response, Player *player) {
         ReadableItem *ri = dynamic_cast<ReadableItem *>(player->currentNode->items.at(item_index));
         CollectableItem *ci = dynamic_cast<CollectableItem *>(player->currentNode->items.at(item_index));
         if(response.command == "read" && ri != NULL){
-            println("here");
             ri->readContents();
         } else if(response.command == "collect" && ci != NULL){
             ci->collect(player);
