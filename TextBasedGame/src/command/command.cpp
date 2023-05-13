@@ -1,51 +1,24 @@
 #include "../../Text-Based-Game-Engine/Engine/src/command/command.h"
 
 #include "../items/items.h"
+#include "../text/text.h"
 #include "./command.h"
-
-/* ============={Utils}============= */
-
-using namespace Engine;
-
-bool contains(string *arr, string str) {
-    int size = 0;
-    while (!arr[size].empty()) ++size;
-
-    bool exists = false;
-    for (int i = 0; i < size; i++) {
-        if (str == arr[i]) {
-            exists = true;
-            break;
-        }
-    }
-
-    return exists;
-}
-
-int itemsLength(Item **items) {
-    int length_counter = 0;
-    while (items[length_counter]) length_counter++;
-
-    return length_counter;
-}
-
-/* ============={End of Utils}============= */
 
 // template<typename Base, typename T>
 // inline bool instanceof(const T *ptr) {
 //    return dynamic_cast<const Base*>(ptr) != nullptr;
 // }
-
-void Command::run(string command) {
+/*
+void Engine::Command::run(string command) {
     if (command == "" || &command == NULL) return;
 
     if (command == "help") {
-        // getAvailableCommands();
+        getAvailableCommands();
     }
 }
 
 // Print the description of an item
-void Command::run(string command, Item item) {
+void Engine::Command::run(string command, Item item) {
     if (&command == NULL || &item == NULL || command == "")
         return;
     else if (command == "inspect") {
@@ -81,14 +54,9 @@ void Command::run(string command, Item item) {
 //     }else print("Something was wrong!");
 // }
 
-/*
-    Move the player from one move to onether
 
-    Change the possition variable (2) of the player (1) into the new room ang
-    set the player into the room (3)
-*/
-void Command::run(string command, Player player, Node *room) {
-    if (&command == NULL || &player == NULL || room == NULL || command == "")
+void Engine::Command::run(string command, Player *player, Node *room) {
+    if (&command == NULL || player == NULL || room == NULL || command == "")
         return;
     else if (command == "move") {
         if (room->id >= 0 || room->id < MAX_ROOMS) {
@@ -100,45 +68,82 @@ void Command::run(string command, Player player, Node *room) {
         print("Something was wrong!");
 }
 
-void Command::run(string command, Player player, Item item) {
-    if (&command == NULL || &player == NULL || &item == NULL || command == "")
+void Engine::Command::run(string command, Player *player, Item item) {
+    if (&command == NULL || player == NULL || &item == NULL || command == "")
         return;
     else if (command == "collect") {
         // player->putItemIntoInventory(*item);
     } else
         print("Something was wrong!");
 }
+*/
+/*==================================================*/
+void Engine::Command::run(Response response, Player *player) {
+    int item_index, args_num;
 
+    args_num = response.args.size();
+    if(args_num == 1){
+        int item_index = matchItem(response.args.at(0), player->currentNode->items);
+        if(item_index < 0) return;
 
-void getAvailableCommands() {
-    print("Available commands");
-    for (int i = 0; i < command_list.size(); i++) {
-        cout << command_list.at(i) << endl;
+        // Check if the command matches one of items interfaces
+        // If the casting gives NULL it means that the object doesn't implement the interface
+        ReadableItem *ri = dynamic_cast<ReadableItem *>(player->currentNode->items.at(item_index));
+        CollectableItem *ci = dynamic_cast<CollectableItem *>(player->currentNode->items.at(item_index));
+        if(response.command == "read" && ri != NULL){
+            println("here");
+            ri->readContents();
+        } else if(response.command == "collect" && ci != NULL){
+            ci->collect(player);
+        } else {
+            println("Item doesn't implement any of the interfaces");
+        }
     }
 }
 
+void getAvailableCommands() {
+    println("-" + Text::b_green + "Available commands" + Text::normal + "-");
+    for (int i = 0; i < command_list.size(); i++) {
+        cout << Text::red << i + 1 << ". " << Text::normal << command_list.at(i)
+             << endl;
+    }
+}
+
+int matchItem(string item, vector<Item> items) {
+    for (int i = 0; i < items.size(); i++) {
+        if (item == items.at(i).getName()) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int matchItem(string item, vector<Item*> items) {
+    for (int i = 0; i < items.size(); i++) {
+        if (item == items.at(i)->getName()) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+/*======================================================*/
+/*
 void runCommand(Response r, vector<Item> items) {
     runCommand(r.command, r.args, items);
 }
 
 void runCommand(string command, vector<string> args, vector<Item> items) {
-    Command c;
-
     int index_to_use = -1;
     if (args.size() == 1) {
         // checking which item from the list to use based on the argument
-        for (int i = 0; i < items.size(); i++) {
-            // cout << i << ". " << items[i]->getName() << endl;
-            if (args.at(0) == items.at(i).getName()) {
-                index_to_use = i;
-                break;
-            }
-        }
-    } 
+        index_to_use = matchItem(args.at(0), items);
+    }
 
     // Different handling for 2 args...
 
     if (index_to_use < 0) return;
 
-    c.run(command, items.at(index_to_use));
-}
+    Engine::Command::run(command, items.at(index_to_use));
+}*/

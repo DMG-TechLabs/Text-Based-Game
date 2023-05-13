@@ -1,9 +1,21 @@
 #pragma once
 
-// #include "../../Text-Based-Game-Engine/Engine/src/item/item.h"
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
-class Note : public Item {
+/* Interfaces */
+class CollectableItem {
+    public:
+        virtual void collect(Player *player) = 0;
+};
+
+class ReadableItem {
+    public:
+        virtual void readContents() = 0;
+};
+
+
+/* Items */
+class Note : public Item, public ReadableItem, public CollectableItem{
     public:
         ~Note() {}
         Note() { setCommands(new string[2]{"read", "save"}); }
@@ -14,7 +26,9 @@ class Note : public Item {
             setCommands(new string[2]{"read", "save"});
         }
 
-    void saveNote(string note_name);
+        void saveNote(string note_name);
+        void collect(Player *player) override;
+        void readContents() override;
 };
 
 class Terminal : public Item {
@@ -33,3 +47,4 @@ class Terminal : public Item {
 
         Response terminalPrompt(string message);
 };
+

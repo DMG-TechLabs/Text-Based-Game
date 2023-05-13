@@ -32,8 +32,8 @@ set(SOURCES
     src/day/day.h
     src/day/day.cpp
 
-    # src/command/command.h
-    # src/command/command.cpp
+    src/command/command.h
+    src/command/command.cpp
 )
 
 add_executable(TextBasedGame ${SOURCES})

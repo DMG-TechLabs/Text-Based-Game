@@ -19,7 +19,10 @@ static const vector<string> command_list = {
     "collect",
     "inventory"
 };
-
+/*
 void runCommand(Response r, vector<Item> items);
 void runCommand(string command, vector<string> args, vector<Item> items);
+*/
 void getAvailableCommands();
+int matchItem(string item, vector<Item> items);
+int matchItem(string item, vector<Item*> items);

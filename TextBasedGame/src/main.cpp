@@ -12,8 +12,8 @@ int main() {
     Node *start = new Node();
     start->setId(1);
     start->setDescription("The starting room");
-    start->addItem(Note{"dmg-techlabs.theworkpc.com"});
-    start->addItem(Terminal{'$', "Linux Terminal", vector<string>{"ls", "cd"}});
+    start->addItem(new Note{"dmg-techlabs.theworkpc.com"});
+    start->addItem(new Terminal{'$', "Linux Terminal", vector<string>{"ls", "cd"}});
     start->unlock();
 
     Map map{};
@@ -33,10 +33,12 @@ int main() {
     Prompt p;
     p.prompt_char = '>';
     p.message = "You wake up in a room you've never seen before. There is a desk with an open " + Text::red + "terminal" + Text::normal + " and a " + Text::red + "note" + Text::normal;
-    p.accepted_commands = {"help", "read", "enter"};
+    p.accepted_commands = {"help", "read", "enter", "collect"};
     Response r = prompt(p, command_list);
 
-    //runCommand(r, player.currentNode->items);
+    Engine::Command::run(r, &player);
+
+    player.getInventory().printInventory();
 
 
     return 0;
