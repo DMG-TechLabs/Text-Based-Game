@@ -1,7 +1,6 @@
-#include "../../Text-Based-Game-Engine/Engine/src/command/command.h"
+#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
 #include "../items/items.h"
-#include "../text/text.h"
 #include "./command.h"
 
 // template<typename Base, typename T>
@@ -82,7 +81,13 @@ void Engine::Command::run(Response response, Player *player) {
     int item_index, args_num;
 
     args_num = response.args.size();
-    if(args_num == 1){
+    if(args_num == 0){
+        if(response.command == "help")
+            getAvailableCommands();
+        else if(response.command == "inventory")
+            player->getInventory().printInventory();
+
+    } else if(args_num == 1){
         int item_index = matchItem(response.args.at(0), player->currentNode->items);
         if(item_index < 0) return;
 
@@ -95,7 +100,7 @@ void Engine::Command::run(Response response, Player *player) {
         } else if(response.command == "collect" && ci != NULL){
             ci->collect(player);
         } else {
-            println("Item doesn't implement any of the interfaces");
+            println("The command doesn't match the item");
         }
     }
 }

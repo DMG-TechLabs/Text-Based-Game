@@ -14,9 +14,6 @@ set(SOURCES
 
     src/achievement_collection.cpp
 
-    src/text/text.h
-    src/text/text.cpp
-
     src/mission/mission.h
     src/mission/mission.cpp
     src/mission/Objective.h

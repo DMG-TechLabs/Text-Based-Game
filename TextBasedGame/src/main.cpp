@@ -5,7 +5,6 @@
 #include "./command/command.h"
 #include "./items/items.h"
 #include "./map/map.h"
-#include "./text/text.h"
 
 int main() {
 
@@ -33,12 +32,11 @@ int main() {
     Prompt p;
     p.prompt_char = '>';
     p.message = "You wake up in a room you've never seen before. There is a desk with an open " + Text::red + "terminal" + Text::normal + " and a " + Text::red + "note" + Text::normal;
-    p.accepted_commands = {"help", "read", "enter", "collect"};
+    p.accepted_commands = {"help", "read", "enter", "collect", "inventory"};
     Response r = prompt(p, command_list);
 
     Engine::Command::run(r, &player);
 
-    player.getInventory().printInventory();
 
 
     return 0;
