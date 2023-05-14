@@ -3,16 +3,19 @@
 #include "../items/items.h"
 #include "./command.h"
 
-void Engine::Command::run(Response response, Player *player) {
+void Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index, args_num;
 
     args_num = response.args.size();
     if(args_num == 0){
         if(response.command == "help")
             getAvailableCommands();
+        
         else if(response.command == "inventory")
             player->getInventory().printInventory();
-
+        
+        // Misc commands so prompt again
+        Engine::Command::run(prompt(p, command_list), p, player);
     } else if(args_num == 1){
         int item_index = matchItem(response.args.at(0), player->currentNode->items);
         if(item_index < 0) return;

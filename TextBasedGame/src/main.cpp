@@ -35,7 +35,7 @@ int main() {
     p.accepted_commands = {"help", "read", "enter", "collect", "inventory"};
     Response r = prompt(p, command_list);
 
-    Engine::Command::run(r, &player);
+    Engine::Command::run(r, p, &player);
 
 
 

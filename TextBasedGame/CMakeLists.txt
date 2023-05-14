@@ -12,7 +12,8 @@ include(${LIB_CMAKE_PATH})
 set(SOURCES
     src/main.cpp
 
-    src/achievement_collection.cpp
+    src/achievements/achievement_collection.h
+    src/achievements/achievement_collection.cpp
 
     src/mission/mission.h
     src/mission/mission.cpp
