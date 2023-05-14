@@ -1,39 +1,57 @@
-#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
-
-#include "../items/items.h"
 #include "./command.h"
 
+#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
+#include "../items/items.h"
+
+void getAvailableCommands();
+int matchItem(string item, vector<Item> items);
+int matchItem(string item, vector<Item *> items);
+
 void Engine::Command::run(Response response, Prompt p, Player *player) {
-    int item_index, args_num;
+    int item_index;
+    Item *item_ptr;
+    ReadableItem *ri;
+    CollectableItem *ci;
 
-    args_num = response.args.size();
-    if(args_num == 0){
-        if(response.command == "help")
-            getAvailableCommands();
-        
-        else if(response.command == "inventory")
-            player->getInventory().printInventory();
-        
-        // Misc commands so prompt again
-        Engine::Command::run(prompt(p, command_list), p, player);
-    } else if(args_num == 1){
-        int item_index = matchItem(response.args.at(0), player->currentNode->items);
-        if(item_index < 0) return;
+    switch (response.args.size()) {
+        case 0:
+            if (response.command == "help")
+                getAvailableCommands();
+            else if (response.command == "inventory")
+                player->getInventory().printInventory();
 
-        // Check if the command matches one of items interfaces
-        // If the casting gives NULL it means that the object doesn't implement the interface
-        ReadableItem *ri = dynamic_cast<ReadableItem *>(player->currentNode->items.at(item_index));
-        CollectableItem *ci = dynamic_cast<CollectableItem *>(player->currentNode->items.at(item_index));
-        if(response.command == "read" && ri != NULL){
-            ri->readContents();
-        } else if(response.command == "collect" && ci != NULL){
-            ci->collect(player);
-        } else {
-            println("The command doesn't match the item");
-        }
+            // Misc commands so prompt again
+            Engine::Command::run(prompt(p, command_list), p, player);
+            break;
+        case 1:
+            item_index = matchItem(response.args.at(0), player->currentNode->items);
+            if (item_index < 0) return;
+
+            item_ptr = player->currentNode->items.at(item_index);
+
+            // Check if the command matches one of items interfaces
+            // If the casting gives NULL it means that the object doesn't implement
+            // the interface
+            ri = dynamic_cast<ReadableItem *>(item_ptr);
+            ci = dynamic_cast<CollectableItem *>(item_ptr);
+            if (response.command == "read" && ri != NULL) {
+                ri->readContents();
+            } else if (response.command == "collect" && ci != NULL) {
+                ci->collect(player);
+            } else {
+                println("The command doesn't match the item");
+            }
+            
+            break;
+        default:
+            println("This number of arguments is not yet implemnted");
+            break;
     }
+
+    delete item_ptr;
 }
 
+/* Utils */
 void getAvailableCommands() {
     println("-" + Text::b_green + "Available commands" + Text::normal + "-");
     for (int i = 0; i < command_list.size(); i++) {
@@ -52,7 +70,7 @@ int matchItem(string item, vector<Item> items) {
     return -1;
 }
 
-int matchItem(string item, vector<Item*> items) {
+int matchItem(string item, vector<Item *> items) {
     for (int i = 0; i < items.size(); i++) {
         if (item == items.at(i)->getName()) {
             return i;
