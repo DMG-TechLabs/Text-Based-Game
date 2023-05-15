@@ -25,7 +25,10 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             break;
         case 1:
             item_index = matchItem(response.args.at(0), player->currentNode->items);
-            if (item_index < 0) return;
+            if (item_index < 0) {
+                println("This item is not found in the room you are in");
+                return;
+            }
 
             item_ptr = player->currentNode->items.at(item_index);
 
