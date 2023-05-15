@@ -2,6 +2,8 @@
 
 #include "../items/items.h"
 
+string nodesToString(vector<Node *> nodes);
+
 bool exists(vector<int> vector, int s) {
     for (size_t i = 0; i < vector.size(); i++) {
         if (vector.at(i) == s) return true;
@@ -10,47 +12,42 @@ bool exists(vector<int> vector, int s) {
     return false;
 }
 
-void Map::initMap(int day) {
-    /////////Node1//////////
-    std::string N1Description;
-    vector<string> N1AccesibleNodes;
+void Map::initMap() {
+    // Init nodes
+    Node *node1 = new Node(1, "Room 1", true);
+    node1->addItem(new Door());
 
-    /////////Node2//////////
-    vector<string> N2AccesibleNodes;
+    Node *node2 = new Node(2, "Room 2", true);
+    node2->addItem(new Door());
 
-    /////////Node3//////////
-    vector<string> N3AccesibleNodes;
+    Node *node3 = new Node(3, "Room 3", true);
+    node3->addItem(new Door());
 
-    /////////Node4//////////
-    vector<string> N4AccesibleNodes;
+    Node *node4 = new Node(4, "Room 4", true);
+    node4->addItem(new Door());
 
-    /////////Node5//////////
-    vector<string> N5AccesibleNodes;
+    Node *node5 = new Node(5, "Room 5", true);
+    node5->addItem(new Door());
 
-    /////////Node6//////////
-    vector<string> N6AccesibleNodes;
+    Node *node6 = new Node(6, "Room 6", false);
+    node6->addItem(new Door());
+    node6->addItem(new Terminal());
 
-    /////////Node7//////////
-    vector<string> N7AccesibleNodes;
+    Node *node7 = new Node(7, "Room 7", true);
+    node7->addItem(new Door());
 
-    /////////Node8//////////
-    vector<string> N8AccesibleNodes;
+    Node *node8 = new Node(8, "Room 8", true);
+    node8->addItem(new Door());
 
-    /////////Node9//////////
-    vector<string> N9AccesibleNodes;
-
-    /////////Node10//////////
-    vector<string> N10AccesibleNodes;
-
-    /////////Node11//////////
-    vector<string> N11AccesibleNodes;
-
-    // nodes.push_back(new Node(
-    //     1,
-    //     "Starting room",
-    //     vector<Item*>{new Terminal('$', "This is a linux terminal", new
-    //     string[2]{"ls", "cd"})}, vector<Node*>{new Node()}, true, false
-    //     ));
+    // Connect nodes to main hall and add them to map vector
+    addNode(node1, vector<int>{0});
+    addNode(node2, vector<int>{0});
+    addNode(node3, vector<int>{0});
+    addNode(node4, vector<int>{0});
+    addNode(node5, vector<int>{0});
+    addNode(node6, vector<int>{0});
+    addNode(node7, vector<int>{0});
+    addNode(node8, vector<int>{0});
 }
 
 void Map::addNode(Node *node, vector<int> connectedTo) {
@@ -61,9 +58,39 @@ void Map::addNode(Node *node, vector<int> connectedTo) {
     }
 
     for (int i = 0; i < nodesToConnect.size(); i++) {
-        node->addRoute(nodesToConnect.at(i)); // connect other nodes to new node
+        node->addRoute(
+            nodesToConnect.at(i));  // connect other nodes to new node
         for (int j = 0; j < nodes.size(); j++) {
-            if(nodesToConnect.at(i)->id == nodes.at(j)->id) nodes.at(j)->addRoute(node); // connect new node to other nodes
+            if (nodesToConnect.at(i)->id == nodes.at(j)->id)
+                nodes.at(j)->addRoute(node);  // connect new node to other nodes
         }
     }
+
+    this->nodes.push_back(node);
+}
+
+Node *Map::getNode(int id) {
+    for (int i = 0; i < nodes.size(); i++) {
+        if (nodes.at(i)->id == id) return nodes.at(i);
+    }
+    return NULL;
+}
+
+void Map::printMap() {
+    for (int i = 0; i < nodes.size(); i++) {
+        println("ID: " + to_string(nodes.at(i)->id) +
+                ", Description: " + nodes.at(i)->description +
+                ", Unlocked: " + to_string(nodes.at(i)->isAccessible()) +
+                ", Accessible Nodes: " +
+                nodesToString(nodes.at(i)->accessible_nodes));
+    }
+}
+
+string nodesToString(vector<Node *> nodes) {
+    string s = "";
+    for (int i = 0; i < nodes.size(); i++) {
+        s += "ID: " + to_string(nodes.at(i)->id) +
+             ", Description: " + nodes.at(i)->description + " \n\t\t\t\t\t";
+    }
+    return s;
 }

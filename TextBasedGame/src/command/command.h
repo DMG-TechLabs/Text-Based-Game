@@ -15,5 +15,6 @@ static const vector<string> command_list = {
     "move",
     "read",
     "collect",
-    "inventory"
+    "inventory",
+    "open"
 };

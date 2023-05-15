@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unistd.h>
 
 #include "../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "./command/command.h"
@@ -8,33 +9,57 @@
 
 int main() {
 
-    Node *start = new Node();
-    start->setId(1);
-    start->setDescription("You wake up in a room you've never seen before. There is a desk with an open " + Text::red + "terminal" + Text::normal + " and a " + Text::red + "note" + Text::normal);
-    start->addItem(new Note{"dmg-techlabs.theworkpc.com"});
-    start->addItem(new Terminal{'$', "Linux Terminal", vector<string>{"ls", "cd"}});
-    start->unlock();
-
     Map map{};
-    map.addNode(start);
-    map.addNode(new Node(2, "A new node", true), vector<int>{1});
 
     Player player{};
     player.setInventory(Inventory{});
     player.addCommand("help");
     player.addCommand("read");
     player.addCommand("enter");
-    player.currentNode = start;
+    player.currentNode = map.getNode(6); // We are in room 6
+
+    // string player_name;
+    // println("What's your name?", 0);
+    // print("Type your name: ");
+    // getline(cin, player_name);
+
+    // println("", 0);
+    // println("", 0);
+    // println("", 0);
+
+    // player.setName(player_name);
+
+
+
+    println("===========TITLE OF THE GAME===========");
+
+    println("You wake up tired in a room you've never seen before.");
+    println("You panic!");
+    println("You run to the door hoping you'll get out");
 
     Prompt p;
     p.prompt_char = '>';
-    p.message = player.currentNode->description;
-    p.accepted_commands = {"help", "read", "enter", "collect", "inventory"};
+    p.accepted_commands = {"open", "help"};
+    p.message = "Open the " + Text::red + "door" + Text::normal;
     Response r = prompt(p, command_list);
-
     Engine::Command::run(r, p, &player);
 
-    player.getInventory().printInventory();
 
+    println(Text::italic + "\n-Fuck!\n" + Text::normal);
+
+
+    println("After a quick scan of the room you notice an open terminal in a corner of the room", 5);
+
+    println("You sit in front of the terminal and something pops up on the screen!");
+
+    print("Terminal: ");
+    Text::delayedTyping("You are awake " + player.getName() +  ".\n");
+
+    println(Text::italic + "\n-Is...someone talking to me?\n" + Text::normal);
+
+    print("$ ");
+    Text::delayedTyping("Who is this?");
+    
+    
     return 0;
 }

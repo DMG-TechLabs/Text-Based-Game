@@ -26,6 +26,7 @@ set(SOURCES
     src/items/items.h
     src/items/Terminal.cpp
     src/items/Note.cpp
+    src/items/Door.cpp
 
     src/day/day.h
     src/day/day.cpp

@@ -12,6 +12,13 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     Item *item_ptr;
     ReadableItem *ri;
     CollectableItem *ci;
+    OpenableItem *oi;
+
+    if(sizeof(response) == 0){
+        Engine::Command::run(prompt(p, command_list), p, player);
+        delete item_ptr;
+        return;
+    }
 
     switch (response.args.size()) {
         case 0:
@@ -37,10 +44,13 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             // the interface
             ri = dynamic_cast<ReadableItem *>(item_ptr);
             ci = dynamic_cast<CollectableItem *>(item_ptr);
+            oi = dynamic_cast<OpenableItem *>(item_ptr);
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
             } else if (response.command == "collect" && ci != NULL) {
                 ci->collect(player);
+            } else if(response.command == "open" && oi != NULL){
+                oi->open(player);
             } else {
                 println("The command doesn't match the item");
             }
@@ -51,12 +61,12 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             break;
     }
 
-    delete item_ptr;
+    // delete item_ptr;
 }
 
 /* Utils */
 void getAvailableCommands() {
-    println("-" + Text::b_green + "Available commands" + Text::normal + "-");
+    println("-" + Text::b_green + "Available commands" + Text::normal + "-", 0);
     for (int i = 0; i < command_list.size(); i++) {
         cout << Text::red << i + 1 << ". " << Text::normal << command_list.at(i)
              << endl;

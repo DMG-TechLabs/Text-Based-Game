@@ -13,6 +13,11 @@ class ReadableItem {
         virtual void readContents() = 0;
 };
 
+class OpenableItem {
+    public:
+        virtual void open(Player *player) = 0;
+};
+
 
 /* Items */
 class Note : public Item, public ReadableItem, public CollectableItem{
@@ -37,7 +42,7 @@ class Terminal : public Item {
         vector<string> internal_commands;
 
         ~Terminal() {}
-        Terminal() {}
+        Terminal() : Item("terminal", "") {}
         Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
@@ -48,3 +53,15 @@ class Terminal : public Item {
         Response terminalPrompt(string message);
 };
 
+class Door : public Item, public OpenableItem {
+    public:
+        bool isOpen = false;
+
+        ~Door(){}
+        Door() : Item("door", ""){}
+        Door(bool isOpen) : Item("door", ""){
+            this->isOpen = isOpen;
+        }
+
+        void open(Player *player) override;
+};
