@@ -11,21 +11,22 @@
  * 
  */
 class Day{
-private:
+    private:
 
-public:
-    //Class variables
-    Map map;
-    vector<Mission> missions;
-    Player player;
-    bool completed;
+    public:
+        Map map;
+        vector<Mission> missions;
+        Player player;
+        bool completed = false;
 
-    //Constructors
-    Day(Map map, vector<Mission> missions ,Player player, bool completed){
-        this->map = map;
-        this->missions = missions;
-        this->player = player;
-        this->completed = completed;
-    }
-    ~Day(){}
+        virtual ~Day(){}
+        Day(Map map, vector<Mission> missions ,Player player, bool completed){
+            this->map = map;
+            this->missions = missions;
+            this->player = player;
+            this->completed = completed;
+        }
+
+        virtual void start();
+        bool isCompleted();
 }; 

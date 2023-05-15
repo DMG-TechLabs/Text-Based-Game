@@ -6,12 +6,22 @@
 #include "./command/command.h"
 #include "./items/items.h"
 #include "./map/map.h"
+#include "./day/day.h"
+#include "./interactions/interactions.h"
+
+struct GameState{
+    Player *player;
+    Day *day;
+};
+
 
 int main() {
-
+    Prompt p;
+    Response r;
     Map map{};
-
     Player player{};
+
+
     player.setInventory(Inventory{});
     player.addCommand("help");
     player.addCommand("read");
@@ -31,51 +41,52 @@ int main() {
 
 
 
-    println("===========TITLE OF THE GAME===========");
 
     println("You wake up tired in a room you've never seen before.");
     println("You panic!");
     println("You run to the door hoping you'll get out");
 
-    Prompt p;
     p.prompt_char = '>';
     p.accepted_commands = {"open", "help"};
     p.message = "Open the " + Text::blue + "door" + Text::normal;
-    Response r = prompt(p, command_list);
+    r = prompt(p, command_list);
     Engine::Command::run(r, p, &player);
 
 
-    println(Text::italic + "\n-Fuck!\n" + Text::normal);
-
-
+    FormattedPrint::playerTalking("Fuck!");
+    
     println("After a quick scan of the room you notice an open terminal in a corner of the room", 3);
 
     println("You sit in front of the terminal and something pops up on the screen!");
 
-    println("", 1);
-    Text::delayedTyping("You are awake " + player.getName() + "\n");
+    FormattedPrint::typingInTerminal("terminal", "You are awake");
 
-    println(Text::italic + "\n-Is...someone talking to me?\n" + Text::normal);
+    FormattedPrint::playerTalking("Is...someone talking to me?");
 
-    println("", 1);
-    print(Text::red + "$ " + Text::normal);
-    Text::delayedTyping("Who is this?");
+    FormattedPrint::typingInTerminal("player", "Who is this?");
 
-    println("", 3);
-    Text::delayedTyping("It doesn't matter.");
+    FormattedPrint::typingInTerminal("terminal", "It doesn't matter.");
 
-    println("", 1);
-    print(Text::red + "$ " + Text::normal);
-    Text::delayedTyping("Where am I?");
+    FormattedPrint::typingInTerminal("player", "Where am I?");
 
-    println("", 3);
-    Text::delayedTyping("That doesn't matter either.");
+    FormattedPrint::typingInTerminal("terminal", "That doesn't matter either");
 
-    println("", 1);
-    print(Text::red + "$ " + Text::normal);
-    Text::delayedTyping("What CAN you tell me?");
+    FormattedPrint::typingInTerminal("player", "What CAN you tell me?");
 
+    FormattedPrint::typingInTerminal("terminal", "...");
 
+    FormattedPrint::typingInTerminal("player", "PLEASE");
+    // more stuff here
+    FormattedPrint::typingInTerminal("terminal", "We'll talk soon");
+
+    println("Exiting...\n");
+
+    FormattedPrint::playerTalking("Anyways.. Let's search the room");
+
+    p.accepted_commands = {"read", "collect", "open", "help"};
+    p.message = "";
+    r = prompt(p);
+    Engine::Command::run(r, p, &player);
     
     
     return 0;

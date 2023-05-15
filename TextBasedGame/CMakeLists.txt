@@ -27,12 +27,16 @@ set(SOURCES
     src/items/Terminal.cpp
     src/items/Note.cpp
     src/items/Door.cpp
+    src/items/Bed.cpp
 
     src/day/day.h
     src/day/day.cpp
 
     src/command/command.h
     src/command/command.cpp
+
+    src/interactions/interactions.h
+    src/interactions/interactions.cpp
 )
 
 add_executable(TextBasedGame ${SOURCES})

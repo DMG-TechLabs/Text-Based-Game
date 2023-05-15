@@ -8,3 +8,27 @@ void Door::open(Player *player){
         println("You opened the door");
     }
 }
+
+int Door::getPassword(){
+    return password;
+}
+
+void Door::setPassword(int password){
+    if(password > 10000) return;
+
+    this->password = password;
+}
+
+void Door::enterPassword(int password){
+    if(password != this->getPassword()) {
+        println("Wrong password", 0);
+        return;
+    } else {
+        this->unlock();
+        println("Door unlocked", 0);
+    }
+}
+
+void Door::unlock(){
+    this->isOpen = true;
+}

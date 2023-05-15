@@ -3,16 +3,18 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "../items/items.h"
 
-void getAvailableCommands();
+void getAvailableCommands(Prompt p);
 int matchItem(string item, vector<Item> items);
 int matchItem(string item, vector<Item *> items);
 
 void Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index;
     Item *item_ptr;
+    
     ReadableItem *ri;
     CollectableItem *ci;
     OpenableItem *oi;
+    Bed *bi;
 
     if(sizeof(response) == 0){
         Engine::Command::run(prompt(p, command_list), p, player);
@@ -23,7 +25,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     switch (response.args.size()) {
         case 0:
             if (response.command == "help")
-                getAvailableCommands();
+                getAvailableCommands(p);
             else if (response.command == "inventory")
                 player->getInventory().printInventory();
 
@@ -45,12 +47,15 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             ri = dynamic_cast<ReadableItem *>(item_ptr);
             ci = dynamic_cast<CollectableItem *>(item_ptr);
             oi = dynamic_cast<OpenableItem *>(item_ptr);
+            bi = dynamic_cast<Bed *>(item_ptr);
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
             } else if (response.command == "collect" && ci != NULL) {
                 ci->collect(player);
-            } else if(response.command == "open" && oi != NULL){
+            } else if((response.command == "open" && oi != NULL) || (response.command == "open" && response.args.at(0) == "noor")){
                 oi->open(player);
+            } else if(response.command == "sleep" && bi != NULL){
+                //bi->sleep();
             } else {
                 println("The command doesn't match the item");
             }
@@ -65,15 +70,17 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
 }
 
 /* Utils */
-void getAvailableCommands() {
+void getAvailableCommands(Prompt p) {
     println("-" + Text::b_green + "Available commands" + Text::normal + "-", 0);
     for (int i = 0; i < command_list.size(); i++) {
-        cout << Text::red << i + 1 << ". " << Text::normal << command_list.at(i)
+        cout << Text::red << i + 1 << ". " << Text::normal << p.accepted_commands.at(i)
              << endl;
     }
 }
 
 int matchItem(string item, vector<Item> items) {
+    if(item == "noor") item = "door"; // Easter egg
+
     for (int i = 0; i < items.size(); i++) {
         if (item == items.at(i).getName()) {
             return i;
@@ -84,6 +91,8 @@ int matchItem(string item, vector<Item> items) {
 }
 
 int matchItem(string item, vector<Item *> items) {
+    if(item == "noor") item = "door"; // Easter egg
+    
     for (int i = 0; i < items.size(); i++) {
         if (item == items.at(i)->getName()) {
             return i;

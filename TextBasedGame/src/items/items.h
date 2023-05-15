@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
+#include "../day/day.h"
 
 /* Interfaces */
 class CollectableItem {
@@ -42,7 +43,7 @@ class Terminal : public Item {
         vector<string> internal_commands;
 
         ~Terminal() {}
-        Terminal() : Item("terminal", "") {}
+        Terminal() : Item("terminal") {}
         Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
@@ -54,14 +55,37 @@ class Terminal : public Item {
 };
 
 class Door : public Item, public OpenableItem {
+    private:
+        int password;
     public:
         bool isOpen = false;
 
         ~Door(){}
-        Door() : Item("door", ""){}
-        Door(bool isOpen) : Item("door", ""){
+        Door() : Item("door"){}
+        Door(int password) : Item("door"){
+            if(password > 10000) password = -1;
+
+            this->password = password;
+        }
+        Door(bool isOpen, int password) : Item("door"){
+            if(password > 10000) password = -1;
+
             this->isOpen = isOpen;
+            this->password = password;
         }
 
+        int getPassword();
+        void setPassword(int password);
+        void unlock();
+        void enterPassword(int password);
+
         void open(Player *player) override;
+};
+
+class Bed : public Item {
+    public:
+        ~Bed(){}
+        Bed() : Item("bed"){}
+
+        void sleep(Day d);
 };
