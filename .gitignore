@@ -1,12 +1,3 @@
-# Don't include SoLoud except its CMake folder
-/TextBasedGame/soloud/bin/
-/TextBasedGame/soloud/build/
-/TextBasedGame/soloud/demos/
-/TextBasedGame/soloud/doc/
-/TextBasedGame/soloud/include/
-/TextBasedGame/soloud/scripts/
-/TextBasedGame/soloud/src/
-
 /TextBasedGame/saves/
 *.sh
 
