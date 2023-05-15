@@ -40,7 +40,7 @@ int main() {
     Prompt p;
     p.prompt_char = '>';
     p.accepted_commands = {"open", "help"};
-    p.message = "Open the " + Text::red + "door" + Text::normal;
+    p.message = "Open the " + Text::blue + "door" + Text::normal;
     Response r = prompt(p, command_list);
     Engine::Command::run(r, p, &player);
 
@@ -48,17 +48,34 @@ int main() {
     println(Text::italic + "\n-Fuck!\n" + Text::normal);
 
 
-    println("After a quick scan of the room you notice an open terminal in a corner of the room", 5);
+    println("After a quick scan of the room you notice an open terminal in a corner of the room", 3);
 
     println("You sit in front of the terminal and something pops up on the screen!");
 
-    print("Terminal: ");
-    Text::delayedTyping("You are awake " + player.getName() +  ".\n");
+    println("", 1);
+    Text::delayedTyping("You are awake " + player.getName() + "\n");
 
     println(Text::italic + "\n-Is...someone talking to me?\n" + Text::normal);
 
-    print("$ ");
+    println("", 1);
+    print(Text::red + "$ " + Text::normal);
     Text::delayedTyping("Who is this?");
+
+    println("", 3);
+    Text::delayedTyping("It doesn't matter.");
+
+    println("", 1);
+    print(Text::red + "$ " + Text::normal);
+    Text::delayedTyping("Where am I?");
+
+    println("", 3);
+    Text::delayedTyping("That doesn't matter either.");
+
+    println("", 1);
+    print(Text::red + "$ " + Text::normal);
+    Text::delayedTyping("What CAN you tell me?");
+
+
     
     
     return 0;
