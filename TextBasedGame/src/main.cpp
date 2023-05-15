@@ -84,7 +84,14 @@ int main() {
     FormattedPrint::playerTalking("Anyways.. Let's search the room");
 
     p.accepted_commands = {"read", "collect", "open", "help"};
-    p.message = "";
+    // by Christina
+    p.message = "You look around you. You decide to examine the corner where the "+ Text::blue +"terminal"+ Text::normal + " is."  
+        "\nThere is a table there and a chair. You decide to take a closer look."
+        "\nThe chair looks rusty and the table looks old and dusty. It feels like everything is going to collapse anytime soon. "
+        "\nYou decide to take a step back. You notice the "+ Text::blue + "board"+ Text::normal + ". It has a few pins laying around. All in all, nothing special. "
+        "\nThen you decide to rest on the bed. It makes a screeching sound when you sit. "
+        "\nAll of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper."
+        "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
     r = prompt(p);
     Engine::Command::run(r, p, &player);
     

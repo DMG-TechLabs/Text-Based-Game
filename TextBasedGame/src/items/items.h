@@ -19,6 +19,10 @@ class OpenableItem {
         virtual void open(Player *player) = 0;
 };
 
+class BundleItem {
+    public:
+};
+
 
 /* Items */
 class Note : public Item, public ReadableItem, public CollectableItem{
@@ -88,4 +92,9 @@ class Bed : public Item {
         Bed() : Item("bed"){}
 
         void sleep(Day d);
+};
+
+class Board : public Item {
+    public:
+
 };

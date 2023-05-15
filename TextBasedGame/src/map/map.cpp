@@ -32,6 +32,7 @@ void Map::initMap() {
     Node *node6 = new Node(6, "Room 6", false);
     node6->addItem(new Door());
     node6->addItem(new Terminal());
+    node6->addItem(new Note("ds5yA!bTc"));
 
     Node *node7 = new Node(7, "Room 7", true);
     node7->addItem(new Door());
