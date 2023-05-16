@@ -3,6 +3,14 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "../day/day.h"
 
+static const vector<string> items_list = {
+    "note",
+    "bed",
+    "board",
+    "terminal",
+    "door"
+};
+
 /* Interfaces */
 class CollectableItem {
     public:
