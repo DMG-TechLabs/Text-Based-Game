@@ -6,27 +6,8 @@
 #include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
 #include "../mission/mission.h"
 
-/**
- * @brief Day class. Each day sets up the map as well as all the missions of each day. The player object is inherited form the previous day/ initial initialization 
- * 
- */
-class Day{
-    private:
-
-    public:
-        Map map;
-        vector<Mission> missions;
-        Player player;
-        bool completed = false;
-
-        virtual ~Day(){}
-        Day(Map map, vector<Mission> missions ,Player player, bool completed){
-            this->map = map;
-            this->missions = missions;
-            this->player = player;
-            this->completed = completed;
-        }
-
-        virtual void start();
-        bool isCompleted();
-}; 
+namespace Day{
+    void dayOne();
+    void dayTwo();
+    void dayThree();
+}

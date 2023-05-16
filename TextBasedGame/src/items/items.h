@@ -99,7 +99,7 @@ class Bed : public Item {
         ~Bed(){}
         Bed() : Item("bed"){}
 
-        void sleep(Day d);
+        void sleep();
 };
 
 class Board : public Item {

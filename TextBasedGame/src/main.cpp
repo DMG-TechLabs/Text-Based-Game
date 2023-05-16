@@ -9,11 +9,6 @@
 #include "./day/day.h"
 #include "./interactions/interactions.h"
 
-struct GameState{
-    Player *player;
-    Day *day;
-};
-
 
 int main() {
     Prompt p;
