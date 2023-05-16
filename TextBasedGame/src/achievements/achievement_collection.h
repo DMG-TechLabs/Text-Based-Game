@@ -3,6 +3,8 @@
 #include "../../Text-Based-Game-Engine/Engine/src/achievements/achievement.h"
 #include <iostream>
 
+using namespace Engine;
+
 class AchievementCollection{
     public:
         vector<Achievement*> achievements;

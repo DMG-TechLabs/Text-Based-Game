@@ -3,6 +3,8 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "../items/items.h"
 
+using namespace Engine;
+
 void getAvailableCommands(Prompt p);
 int matchItem(string item, vector<Item> items);
 int matchItem(string item, vector<Item *> items);

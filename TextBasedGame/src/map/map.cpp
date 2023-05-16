@@ -1,6 +1,9 @@
 #include "../items/items.h"
 #include "map.h"
 
+using namespace Engine;
+
+
 string nodesToString(vector<Node *> nodes);
 
 

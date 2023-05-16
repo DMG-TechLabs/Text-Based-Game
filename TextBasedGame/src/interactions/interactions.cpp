@@ -2,6 +2,9 @@
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
+using namespace Engine;
+
+
 void FormattedPrint::typingInTerminal(string who, string text) {
     if (who != "player" && who != "terminal") return;
 

@@ -1,6 +1,7 @@
 
 #include "./achievement_collection.h"
 
+using namespace Engine;
 
 void AchievementCollection::initAchievements(){
     achievements.push_back(new Achievement("Beginning", "Lorem ipsum..."));

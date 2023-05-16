@@ -3,6 +3,8 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "../day/day.h"
 
+using namespace Engine;
+
 static const vector<string> items_list = {
     "note",
     "bed",
