@@ -72,7 +72,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
 /* Utils */
 void getAvailableCommands(Prompt p) {
     println("-" + Text::b_green + "Available commands" + Text::normal + "-", 0);
-    for (int i = 0; i < command_list.size(); i++) {
+    for (int i = 0; i < p.accepted_commands.size(); i++) {
         cout << Text::red << i + 1 << ". " << Text::normal << p.accepted_commands.at(i)
              << endl;
     }

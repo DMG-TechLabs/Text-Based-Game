@@ -10,6 +10,7 @@ void Note::saveNote(string note_name){
 
 void Note::collect(Player *player){
     player->collectItem(*this);
+    this->~Note();
 }
 
 void Note::readContents(){

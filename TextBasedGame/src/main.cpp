@@ -18,7 +18,7 @@ struct GameState{
 int main() {
     Prompt p;
     Response r;
-    Map map{};
+    Map map{new Node(0, "Hall", true)};
     Player player{};
 
 
@@ -28,18 +28,16 @@ int main() {
     player.addCommand("enter");
     player.currentNode = map.getNode(6); // We are in room 6
 
-    // string player_name;
-    // println("What's your name?", 0);
-    // print("Type your name: ");
-    // getline(cin, player_name);
+    string player_name;
+    println("What's your name?", 0);
+    print("Type your name: ");
+    getline(cin, player_name);
 
-    // println("", 0);
-    // println("", 0);
-    // println("", 0);
+    println("", 0);
+    println("", 0);
+    println("", 0);
 
-    // player.setName(player_name);
-
-
+    player.setName(player_name);
 
 
     println("You wake up tired in a room you've never seen before.");
@@ -49,7 +47,7 @@ int main() {
     p.prompt_char = '>';
     p.accepted_commands = {"open", "help"};
     p.message = "Open the " + Text::blue + "door" + Text::normal;
-    r = prompt(p, command_list);
+    r = prompt(p, command_list, true);
     Engine::Command::run(r, p, &player);
 
 
@@ -59,7 +57,7 @@ int main() {
 
     println("You sit in front of the terminal and something pops up on the screen!");
 
-    FormattedPrint::typingInTerminal("terminal", "You are awake");
+    FormattedPrint::typingInTerminal("terminal", "You are awake " + player.getName());
 
     FormattedPrint::playerTalking("Is...someone talking to me?");
 
@@ -83,7 +81,7 @@ int main() {
 
     FormattedPrint::playerTalking("Anyways.. Let's search the room");
 
-    p.accepted_commands = {"read", "collect", "open", "help"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory"};
     // by Christina
     p.message = "You look around you. You decide to examine the corner where the "+ Text::blue +"terminal"+ Text::normal + " is."  
         "\nThere is a table there and a chair. You decide to take a closer look."
@@ -92,8 +90,15 @@ int main() {
         "\nThen you decide to rest on the bed. It makes a screeching sound when you sit. "
         "\nAll of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper."
         "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
-    r = prompt(p);
+    
+    r = prompt(p, command_list, true);
     Engine::Command::run(r, p, &player);
+
+    for (size_t i = 0; i < 3; i++){
+        r = prompt(p, command_list);
+        Engine::Command::run(r, p, &player);
+    }
+    
     
     
     return 0;
