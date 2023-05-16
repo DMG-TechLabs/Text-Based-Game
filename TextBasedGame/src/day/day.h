@@ -6,8 +6,11 @@
 #include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
 #include "../mission/mission.h"
 
+using namespace Engine;
+
 namespace Day{
-    void dayOne();
-    void dayTwo();
-    void dayThree();
+    void demo(Player *player, Map *map);
+    void dayOne(Player *player, Map *map);
+    void dayTwo(Player *player, Map *map);
+    void dayThree(Player *player, Map *map);
 }
