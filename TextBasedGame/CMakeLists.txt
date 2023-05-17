@@ -8,6 +8,20 @@ set(LIB_CMAKE_PATH "Text-Based-Game-Engine/Engine/CMakeLists.txt")
 include(${LIB_CMAKE_PATH})
 
 
+if (UNIX)
+    set(MENU
+        src/menu/menu.cpp
+        src/menu/menu.h
+    )        
+endif(UNIX)
+
+if(WIN32)
+    set(MENU
+        src/menu/menu_win.cpp
+        src/menu/menu_win.h
+    )
+endif(WIN32)
+
 # Add source files
 set(SOURCES
     src/main.cpp
@@ -31,7 +45,7 @@ set(SOURCES
 
     src/day/day.h
     src/day/day.cpp
-
+    
     src/command/command.h
     src/command/command.cpp
 
@@ -39,5 +53,5 @@ set(SOURCES
     src/interactions/interactions.cpp
 )
 
-add_executable(TextBasedGame ${SOURCES})
+add_executable(TextBasedGame ${SOURCES} ${MENU})
 target_link_libraries(TextBasedGame TextBasedGameEngine)

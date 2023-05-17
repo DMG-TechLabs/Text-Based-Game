@@ -8,6 +8,7 @@
 #include "./map/map.h"
 #include "./day/day.h"
 #include "./interactions/interactions.h"
+#include "./menu/menu.h"
 
 
 int main() {
@@ -17,9 +18,12 @@ int main() {
     Player player{};
 
 
-    Day::demo(&player, &map);
+    //Day::demo(&player, &map);
     
+    disableInputBuffering();
+    mainMenu();
+    enableInputBuffering();
     
-    
+
     return 0;
 }
