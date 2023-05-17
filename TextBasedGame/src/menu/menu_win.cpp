@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void goto(int x, int y) {
+void gotoxy(int x, int y) {
     COORD coord;
     coord.X = x;
     coord.Y = y;
@@ -26,7 +26,7 @@ int handleArrowKeys(){
     }
 }
 
-void menu() {
+void mainMenu() {
     int selectedItem = 1;
     bool menuActive = true;
 
