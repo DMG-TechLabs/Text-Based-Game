@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
+#include "../day/day.h"
 
 using namespace std;
 
@@ -42,14 +43,15 @@ int handleArrowKeys(){
     }
 }
 
-void mainMenu() {
+void demoMenu(Player player, Map map) {
     int bgColor = 4;
+    int numOfOptions = 3;
     int selectedItem = 1;
     bool menuActive = true;
 
-    string option1 = addSpaces("Play", sizeof("Settings") / sizeof(char) + 2);
+    string option1 = addSpaces("Play Demo", sizeof("Settings") / sizeof(char) + 2);
     string option2 = addSpaces("Manual", sizeof("Settings") / sizeof(char) + 2);
-    string option3 = addSpaces("Settings", sizeof("Settings") / sizeof(char) + 2);
+    //string option3 = addSpaces("Settings", sizeof("Settings") / sizeof(char) + 2);
     string exit = addSpaces("Exit", sizeof("Settings") / sizeof(char) + 2);
 
     
@@ -59,32 +61,34 @@ void mainMenu() {
         // Print menu options
         std::cout << (selectedItem == 1 ? Engine::Text::color("bg", bgColor) + option1 + Engine::Text::normal : option1) << std::endl;
         std::cout << (selectedItem == 2 ? Engine::Text::color("bg", bgColor) + option2 + Engine::Text::normal : option2) << std::endl;
-        std::cout << (selectedItem == 3 ? Engine::Text::color("bg", bgColor) + option3 + Engine::Text::normal : option3) << std::endl;
-        std::cout << (selectedItem == 4 ? Engine::Text::color("bg", bgColor) + exit + Engine::Text::normal : exit) << std::endl;
+        //std::cout << (selectedItem == 3 ? Engine::Text::color("bg", bgColor) + option3 + Engine::Text::normal : option3) << std::endl;
+        std::cout << (selectedItem == numOfOptions ? Engine::Text::color("bg", bgColor) + exit + Engine::Text::normal : exit) << std::endl;
 
         // Handle user input
         int keyPressed = handleArrowKeys();
         switch (keyPressed) {
             case 1: // Up arrow key
-                selectedItem = (selectedItem == 1) ? 4 : selectedItem - 1;
+                selectedItem = (selectedItem == 1) ? numOfOptions : selectedItem - 1;
                 break;
             case 2: // Down arrow key
-                selectedItem = (selectedItem == 4) ? 1 : selectedItem + 1;
+                selectedItem = (selectedItem == numOfOptions) ? 1 : selectedItem + 1;
                 break;
             case 0: // Enter
                 menuActive = false;
                 switch (selectedItem){
                     case 1:
-                        Engine::println("Play selected", 0);
+                        enableInputBuffering();
+                        Day::demo(&player, &map);
                         break;
                     case 2:
                         Engine::println("Manual selected", 0);
                         break;
+                    // case 3:
+                    //     Engine::println("Settings selected", 0);
+                    //     break;
                     case 3:
-                        Engine::println("Settings selected", 0);
-                        break;
-                    case 4:
-                        Engine::println("Exit selected", 0);
+                        println("Quiting game...");
+                        std::exit(0);
                         break;
                     }
                 break;

@@ -26,7 +26,7 @@ int handleArrowKeys(){
     }
 }
 
-void mainMenu() {
+void mainMenu(Player player, Map map) {
     int selectedItem = 1;
     bool menuActive = true;
 
