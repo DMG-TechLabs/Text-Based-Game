@@ -20,7 +20,12 @@ static const vector<string> command_list = {
     "inventory",
     "open",
     "sleep",
-    "enter"
+    "enter",
+    "exit",
+    "goto",
+    "save",
+    "inspect",
+    "use"
 };
 
 int matchItem(string item, vector<Item *> items);

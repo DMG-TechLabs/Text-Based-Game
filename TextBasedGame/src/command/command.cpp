@@ -18,6 +18,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     CollectableItem *ci;
     OpenableItem *oi;
     EnterableItem *ei;
+    SaveableItem *si;
     Bed *bi;
 
     if(sizeof(response) == 0){
@@ -55,7 +56,9 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             ci = dynamic_cast<CollectableItem *>(item_ptr);
             oi = dynamic_cast<OpenableItem *>(item_ptr);
             ei = dynamic_cast<EnterableItem *>(item_ptr);
+            si = dynamic_cast<SaveableItem *>(item_ptr);
             bi = dynamic_cast<Bed *>(item_ptr);
+            
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
             } else if (response.command == "collect" && ci != NULL) {
@@ -64,13 +67,17 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 oi->open(player);
             } else if(response.command == "enter" && ei != NULL){
                 ei->enter(player);
+            } else if(response.command == "inspect"){
+                println(item_ptr->getDescription(), 0);
+            } else if(response.command == "save" && si != NULL){
+                si->save();
             } else {
-                println("The command doesn't match the item");
+                println("The command doesn't match the item", 0);
             }
             
             break;
         default:
-            println("This number of arguments is not yet implemnted");
+            println("This number of arguments is not yet implemnted", 0);
             break;
     }
 

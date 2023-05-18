@@ -34,6 +34,11 @@ class EnterableItem {
         virtual void enter(Player *player) = 0;
 };
 
+class SaveableItem{
+    public:
+        virtual void save() = 0;
+};
+
 class BundleItem {
     public:
 };
@@ -42,13 +47,19 @@ class BundleItem {
 /* Items */
 class Note : public Item, public ReadableItem, public CollectableItem{
     public:
+        string contents;
+
         ~Note() {}
-        Note() { setCommands(new string[2]{"read", "save"}); }
+        Note() {}
         Note(string id, string description) : Item(id, "note", description) {
-            setCommands(new string[2]{"read", "save"});
         }
         Note(string description) : Item("note", description) {
-            setCommands(new string[2]{"read", "save"});
+        }
+        Note(string id, string description, string contents) : Item(id, "note", description) {
+            this->contents = contents;
+        }
+        Note(string description, string contents) : Item("note", description) {
+            this->contents = contents;
         }
 
         void saveNote(string note_name);
@@ -66,8 +77,6 @@ class Terminal : public Item, public EnterableItem{
         Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
-
-            setCommands(new string[2]{"enter", "exit"});
         }
 
         Response terminalPrompt(string message);
@@ -117,4 +126,22 @@ class Bed : public Item {
 class Board : public Item {
     public:
 
+};
+
+class File : public Item, public ReadableItem, public SaveableItem {
+    public:
+        string title;
+        string contents;
+
+        ~File(){}
+        File(string id, string title) : Item(id, "file"){
+            this->title = title;
+        }
+        File(string id, string title, string description, string contents) : Item(id, "file", description){
+            this->contents = contents;
+            this->title = title;
+        }
+
+        void readContents() override;
+        void save() override;
 };

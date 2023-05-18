@@ -17,5 +17,5 @@ void Note::collect(Player *player){
 
 void Note::readContents(){
     println(Text::bold + "The following is written on the note:" + Text::normal);
-    println(getDescription());
+    println(contents);
 }

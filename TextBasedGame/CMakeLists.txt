@@ -42,6 +42,7 @@ set(SOURCES
     src/items/Note.cpp
     src/items/Door.cpp
     src/items/Bed.cpp
+    src/items/File.cpp
 
     src/day/day.h
     src/day/demo.cpp
