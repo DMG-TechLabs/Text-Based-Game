@@ -4,7 +4,17 @@
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
+using namespace std;
 using namespace Engine;
+
+string getPlayerName(){
+    string player_name;
+    println("What's your name?", 0);
+    print("Type your name: ");
+    getline(cin, player_name);
+
+    return player_name;
+}
 
 void Day::demo(Player *player, Map *map){
     Prompt p;
@@ -15,18 +25,9 @@ void Day::demo(Player *player, Map *map){
     player->addCommand("read");
     player->addCommand("enter");
     player->currentNode = map->getNode(6); // We are in room 6
+    player->setName(getPlayerName());
 
-    string player_name;
-    println("What's your name?", 0);
-    print("Type your name: ");
-    getline(cin, player_name);
-
-    println("", 0);
-    println("", 0);
-    println("", 0);
-
-    player->setName(player_name);
-
+    system("clear");
 
     println("You wake up tired in a room you've never seen before.");
     println("You panic!");
@@ -67,11 +68,19 @@ void Day::demo(Player *player, Map *map){
 
     println("Exiting...\n");
 
-    FormattedPrint::playerTalking("Anyways.. Let's search the room");
+    system("clear");
+
+    FormattedPrint::playerTalking("Anyways... Let's search the room");
 
     p.accepted_commands = {"read", "collect", "open", "help", "inventory"};
-    // by Christina
     p.message = player->currentNode->description;
-    r = prompt(p, command_list, true);
+    r = prompt(p, command_list);
     Command::run(r, p, player);
+
+    
+    int current_node = player->currentNode->id;
+    while(current_node == player->currentNode->id){
+        r = prompt(p, command_list, false);
+        Command::run(r, p, player);
+    }
 }

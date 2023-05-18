@@ -23,6 +23,8 @@ void disableInputBuffering() {
     tcgetattr(STDIN_FILENO, &term);
     term.c_lflag &= ~(ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
+    print("\e[?25l"); // Hide the cursor
 }
 
 void enableInputBuffering() {
@@ -30,6 +32,8 @@ void enableInputBuffering() {
     tcgetattr(STDIN_FILENO, &term);
     term.c_lflag |= (ICANON | ECHO);
     tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
+    print("\e[?25h"); // Show the cursor
 }
 
 int handleArrowKeys(){
@@ -78,6 +82,7 @@ void demoMenu(Player player, Map map) {
                 switch (selectedItem){
                     case 1:
                         enableInputBuffering();
+                        system("clear");
                         Day::demo(&player, &map);
                         break;
                     case 2:

@@ -44,7 +44,7 @@ set(SOURCES
     src/items/Bed.cpp
 
     src/day/day.h
-    src/day/day.cpp
+    src/day/demo.cpp
     
     src/command/command.h
     src/command/command.cpp

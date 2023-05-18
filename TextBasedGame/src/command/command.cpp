@@ -32,7 +32,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 player->getInventory().printInventory();
 
             // Misc commands so prompt again
-            Engine::Command::run(prompt(p, command_list), p, player);
+            // Engine::Command::run(prompt(p, command_list), p, player);
             break;
         case 1:
             item_index = matchItem(response.args.at(0), player->currentNode->items);
