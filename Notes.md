@@ -5,10 +5,10 @@
 * note
 * terminal
 * file
-* food
-* 
-
-### Item ids
+* bed
+* door
+* board
+* chest (?)
 
 ## Commands
 
@@ -16,12 +16,21 @@
 * inspect (any item)
 * use (???)
 * collect
-* read (files / notes)
-* save (game)
-* craft (???)
-* enter (terminal / room)
+* read (file / note)
+* save (file)
+* enter (terminal / room / passcode)
+* sleep
+* exit (terminal) shortcut to hall (== goto hall)
+* open (door)
+* goto room <num>
+* goto <room_name>
 
 ## Achievements
+
+* "First night" -> Sleep for the first time
+* "Was that really a good decision...?" -> Exit the starting room
+* "A new friend" -> You've found someone else
+* "The end?" -> You managed to make it back to Earth
 
 ## Add SoLoud Library to the Project
 
