@@ -12,18 +12,18 @@
 
 ## Commands
 
-* move
-* inspect (any item)
-* use (???)
-* collect
-* read (file / note)
-* save (file)
-* enter (terminal / room / passcode)
-* sleep
-* exit (terminal) shortcut to hall (== goto hall)
-* open (door)
-* goto room <num>
-* goto <room_name>
+- [ ] move
+- [x]  inspect (any item) 
+- [ ] use (???)
+- [x] collect
+- [x] read (file / note)
+- [x] save (file)
+- [ ] enter (terminal / passcode)
+- [x] sleep
+- [ ] exit (terminal) shortcut to hall (== goto hall)
+- [x] open (door)
+- [ ] goto room <num>
+- [ ] goto <room_name>
 
 ## Achievements
 
