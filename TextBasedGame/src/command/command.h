@@ -5,10 +5,12 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
 using namespace std;
+using namespace Engine;
 
 static const vector<string> command_list = {
     "help",
@@ -16,5 +18,9 @@ static const vector<string> command_list = {
     "read",
     "collect",
     "inventory",
-    "open"
+    "open",
+    "sleep",
+    "enter"
 };
+
+int matchItem(string item, vector<Item *> items);

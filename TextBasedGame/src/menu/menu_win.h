@@ -5,5 +5,5 @@
 using namespace Engine;
 
 
-void mainMenu(Player player, Map map);
-void demoMenu(Player player, Map map);
+void mainMenu();
+void demoMenu();

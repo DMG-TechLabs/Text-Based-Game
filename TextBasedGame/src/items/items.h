@@ -29,6 +29,11 @@ class OpenableItem {
         virtual void open(Player *player) = 0;
 };
 
+class EnterableItem {
+    public:
+        virtual void enter(Player *player) = 0;
+};
+
 class BundleItem {
     public:
 };
@@ -51,7 +56,7 @@ class Note : public Item, public ReadableItem, public CollectableItem{
         void readContents() override;
 };
 
-class Terminal : public Item {
+class Terminal : public Item, public EnterableItem{
     public:
         char prompt_char;
         vector<string> internal_commands;
@@ -66,6 +71,7 @@ class Terminal : public Item {
         }
 
         Response terminalPrompt(string message);
+        void enter(Player *player) override;
 };
 
 class Door : public Item, public OpenableItem {
@@ -98,8 +104,12 @@ class Door : public Item, public OpenableItem {
 
 class Bed : public Item {
     public:
+        string epilogue;
+
         ~Bed(){}
-        Bed() : Item("bed"){}
+        Bed(string epilogue) : Item("bed"){
+            this->epilogue = epilogue;
+        }
 
         void sleep();
 };

@@ -18,6 +18,7 @@ string getPlayerName(){
 
 void Day::demo(Player *player, Map *map){
     Prompt p;
+    p.prompt_char = '>';
     Response r;
 
     player->setInventory(Inventory{});
@@ -29,11 +30,30 @@ void Day::demo(Player *player, Map *map){
 
     system("clear");
 
+    // cutscene_one(p, r, player);
+
+    system("clear");
+
+    FormattedPrint::playerTalking("Anyways... Let's search the room");
+
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep"};
+    p.message = player->currentNode->description;
+    r = prompt(p, command_list);
+    Command::run(r, p, player);
+
+    
+    int current_node = player->currentNode->id;
+    while(current_node == player->currentNode->id && r.command != "sleep"){
+        r = prompt(p, command_list, false);
+        Command::run(r, p, player);
+    }
+}
+
+void cutscene_one(Prompt p, Response r, Player *player){
     println("You wake up tired in a room you've never seen before.");
     println("You panic!");
     println("You run to the door hoping you'll get out");
 
-    p.prompt_char = '>';
     p.accepted_commands = {"open", "help"};
     p.message = "Open the " + Text::blue + "door" + Text::normal;
     r = prompt(p, command_list, true);
@@ -67,20 +87,4 @@ void Day::demo(Player *player, Map *map){
     FormattedPrint::typingInTerminal("terminal", "We'll talk soon");
 
     println("Exiting...\n");
-
-    system("clear");
-
-    FormattedPrint::playerTalking("Anyways... Let's search the room");
-
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory"};
-    p.message = player->currentNode->description;
-    r = prompt(p, command_list);
-    Command::run(r, p, player);
-
-    
-    int current_node = player->currentNode->id;
-    while(current_node == player->currentNode->id){
-        r = prompt(p, command_list, false);
-        Command::run(r, p, player);
-    }
 }

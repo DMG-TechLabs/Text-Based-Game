@@ -12,17 +12,15 @@
 
 
 int main() {
-    Prompt p;
-    Response r;
     Map map{new Node(0, "Hall", true)};
     Player player{};
 
 
-    //Day::demo(&player, &map);
-    
     disableInputBuffering();
-    demoMenu(player, map);
+    Menu::demoMenu();
     enableInputBuffering();
+
+    Day::demo(&player, &map);
     
 
     return 0;

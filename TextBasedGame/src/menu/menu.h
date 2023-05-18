@@ -4,7 +4,12 @@
 
 using namespace Engine;
 
+namespace Menu{
+
+void mainMenu();
+void demoMenu();
+void pauseMenu();
+}
+
 void disableInputBuffering();
 void enableInputBuffering();
-void mainMenu(Player player, Map map);
-void demoMenu(Player player, Map map);

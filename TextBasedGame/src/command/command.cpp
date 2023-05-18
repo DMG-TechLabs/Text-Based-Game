@@ -8,6 +8,7 @@ using namespace Engine;
 void getAvailableCommands(Prompt p);
 int matchItem(string item, vector<Item> items);
 int matchItem(string item, vector<Item *> items);
+bool contains(vector<Item *> arr, string item);
 
 void Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index;
@@ -16,6 +17,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     ReadableItem *ri;
     CollectableItem *ci;
     OpenableItem *oi;
+    EnterableItem *ei;
     Bed *bi;
 
     if(sizeof(response) == 0){
@@ -30,6 +32,9 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 getAvailableCommands(p);
             else if (response.command == "inventory")
                 player->getInventory().printInventory();
+            else if (response.command == "sleep" && contains(player->currentNode->items, "bed")){
+                dynamic_cast<Bed *>(player->currentNode->items.at(matchItem("bed", player->currentNode->items)))->sleep();
+            }
 
             // Misc commands so prompt again
             // Engine::Command::run(prompt(p, command_list), p, player);
@@ -49,6 +54,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             ri = dynamic_cast<ReadableItem *>(item_ptr);
             ci = dynamic_cast<CollectableItem *>(item_ptr);
             oi = dynamic_cast<OpenableItem *>(item_ptr);
+            ei = dynamic_cast<EnterableItem *>(item_ptr);
             bi = dynamic_cast<Bed *>(item_ptr);
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
@@ -56,8 +62,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 ci->collect(player);
             } else if((response.command == "open" && oi != NULL) || (response.command == "open" && response.args.at(0) == "noor")){
                 oi->open(player);
-            } else if(response.command == "sleep" && bi != NULL){
-                //bi->sleep();
+            } else if(response.command == "enter" && ei != NULL){
+                ei->enter(player);
             } else {
                 println("The command doesn't match the item");
             }
@@ -102,4 +108,16 @@ int matchItem(string item, vector<Item *> items) {
     }
 
     return -1;
+}
+
+bool contains(vector<Item *> arr, string item) {
+    bool exists = false;
+    for (int i = 0; i < arr.size(); i++) {
+        if (item == arr.at(i)->getName()) {
+            exists = true;
+            break;
+        }
+    }
+
+    return exists;
 }

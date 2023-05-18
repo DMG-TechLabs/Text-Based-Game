@@ -1,6 +1,7 @@
 
 
 #include "items.h"
+#include "../command/command.h"
 #include "../../Text-Based-Game-Engine/Engine/src/item/item.h"
 #include "../../Text-Based-Game-Engine/Engine/src/utils/game_utils.h"
 
@@ -10,7 +11,8 @@ void Note::saveNote(string note_name){
 
 void Note::collect(Player *player){
     player->collectItem(*this);
-    this->~Note();
+    player->currentNode->items.erase(player->currentNode->items.begin() + matchItem(this->getName(), player->currentNode->items)); // Delete item from node vector
+    this->~Note(); // Destruct item
 }
 
 void Note::readContents(){
