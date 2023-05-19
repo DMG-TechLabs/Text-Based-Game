@@ -5,8 +5,7 @@
 using namespace Engine;
 
 namespace Menu{
-
-void mainMenu();
-void demoMenu();
-void pauseMenu();
+    void mainMenu();
+    void demoMenu();
+    void pauseMenu();
 }

@@ -10,15 +10,13 @@ include(${LIB_CMAKE_PATH})
 
 if (UNIX)
     set(MENU
-        src/menu/menu.cpp
-        src/menu/menu.h
+        src/menu/menu_utils_unix.cpp
     )        
 endif(UNIX)
 
 if(WIN32)
     set(MENU
-        src/menu/menu_win.cpp
-        src/menu/menu_win.h
+        src/menu/menu_utils_win.cpp
     )
 endif(WIN32)
 
@@ -47,6 +45,10 @@ set(SOURCES
 
     src/day/day.h
     src/day/demo.cpp
+
+    src/menu/menu.h
+    src/menu/menu.cpp
+    src/menu/menu_utils.h
     
     src/command/command.h
     src/command/command.cpp
