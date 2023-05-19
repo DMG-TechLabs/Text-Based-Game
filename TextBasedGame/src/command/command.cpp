@@ -5,10 +5,13 @@
 
 using namespace Engine;
 
-void getAvailableCommands(Prompt p);
+namespace CommandUtils{
+    void getAvailableCommands(Prompt p);
+    bool contains(vector<Item *> arr, string item);
+    bool contains(vector<string> arr, string item);
+}
+
 int matchItem(string item, vector<Item> items);
-int matchItem(string item, vector<Item *> items);
-bool contains(vector<Item *> arr, string item);
 
 void Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index;
@@ -30,10 +33,10 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     switch (response.args.size()) {
         case 0:
             if (response.command == "help")
-                getAvailableCommands(p);
+                CommandUtils::getAvailableCommands(p);
             else if (response.command == "inventory")
                 player->getInventory().printInventory();
-            else if (response.command == "sleep" && contains(player->currentNode->items, "bed")){
+            else if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
                 dynamic_cast<Bed *>(player->currentNode->items.at(matchItem("bed", player->currentNode->items)))->sleep();
             }
 
@@ -43,7 +46,12 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
         case 1:
             item_index = matchItem(response.args.at(0), player->currentNode->items);
             if (item_index < 0) {
-                println("This item is not found in the room you are in");
+                if(CommandUtils::contains(items_list, response.args.at(0))){
+                    println("This item is not in the room you are currently in", 0);
+                } else {
+                    println("Invalid item", 0);
+                }
+
                 return;
             }
 
@@ -85,7 +93,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
 }
 
 /* Utils */
-void getAvailableCommands(Prompt p) {
+void CommandUtils::getAvailableCommands(Prompt p) {
     println("-" + Text::b_green + "Available commands" + Text::normal + "-", 0);
     for (int i = 0; i < p.accepted_commands.size(); i++) {
         cout << Text::red << i + 1 << ". " << Text::normal << p.accepted_commands.at(i)
@@ -117,10 +125,22 @@ int matchItem(string item, vector<Item *> items) {
     return -1;
 }
 
-bool contains(vector<Item *> arr, string item) {
+bool CommandUtils::contains(vector<Item *> arr, string item) {
     bool exists = false;
     for (int i = 0; i < arr.size(); i++) {
         if (item == arr.at(i)->getName()) {
+            exists = true;
+            break;
+        }
+    }
+
+    return exists;
+}
+
+bool CommandUtils::contains(vector<string> arr, string item) {
+    bool exists = false;
+    for (int i = 0; i < arr.size(); i++) {
+        if (item == arr.at(i)) {
             exists = true;
             break;
         }
