@@ -10,12 +10,13 @@ void Note::saveNote(string note_name){
 }
 
 void Note::collect(Player *player){
-    player->collectItem(*this);
+    player->collectItem(this);
     player->currentNode->items.erase(player->currentNode->items.begin() + matchItem(this->getName(), player->currentNode->items)); // Delete item from node vector
-    this->~Note(); // Destruct item
+
+    println("Note added to inventory", 0);
 }
 
 void Note::readContents(){
-    println(Text::bold + "The following is written on the note:" + Text::normal);
-    println(contents);
+    println(Text::bold + "The following is written on the note:" + Text::normal, 0);
+    println(this->contents);
 }

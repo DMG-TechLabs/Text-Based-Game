@@ -38,6 +38,7 @@ set(SOURCES
     src/map/map.cpp
 
     src/items/items.h
+    src/items/inventory.cpp
     src/items/Terminal.cpp
     src/items/Note.cpp
     src/items/Door.cpp

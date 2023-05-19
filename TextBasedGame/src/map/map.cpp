@@ -34,7 +34,7 @@ void Map::initMap() {
         "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
     node6->addItem(new Door());
     node6->addItem(new Terminal());
-    node6->addItem(new Note("ds5yA!bTc"));
+    node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
 
     Node *node7 = new Node(7, "Room 7", true);

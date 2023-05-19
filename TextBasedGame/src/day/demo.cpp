@@ -22,9 +22,6 @@ void Day::demo(Player *player, Map *map){
     Response r;
 
     player->setInventory(Inventory{});
-    player->addCommand("help");
-    player->addCommand("read");
-    player->addCommand("enter");
     player->currentNode = map->getNode(6); // We are in room 6
     player->setName(getPlayerName());
 

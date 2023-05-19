@@ -10,7 +10,8 @@ static const vector<string> items_list = {
     "bed",
     "board",
     "terminal",
-    "door"
+    "door",
+    "file"
 };
 
 /* Interfaces */
@@ -21,6 +22,7 @@ class CollectableItem {
 
 class ReadableItem {
     public:
+        string contents;
         virtual void readContents() = 0;
 };
 
@@ -47,19 +49,15 @@ class BundleItem {
 /* Items */
 class Note : public Item, public ReadableItem, public CollectableItem{
     public:
-        string contents;
-
         ~Note() {}
         Note() {}
         Note(string id, string description) : Item(id, "note", description) {
         }
-        Note(string description) : Item("note", description) {
+        Note(string contents) : Item("note") {
+            ReadableItem::contents = contents;
         }
         Note(string id, string description, string contents) : Item(id, "note", description) {
-            this->contents = contents;
-        }
-        Note(string description, string contents) : Item("note", description) {
-            this->contents = contents;
+            ReadableItem::contents = contents;
         }
 
         void saveNote(string note_name);
@@ -131,7 +129,6 @@ class Board : public Item {
 class File : public Item, public ReadableItem, public SaveableItem {
     public:
         string title;
-        string contents;
 
         ~File(){}
         File(string id, string title) : Item(id, "file"){
