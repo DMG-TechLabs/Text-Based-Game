@@ -16,7 +16,7 @@
 
 ## Git(hub)
 
-* Pull requests only (No commit and push)
+* Pull requests only to main branch (No commit and push)
 * Descriptive commit messages
 * Github issues
 
