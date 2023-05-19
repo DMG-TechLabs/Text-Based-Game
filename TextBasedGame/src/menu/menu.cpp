@@ -17,6 +17,59 @@ using namespace Menu;
 #include <unistd.h>
 
 string addSpaces(string word, int length);
+void printOption(int selectedItem, int index, int color, string option);
+void menu(int bgColor, vector<string> options, void (*handleOptionsFunc)(int selectedOption));
+void disableInputBuffering();
+void enableInputBuffering();
+
+
+void handleDemoOptions(int selectedItem){
+    switch (selectedItem){
+        case 1:
+            return;
+        case 2:                                                
+            Engine::println("Manual selected", 0);
+            break;
+        case 3:
+            Engine::println("Achievements selected", 0);
+            break;
+        case 4:
+            println("Quiting game...");
+            std::exit(0);
+            break;
+    }
+}
+
+void Menu::demoMenu(){
+    menu(4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
+}
+
+void handlePauseOptions(int selectedItem){
+    switch (selectedItem){
+        case 1:
+            return;
+        case 2:
+            Engine::println("Manual selected", 0);
+            break;
+        case 3:
+            Engine::println("Achievements selected", 0);
+            break;
+        case 4:
+            println("Quiting game...");
+            std::exit(0);
+            break;
+    }
+}
+
+void Menu::pauseMenu(){
+    menu(4, {"Continue", "Manual", "Achievements", "Exit"}, &handlePauseOptions);
+}
+
+
+
+
+
+
 
 
 void disableInputBuffering() {
@@ -48,29 +101,30 @@ int handleArrowKeys(){
     }
 }
 
-void Menu::demoMenu() {
-    int bgColor = 4;
-    int numOfOptions = 3;
+
+// General menu function
+void menu(int bgColor, vector<string> options, void (*handleOptionsFunc)(int selectedOption)){
+    disableInputBuffering();
+
+    int numOfOptions = options.size();
 
     int max = 15;
     int selectedItem = 1;
     bool menuActive = true;
 
-    string option1 = addSpaces("Play Demo", max);
-    string option2 = addSpaces("Manual", max);
-    //string option3 = addSpaces("Settings", sizeof("Settings") / sizeof(char) + 2);
-    string exit = addSpaces("Exit", max);
+    // Add the necessary spaces
+    for(string option : options){
+        option = addSpaces(option, max);
+    }
 
-    
     while (menuActive) {
         system("clear"); // Clear the screen
 
-        // Print menu options
-        std::cout << (selectedItem == 1 ? Engine::Text::color("bg", bgColor) + option1 + Engine::Text::normal : option1) << std::endl;
-        std::cout << (selectedItem == 2 ? Engine::Text::color("bg", bgColor) + option2 + Engine::Text::normal : option2) << std::endl;
-        //std::cout << (selectedItem == 3 ? Engine::Text::color("bg", bgColor) + option3 + Engine::Text::normal : option3) << std::endl;
-        std::cout << (selectedItem == numOfOptions ? Engine::Text::color("bg", bgColor) + exit + Engine::Text::normal : exit) << std::endl;
-
+        // Print the options
+        for (int i = 0; i < numOfOptions; i++){
+            printOption(selectedItem, i+1, bgColor, options.at(i));
+        }
+        
         // Handle user input
         int keyPressed = handleArrowKeys();
         switch (keyPressed) {
@@ -82,84 +136,14 @@ void Menu::demoMenu() {
                 break;
             case 0: // Enter
                 menuActive = false;
-                system("clear");                        
-                switch (selectedItem){
-                    case 1:
-                        return;
-                    case 2:                                                
-                        Engine::println("Manual selected", 0);
-                        break;
-                    // case 3:
-                    //     Engine::println("Settings selected", 0);
-                    //     break;
-                    case 3:
-                        println("Quiting game...");
-                        std::exit(0);
-                        break;
-                    }
+                system("clear");
+                handleOptionsFunc(selectedItem);
                 break;
         }
+
     }
+    enableInputBuffering();
 }
-
-
-void Menu::pauseMenu(){
-    int bgColor = 4;
-    int numOfOptions = 4;
-    int max = 15;
-
-    int selectedItem = 1;
-    bool menuActive = true;
-
-    string option1 = addSpaces("Continue", max);
-    string option2 = addSpaces("Save", max);
-    string option3 = addSpaces("Manual", max);
-    //string option3 = addSpaces("Settings", sizeof("Settings") / sizeof(char) + 2);
-    string exit = addSpaces("Exit", max);
-
-    
-    while (menuActive) {
-        system("clear"); // Clear the screen
-
-        // Print menu options
-        std::cout << (selectedItem == 1 ? Engine::Text::color("bg", bgColor) + option1 + Engine::Text::normal : option1) << std::endl;
-        std::cout << (selectedItem == 2 ? Engine::Text::color("bg", bgColor) + option2 + Engine::Text::normal : option2) << std::endl;
-        std::cout << (selectedItem == 3 ? Engine::Text::color("bg", bgColor) + option3 + Engine::Text::normal : option3) << std::endl;
-        std::cout << (selectedItem == numOfOptions ? Engine::Text::color("bg", bgColor) + exit + Engine::Text::normal : exit) << std::endl;
-
-        // Handle user input
-        int keyPressed = handleArrowKeys();
-        switch (keyPressed) {
-            case 1: // Up arrow key
-                selectedItem = (selectedItem == 1) ? numOfOptions : selectedItem - 1;
-                break;
-            case 2: // Down arrow key
-                selectedItem = (selectedItem == numOfOptions) ? 1 : selectedItem + 1;
-                break;
-            case 0: // Enter
-                menuActive = false;
-                system("clear");                        
-                switch (selectedItem){
-                    case 1:
-                        return;
-                    case 2:                                                
-                        Engine::println("Save selected", 0);
-                        break;
-                    case 3:
-                        Engine::println("Manual selected", 0);
-                        break;
-                    case 4:
-                        println("Quiting game...");
-                        std::exit(0);
-                        break;
-                    }
-                break;
-        }
-    }
-}
-
-
-
 
 string addSpaces(string word, int length){
     if(length < word.size()) return "WRONG";
@@ -168,4 +152,8 @@ string addSpaces(string word, int length){
         word += " ";
     }
     return word;
+}
+
+void printOption(int selectedItem, int index, int color, string option){
+    std::cout << (selectedItem == index ? Engine::Text::color("bg", color) + option + Engine::Text::normal : option) << std::endl;
 }

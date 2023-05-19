@@ -10,6 +10,3 @@ void mainMenu();
 void demoMenu();
 void pauseMenu();
 }
-
-void disableInputBuffering();
-void enableInputBuffering();

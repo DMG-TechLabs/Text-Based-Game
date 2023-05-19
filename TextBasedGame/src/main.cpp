@@ -16,9 +16,7 @@ int main() {
     Player player{};
 
 
-    disableInputBuffering();
     Menu::demoMenu();
-    enableInputBuffering();
 
     Day::demo(&player, &map);
     
