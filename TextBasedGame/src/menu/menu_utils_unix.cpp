@@ -25,8 +25,8 @@ void menu(int bgColor, vector<string> options, void (*handleOptionsFunc)(int sel
     bool menuActive = true;
 
     // Add the necessary spaces
-    for(string option : options){
-        option = addSpaces(option, max);
+    for(int i = 0; i < options.size(); i++){
+        options.at(i) = addSpaces(options.at(i), max);
     }
 
     while (menuActive) {

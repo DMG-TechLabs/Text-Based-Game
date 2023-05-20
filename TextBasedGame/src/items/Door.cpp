@@ -21,11 +21,11 @@ void Door::setPassword(int password){
 
 void Door::enterPassword(int password){
     if(password != this->getPassword()) {
-        println("Wrong password", 0);
+        println("Wrong password");
         return;
     } else {
         this->unlock();
-        println("Door unlocked", 0);
+        println("Door unlocked");
     }
 }
 

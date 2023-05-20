@@ -7,6 +7,8 @@
 using namespace std;
 using namespace Engine;
 
+void cutscene_one(Prompt p, Response r, Player *player);
+
 string getPlayerName(){
     string player_name;
     println("What's your name?", 0);
@@ -27,7 +29,7 @@ void Day::demo(Player *player, Map *map){
 
     system("clear");
 
-    // cutscene_one(p, r, player);
+    cutscene_one(p, r, player);
 
     system("clear");
 

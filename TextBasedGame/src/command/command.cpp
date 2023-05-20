@@ -45,7 +45,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             break;
         case 1:
             item_index = matchItem(response.args.at(0), player->currentNode->items);
-            if (item_index < 0) {
+            if (item_index < 0 && response.args.at(0) != "passcode") {
                 if(CommandUtils::contains(items_list, response.args.at(0))){
                     println("This item is not in the room you are currently in", 0);
                 } else {
@@ -53,7 +53,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 }
 
                 return;
-            }
+            } else if(response.args.at(0) == "passcode") item_index = 0;
 
             item_ptr = player->currentNode->items.at(item_index);
 
@@ -79,6 +79,12 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 println(item_ptr->getDescription(), 0);
             } else if(response.command == "save" && si != NULL){
                 si->save();
+            } else if(response.command == "enter" && response.args.at(0) == "passcode"){
+                int passcode;
+                print("Enter passcode: ");
+                cin >> passcode;
+
+                dynamic_cast<Door *>(player->currentNode->items.at(matchItem("door", player->currentNode->items)))->enterPassword(passcode);
             } else {
                 println("The command doesn't match the item", 0);
             }
