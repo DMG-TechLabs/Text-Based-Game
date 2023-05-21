@@ -1,7 +1,5 @@
 #include "menu.h"
 
-#include <ncurses.h>
-#include <termios.h>
 #include <unistd.h>
 #include <iostream>
 #include <stdio.h>
