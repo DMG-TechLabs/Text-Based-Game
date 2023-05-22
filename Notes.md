@@ -8,7 +8,7 @@
 * bed
 * door
 * board
-* chest (?)
+* safe (with passcode)
 
 ## Commands
 
