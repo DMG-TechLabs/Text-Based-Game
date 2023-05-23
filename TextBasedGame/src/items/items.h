@@ -36,13 +36,14 @@ class EnterableItem {
         virtual void enter(Player *player) = 0;
 };
 
-class SaveableItem{
+class SaveableItem {
     public:
         virtual void save() = 0;
 };
 
 class BundleItem {
     public:
+        virtual void inspect() = 0;
 };
 
 
@@ -121,11 +122,6 @@ class Bed : public Item {
         void sleep();
 };
 
-class Board : public Item {
-    public:
-
-};
-
 class File : public Item, public ReadableItem, public SaveableItem {
     public:
         string title;
@@ -141,4 +137,41 @@ class File : public Item, public ReadableItem, public SaveableItem {
 
         void readContents() override;
         void save() override;
+};
+
+class Board : public Item, public BundleItem {
+    public:
+        vector<Note*> board;
+
+        ~Board(){}
+        Board(){}
+        Board(vector<Note*> board) : Item("board"){
+            this->board = board;
+        }
+
+        void inspect() override;      
+};
+
+class Safe : public Item, public BundleItem {
+    private:
+        int passcode;
+
+    public:
+        bool isOpen = false;
+
+        ~Safe(){}
+        Safe(int passcode) : Item("safe"){
+            if(passcode > 10000) passcode = -1;
+
+            this->passcode = passcode;
+        }
+
+        Safe(int passcode, bool isOpen) : Item("safe"){
+            if(passcode > 10000) passcode = -1;
+
+            this->passcode = passcode;
+            this-> isOpen = isOpen;
+        }
+
+        void inspect() override;      
 };

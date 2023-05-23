@@ -11,7 +11,7 @@ void Note::saveNote(string note_name){
 
 void Note::collect(Player *player){
     player->collectItem(this);
-    player->currentNode->items.erase(player->currentNode->items.begin() + matchItem(this->getName(), player->currentNode->items)); // Delete item from node vector
+    player->currentNode->items.erase(player->currentNode->items.begin() + matchItemByName(this->getName(), player->currentNode->items)); // Delete item from node vector
 
     println("Note added to inventory", 0);
 }

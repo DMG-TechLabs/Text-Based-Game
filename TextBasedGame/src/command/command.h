@@ -28,4 +28,5 @@ static const vector<string> command_list = {
     "use"
 };
 
-int matchItem(string item, vector<Item *> items);
+int matchItemByName(string item, vector<Item *> items);
+int matchItemById(string item, vector<Item *> items);

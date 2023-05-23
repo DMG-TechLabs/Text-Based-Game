@@ -11,7 +11,7 @@ namespace CommandUtils{
     bool contains(vector<string> arr, string item);
 }
 
-int matchItem(string item, vector<Item> items);
+int matchItemByName(string item, vector<Item> items);
 
 void Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index;
@@ -22,7 +22,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     OpenableItem *oi;
     EnterableItem *ei;
     SaveableItem *si;
-    Bed *bi;
+    Bed *b;
+    BundleItem *bi;
 
     if(sizeof(response) == 0){
         Engine::Command::run(prompt(p, command_list), p, player);
@@ -37,14 +38,14 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             else if (response.command == "inventory")
                 player->getInventory().printInventory();
             else if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
-                dynamic_cast<Bed *>(player->currentNode->items.at(matchItem("bed", player->currentNode->items)))->sleep();
+                dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
             }
 
             // Misc commands so prompt again
             // Engine::Command::run(prompt(p, command_list), p, player);
             break;
         case 1:
-            item_index = matchItem(response.args.at(0), player->currentNode->items);
+            item_index = matchItemByName(response.args.at(0), player->currentNode->items);
             if (item_index < 0 && response.args.at(0) != "passcode") {
                 if(CommandUtils::contains(items_list, response.args.at(0))){
                     println("This item is not in the room you are currently in", 0);
@@ -65,7 +66,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             oi = dynamic_cast<OpenableItem *>(item_ptr);
             ei = dynamic_cast<EnterableItem *>(item_ptr);
             si = dynamic_cast<SaveableItem *>(item_ptr);
-            bi = dynamic_cast<Bed *>(item_ptr);
+            b = dynamic_cast<Bed *>(item_ptr);
+            bi = dynamic_cast<BundleItem *>(item_ptr);
             
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
@@ -75,8 +77,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 oi->open(player);
             } else if(response.command == "enter" && ei != NULL){
                 ei->enter(player);
-            } else if(response.command == "inspect"){
-                println(item_ptr->getDescription(), 0);
+            /*} else if(response.command == "inspect"){
+                println(item_ptr->getDescription(), 0);*/
             } else if(response.command == "save" && si != NULL){
                 si->save();
             } else if(response.command == "enter" && response.args.at(0) == "passcode"){
@@ -84,7 +86,9 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 print("Enter passcode: ");
                 cin >> passcode;
 
-                dynamic_cast<Door *>(player->currentNode->items.at(matchItem("door", player->currentNode->items)))->enterPassword(passcode);
+                dynamic_cast<Door *>(player->currentNode->items.at(matchItemByName("door", player->currentNode->items)))->enterPassword(passcode);
+            } else if(response.command == "inspect" && bi != NULL){
+                bi->inspect();
             } else {
                 println("The command doesn't match the item", 0);
             }
@@ -107,11 +111,11 @@ void CommandUtils::getAvailableCommands(Prompt p) {
     }
 }
 
-int matchItem(string item, vector<Item> items) {
+int matchItemByName(string item, vector<Item *> items) {
     if(item == "noor") item = "door"; // Easter egg
 
     for (int i = 0; i < items.size(); i++) {
-        if (item == items.at(i).getName()) {
+        if (item == items.at(i)->getName()) {
             return i;
         }
     }
@@ -119,11 +123,9 @@ int matchItem(string item, vector<Item> items) {
     return -1;
 }
 
-int matchItem(string item, vector<Item *> items) {
-    if(item == "noor") item = "door"; // Easter egg
-    
+int matchItemById(string item, vector<Item *> items) {
     for (int i = 0; i < items.size(); i++) {
-        if (item == items.at(i)->getName()) {
+        if (item == items.at(i)->getItemId()) {
             return i;
         }
     }

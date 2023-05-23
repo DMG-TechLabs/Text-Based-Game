@@ -29,13 +29,13 @@ void Day::demo(Player *player, Map *map){
 
     system("clear");
 
-    cutscene_one(p, r, player);
+    //cutscene_one(p, r, player);
 
     system("clear");
 
     FormattedPrint::playerTalking("Anyways... Let's search the room");
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
     Command::run(r, p, player);

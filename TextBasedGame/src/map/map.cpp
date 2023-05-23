@@ -36,7 +36,22 @@ void Map::initMap() {
     node6->addItem(new Terminal());
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
-
+    node6->addItem(new Safe(4321));
+    
+    vector<Note*> board;
+    
+    Note *note1 = new Note("note1", "description", "text1");
+    Note *note2 = new Note("note2", "description", "text2");
+    Note *note3 = new Note("note3", "description", "text3");
+    Note *note4 = new Note("note4", "description", "text4");
+    
+    board.push_back(note1);
+    board.push_back(note2);
+    board.push_back(note3);
+    board.push_back(note4);
+    
+    node6->addItem(new Board(board));
+    
     Node *node7 = new Node(7, "Room 7", true);
     node7->addItem(new Door());
 
@@ -53,8 +68,6 @@ void Map::initMap() {
     addNode(node7, vector<int>{0});
     addNode(node8, vector<int>{0});
 }
-
-
 
 void printMap(Map map) {
     for (int i = 0; i < map.nodes.size(); i++) {
