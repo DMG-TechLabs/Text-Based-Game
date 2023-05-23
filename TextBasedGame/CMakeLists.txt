@@ -52,6 +52,8 @@ set(SOURCES
     
     src/command/command.h
     src/command/command.cpp
+    src/command/terminal_command.h
+    src/command/terminal_command.cpp
 
     src/interactions/interactions.h
     src/interactions/interactions.cpp

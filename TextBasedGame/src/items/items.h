@@ -85,7 +85,6 @@ class Terminal : public Item, public EnterableItem{
             this->internal_commands = internal_commands;
         }
 
-        Response terminalPrompt(string message);
         void enter(Player *player) override;
 };
 
