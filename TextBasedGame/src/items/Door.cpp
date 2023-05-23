@@ -27,12 +27,12 @@ void Door::enterPasscode(Player *player){
 
 
 bool Door::enterPasscode(){
-    int passcode;
+    string passcode;
     print("Enter passcode: ");
-    cin >> passcode;
+    getline(cin, passcode);
 
 
-    if(passcode != this->getPasscode()) {
+    if(stoi(passcode) != this->getPasscode()) {
         println("Wrong password");
         return false;
     } else {
