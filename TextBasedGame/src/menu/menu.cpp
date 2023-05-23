@@ -21,7 +21,7 @@ void handleDemoOptions(int selectedItem){
             Engine::println("Achievements selected", 0);
             break;
         case 4:
-            println("Quiting game...");
+            Engine::println("Quiting game...");
             std::exit(0);
     }
 }
@@ -41,7 +41,7 @@ void handlePauseOptions(int selectedItem){
             Engine::println("Achievements selected", 0);
             break;
         case 4:
-            println("Quiting game...");
+            Engine::println("Quiting game...");
             std::exit(0);
     }
 }
