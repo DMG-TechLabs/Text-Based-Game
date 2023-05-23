@@ -21,7 +21,8 @@
 - [ ] enter (terminal / passcode)
 - [x] sleep
 - [ ] exit (terminal) shortcut to hall (== goto hall)
-- [x] open (door)
+- [x] open (door / safe)
+- [ ] unlock (door / safe)
 - [ ] goto room <num>
 - [ ] goto <room_name>
 
