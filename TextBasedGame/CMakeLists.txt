@@ -42,6 +42,8 @@ set(SOURCES
     src/items/Door.cpp
     src/items/Bed.cpp
     src/items/File.cpp
+    src/items/Board.cpp
+    src/items/Safe.cpp
 
     src/day/day.h
     src/day/demo.cpp
