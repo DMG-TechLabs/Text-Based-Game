@@ -19,19 +19,21 @@ void Door::setPasscode(int passcode){
     this->passcode = passcode;
 }
 
-bool Door::enterPasscode(int passcode){
-    if(passcode != this->getPasscode()) {
-        println("Wrong password");
-        return;
-    } else {
-        this->unlock();
-        println("Door unlocked");
-    }
-}
-
 void Door::enterPasscode(int passcode, Player *player){
     if(this->enterPasscode(passcode)){
         player->currentNode->unlock();
+    }
+}
+
+
+bool Door::enterPasscode(int passcode){
+    if(passcode != this->getPasscode()) {
+        println("Wrong password");
+        return false;
+    } else {
+        this->unlock();
+        println("Door unlocked");
+        return true;
     }
 }
 

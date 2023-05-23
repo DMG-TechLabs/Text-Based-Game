@@ -35,8 +35,8 @@ class UnlockableItem {
     public:
         int passcode;
         bool isLocked;
-        virtual bool enterPasscode(int passcode);
-        virtual void unlock();
+        virtual bool enterPasscode(int passcode) = 0;
+        virtual void unlock() = 0;
 };
 
 class EnterableItem {
