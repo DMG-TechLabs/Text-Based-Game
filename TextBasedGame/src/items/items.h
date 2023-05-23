@@ -12,6 +12,7 @@ static const vector<string> items_list = {
     "terminal",
     "door",
     "file"
+    "safe"
 };
 
 /* Interfaces */
@@ -157,13 +158,11 @@ class Board : public Item, public BundleItem {
         void inspect() override;      
 };
 
-class Safe : public Item, public BundleItem {
+class Safe : public Item, public BundleItem, public UnlockableItem {
     private:
         int passcode;
 
     public:
-        bool isOpen = false;
-
         ~Safe(){}
         Safe(int passcode) : Item("safe"){
             if(passcode > 10000) passcode = -1;
@@ -171,12 +170,16 @@ class Safe : public Item, public BundleItem {
             this->passcode = passcode;
         }
 
-        Safe(int passcode, bool isOpen) : Item("safe"){
+        Safe(int passcode, bool isLocked = true) : Item("safe"){
             if(passcode > 10000) passcode = -1;
 
             this->passcode = passcode;
-            this-> isOpen = isOpen;
+            this-> isLocked = isLocked;
         }
 
-        void inspect() override;      
+        int getPasscode();
+
+        void inspect() override;   
+        bool enterPasscode() override;   
+        void unlock() override;
 };

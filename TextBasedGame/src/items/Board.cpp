@@ -4,6 +4,6 @@
 
 void Board::inspect(){
     for (int i = 0; i < board.size(); i++){
-        println(board.at(i)->getItemId() + "\n", 0);
+        println(Text::blue + board.at(i)->getItemId() + Text::normal + "\n" + board.at(i)->contents + "\n", 0);
     }
 }

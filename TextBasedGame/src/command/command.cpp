@@ -79,16 +79,20 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 oi->open(player);
             } else if(response.command == "enter" && ei != NULL){
                 ei->enter(player);
-            /*} else if(response.command == "inspect"){
-                println(item_ptr->getDescription(), 0);*/
+            } else if(response.command == "inspect"){
+                println(item_ptr->getDescription(), 0);
             } else if(response.command == "save" && si != NULL){
                 si->save();
             } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
                 dynamic_cast<Door *>(ui)->enterPasscode(player);
             } else if(response.command == "unlock" && ui != NULL){ //Unlocking anything
                 ui->enterPasscode();
-            } else if(response.command == "inspect" && bi != NULL){
+            } else if(response.command == "inspect" && response.args.at(0) == "board" && bi != NULL){
                 bi->inspect();
+            } else if(response.command == "inspect" && response.args.at(0) == "safe"){
+                
+            } else if(response.command == "enter" && response.args.at(0) == "safePasscode" && ui != NULL){
+                
             } else {
                 println("The command doesn't match the item", 0);
             }
