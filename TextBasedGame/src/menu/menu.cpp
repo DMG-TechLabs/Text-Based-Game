@@ -12,15 +12,15 @@ using namespace Menu;
 
 void handleDemoOptions(int selectedItem){
     switch (selectedItem){
-        case 1:
+        case 0:
             return;
-        case 2:                                                
+        case 1:                                                
             Engine::println("Manual selected", 0);
             break;
-        case 3:
+        case 2:
             Engine::println("Achievements selected", 0);
             break;
-        case 4:
+        case 3:
             Engine::println("Quiting game...");
             std::exit(0);
     }
@@ -32,15 +32,15 @@ void Menu::demoMenu(){
 
 void handlePauseOptions(int selectedItem){
     switch (selectedItem){
-        case 1:
+        case 0:
             return;
-        case 2:
+        case 1:
             Engine::println("Manual selected", 0);
             break;
-        case 3:
+        case 2:
             Engine::println("Achievements selected", 0);
             break;
-        case 4:
+        case 3:
             Engine::println("Quiting game...");
             std::exit(0);
     }
