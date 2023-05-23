@@ -22,6 +22,7 @@ void menu(int bgColor, vector<string> options,
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
     GetConsoleMode(hInput, &mode);
     SetConsoleMode(hInput, mode & ~ENABLE_ECHO_INPUT & ~ENABLE_LINE_INPUT);
+    std::cout << "\e[?25l"; // Hide the cursor
 
     int numOfOptions = options.size();
 
@@ -62,6 +63,7 @@ void menu(int bgColor, vector<string> options,
     }
     // Enable console input buffering
     SetConsoleMode(hInput, mode);
+    std::cout << "\e[?25h"; // Show the cursor
 }
 
 void gotoxy(int x, int y) {

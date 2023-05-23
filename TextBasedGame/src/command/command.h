@@ -14,7 +14,6 @@ using namespace Engine;
 
 static const vector<string> command_list = {
     "help",
-    "move",
     "read",
     "collect",
     "inventory",
