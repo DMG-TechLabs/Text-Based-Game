@@ -14,7 +14,6 @@ using namespace Engine;
 
 static const vector<string> command_list = {
     "help",
-    "move",
     "read",
     "collect",
     "inventory",
@@ -25,7 +24,8 @@ static const vector<string> command_list = {
     "goto",
     "save",
     "inspect",
-    "use"
+    "use",
+    "unlock"
 };
 
 int matchItemByName(string item, vector<Item *> items);

@@ -27,15 +27,15 @@ void Day::demo(Player *player, Map *map){
     player->currentNode = map->getNode(6); // We are in room 6
     player->setName(getPlayerName());
 
-    system("clear");
+    Text::clearScreen();
 
     //cutscene_one(p, r, player);
 
-    system("clear");
+    Text::clearScreen();
 
     FormattedPrint::playerTalking("Anyways... Let's search the room");
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep, inspect", "unlock"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
     Command::run(r, p, player);

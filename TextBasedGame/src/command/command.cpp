@@ -22,6 +22,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     OpenableItem *oi;
     EnterableItem *ei;
     SaveableItem *si;
+    UnlockableItem *ui;
     Bed *b;
     BundleItem *bi;
 
@@ -67,6 +68,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             ei = dynamic_cast<EnterableItem *>(item_ptr);
             si = dynamic_cast<SaveableItem *>(item_ptr);
             b = dynamic_cast<Bed *>(item_ptr);
+            ui = dynamic_cast<UnlockableItem *>(item_ptr);
             bi = dynamic_cast<BundleItem *>(item_ptr);
             
             if (response.command == "read" && ri != NULL) {
@@ -81,12 +83,10 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 println(item_ptr->getDescription(), 0);*/
             } else if(response.command == "save" && si != NULL){
                 si->save();
-            } else if(response.command == "enter" && response.args.at(0) == "passcode"){
-                int passcode;
-                print("Enter passcode: ");
-                cin >> passcode;
-
-                dynamic_cast<Door *>(player->currentNode->items.at(matchItemByName("door", player->currentNode->items)))->enterPassword(passcode);
+            } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
+                dynamic_cast<Door *>(ui)->enterPasscode(player);
+            } else if(response.command == "unlock" && ui != NULL){ //Unlocking anything
+                ui->enterPasscode();
             } else if(response.command == "inspect" && bi != NULL){
                 bi->inspect();
             } else {

@@ -31,6 +31,14 @@ class OpenableItem {
         virtual void open(Player *player) = 0;
 };
 
+class UnlockableItem {
+    public:
+        int passcode;
+        bool isLocked;
+        virtual bool enterPasscode() = 0;
+        virtual void unlock() = 0;
+};
+
 class EnterableItem {
     public:
         virtual void enter(Player *player) = 0;
@@ -82,31 +90,28 @@ class Terminal : public Item, public EnterableItem{
         void enter(Player *player) override;
 };
 
-class Door : public Item, public OpenableItem {
-    private:
-        int password;
+class Door : public Item, public OpenableItem, public UnlockableItem {
     public:
-        bool isOpen = false;
-
         ~Door(){}
         Door() : Item("door"){}
-        Door(int password) : Item("door"){
-            if(password > 10000) password = -1;
+        Door(int passcode) : Item("door"){
+            if(passcode > 10000) passcode = -1;
 
-            this->password = password;
+            this->passcode = passcode;
         }
-        Door(bool isOpen, int password) : Item("door"){
-            if(password > 10000) password = -1;
+        Door(bool isLocked, int passcode) : Item("door"){
+            if(passcode > 10000) passcode = -1;
 
-            this->isOpen = isOpen;
-            this->password = password;
+            this->isLocked = isLocked;
+            this->passcode = passcode;
         }
 
-        int getPassword();
-        void setPassword(int password);
-        void unlock();
-        void enterPassword(int password);
+        int getPasscode();
+        void setPasscode(int passcode);
+        void enterPasscode(Player *player);
 
+        void unlock() override;
+        bool enterPasscode() override;
         void open(Player *player) override;
 };
 
