@@ -35,7 +35,7 @@ void Day::demo(Player *player, Map *map){
 
     FormattedPrint::playerTalking("Anyways... Let's search the room");
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep, inspect", "unlock"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect", "unlock"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
     Command::run(r, p, player);
