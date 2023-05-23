@@ -5,8 +5,6 @@
 #include <stdio.h>
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
-#include "../day/day.h"
-#include "./menu_utils.h"
 
 using namespace std;
 using namespace Menu;
@@ -29,7 +27,7 @@ void handleDemoOptions(int selectedItem){
 }
 
 void Menu::demoMenu(){
-    menu(4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
+    Engine::menu(4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
 }
 
 void handlePauseOptions(int selectedItem){
@@ -49,5 +47,5 @@ void handlePauseOptions(int selectedItem){
 }
 
 void Menu::pauseMenu(){
-    menu(4, {"Continue", "Manual", "Achievements", "Exit"}, &handlePauseOptions);
+    Engine::menu(4, {"Continue", "Manual", "Achievements", "Exit"}, &handlePauseOptions);
 }
