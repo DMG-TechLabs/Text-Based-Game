@@ -163,12 +163,6 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
 
     public:
         ~Safe(){}
-        Safe(int passcode) : Item("safe"){
-            if(passcode > 10000) passcode = -1;
-
-            this->passcode = passcode;
-        }
-
         Safe(int passcode, bool isLocked = true) : Item("safe"){
             if(passcode > 10000) passcode = -1;
 
