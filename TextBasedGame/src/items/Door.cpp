@@ -1,26 +1,26 @@
 #include "items.h"
 
 void Door::open(Player *player){
-    if(!player->currentNode->isAccessible()){
+    if(!player->currentNode->isAccessible() || this->isLocked){
         println("The door is locked");
     } else {
-        isOpen = true;
+        isLocked = false;
         println("You opened the door");
     }
 }
 
-int Door::getPassword(){
-    return password;
+int Door::getPasscode(){
+    return passcode;
 }
 
-void Door::setPassword(int password){
-    if(password > 10000) return;
+void Door::setPasscode(int passcode){
+    if(passcode > 10000) return;
 
-    this->password = password;
+    this->passcode = passcode;
 }
 
-void Door::enterPassword(int password){
-    if(password != this->getPassword()) {
+bool Door::enterPasscode(int passcode){
+    if(passcode != this->getPasscode()) {
         println("Wrong password");
         return;
     } else {
@@ -29,6 +29,12 @@ void Door::enterPassword(int password){
     }
 }
 
+void Door::enterPasscode(int passcode, Player *player){
+    if(this->enterPasscode(passcode)){
+        player->currentNode->unlock();
+    }
+}
+
 void Door::unlock(){
-    this->isOpen = true;
+    this->isLocked = false;
 }

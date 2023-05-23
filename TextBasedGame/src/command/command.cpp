@@ -84,7 +84,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 print("Enter passcode: ");
                 cin >> passcode;
 
-                dynamic_cast<Door *>(player->currentNode->items.at(matchItem("door", player->currentNode->items)))->enterPassword(passcode);
+                dynamic_cast<Door *>(player->currentNode->items.at(matchItem("door", player->currentNode->items)))->enterPasscode(passcode, player);
             } else {
                 println("The command doesn't match the item", 0);
             }
