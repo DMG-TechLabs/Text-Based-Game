@@ -24,7 +24,8 @@ static const vector<string> command_list = {
     "goto",
     "save",
     "inspect",
-    "use"
+    "use",
+    "unlock"
 };
 
 int matchItem(string item, vector<Item *> items);

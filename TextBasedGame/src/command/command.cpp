@@ -22,6 +22,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     OpenableItem *oi;
     EnterableItem *ei;
     SaveableItem *si;
+    UnlockableItem *ui;
     Bed *bi;
 
     if(sizeof(response) == 0){
@@ -66,6 +67,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             ei = dynamic_cast<EnterableItem *>(item_ptr);
             si = dynamic_cast<SaveableItem *>(item_ptr);
             bi = dynamic_cast<Bed *>(item_ptr);
+            ui = dynamic_cast<UnlockableItem *>(item_ptr);
             
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
@@ -79,12 +81,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 println(item_ptr->getDescription(), 0);
             } else if(response.command == "save" && si != NULL){
                 si->save();
-            } else if(response.command == "enter" && response.args.at(0) == "passcode"){
-                int passcode;
-                print("Enter passcode: ");
-                cin >> passcode;
-
-                dynamic_cast<Door *>(player->currentNode->items.at(matchItem("door", player->currentNode->items)))->enterPasscode(passcode, player);
+            } else if(response.command == "unlock" && ui != NULL){               
+                dynamic_cast<Door *>(ui)->enterPasscode(player);
             } else {
                 println("The command doesn't match the item", 0);
             }

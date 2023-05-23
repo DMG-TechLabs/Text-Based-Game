@@ -35,7 +35,7 @@ class UnlockableItem {
     public:
         int passcode;
         bool isLocked;
-        virtual bool enterPasscode(int passcode) = 0;
+        virtual bool enterPasscode() = 0;
         virtual void unlock() = 0;
 };
 
@@ -107,10 +107,10 @@ class Door : public Item, public OpenableItem, public UnlockableItem {
 
         int getPasscode();
         void setPasscode(int passcode);
-        void enterPasscode(int passcode, Player *player);
+        void enterPasscode(Player *player);
 
         void unlock() override;
-        bool enterPasscode(int passcode) override;
+        bool enterPasscode() override;
         void open(Player *player) override;
 };
 
