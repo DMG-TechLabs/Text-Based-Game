@@ -24,7 +24,6 @@ void Safe::enterPassword(){
     if(this->isLocked){
         if(this->enterPasscode()){
             println("Safe unlocked");
-            return;
         }
         return;
     }

@@ -22,9 +22,13 @@ void Door::setPasscode(int passcode){
 }
 
 void Door::enterPasscode(Player *player){
-    if(this->enterPasscode()){
-        player->currentNode->unlock();
+    if(this->isLocked == true){
+        if(this->enterPasscode()){
+            player->currentNode->unlock();
+        }
+        return;
     }
+    println("The door is already unlocked");
 }
 
 

@@ -32,7 +32,7 @@ void Map::initMap() {
         "\nThen you decide to rest on the bed. It makes a screeching sound when you sit. "
         "\nAll of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper."
         "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
-    node6->addItem(new Door(1234));
+    node6->addItem(new Door(true, 1234));
     node6->addItem(new Terminal('$', "Description", {"exit", "list"}));
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
