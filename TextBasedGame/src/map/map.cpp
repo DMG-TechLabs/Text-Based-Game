@@ -36,7 +36,7 @@ void Map::initMap() {
     node6->addItem(new Terminal('$', "Description", {"exit", "list"}));
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
-    node6->addItem(new Safe(4321));
+    node6->addItem(new Safe(4321, "An old locked safe"));
     
     vector<Note*> board;
     

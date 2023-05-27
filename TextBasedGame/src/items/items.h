@@ -162,7 +162,15 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
         int passcode;
 
     public:
+        string description;
+
         ~Safe(){}
+        Safe(int passcode, string description) : Item("safe"){
+            if(passcode > 10000) passcode = -1;
+
+            this->passcode = passcode;
+            this->description = description;
+        }
         Safe(int passcode, bool isLocked = true) : Item("safe"){
             if(passcode > 10000) passcode = -1;
 
@@ -171,8 +179,11 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
         }
 
         int getPasscode();
+        string getDescription();
+        void enterPassword();
 
         void inspect() override;   
         bool enterPasscode() override;   
+        
         void unlock() override;
 };
