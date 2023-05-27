@@ -53,6 +53,7 @@ class SaveableItem {
 class BundleItem {
     public:
         virtual void inspect() = 0;
+        virtual void inspect(Player *player) = 0;
 };
 
 
@@ -154,7 +155,8 @@ class Board : public Item, public BundleItem {
             this->board = board;
         }
 
-        void inspect() override;      
+        void inspect() override;     
+        void inspect(Player *player) override;
 };
 
 class Safe : public Item, public BundleItem, public UnlockableItem {
@@ -163,8 +165,18 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
 
     public:
         string description;
+        vector<Note*> safe;
 
         ~Safe(){}
+        Safe(){}
+        Safe(int passcode, string description, vector<Note*> safe, bool isLocked = true) : Item("safe"){
+            if(passcode > 10000) passcode = -1;
+
+            this->passcode = passcode;
+            this->description = description;
+            this->safe = safe;
+            this->isLocked = isLocked;
+        }
         Safe(int passcode, string description) : Item("safe"){
             if(passcode > 10000) passcode = -1;
 
@@ -182,7 +194,8 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
         string getDescription();
         void enterPassword();
 
-        void inspect() override;   
+        void inspect() override;
+        void inspect(Player *player) override;   
         bool enterPasscode() override;   
         
         void unlock() override;

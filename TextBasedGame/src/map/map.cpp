@@ -36,21 +36,30 @@ void Map::initMap() {
     node6->addItem(new Terminal('$', "Description", {"exit", "list"}));
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
-    node6->addItem(new Safe(4321, "An old locked safe"));
-    
+
     vector<Note*> board;
     
-    Note *note1 = new Note("note1", "description", "text1");
-    Note *note2 = new Note("note2", "description", "text2");
-    Note *note3 = new Note("note3", "description", "text3");
-    Note *note4 = new Note("note4", "description", "text4");
+    Note *board_note1 = new Note("note1", "description", "text1");
+    Note *board_note2 = new Note("note2", "description", "text2");
+    Note *board_note3 = new Note("note3", "description", "text3");
+    Note *board_note4 = new Note("note4", "description", "text4");
     
-    board.push_back(note1);
-    board.push_back(note2);
-    board.push_back(note3);
-    board.push_back(note4);
+    board.push_back(board_note1);
+    board.push_back(board_note2);
+    board.push_back(board_note3);
+    board.push_back(board_note4);
     
     node6->addItem(new Board(board));
+
+    vector<Note*> safe;
+
+    Note *safe_note1 = new Note("NOTE1", "description", "TEXT1");
+    Note *safe_note2 = new Note("NOTE2", "description", "TEXT2");
+
+    safe.push_back(safe_note1);
+    safe.push_back(safe_note2);
+
+    node6->addItem(new Safe(4321, "An old locked safe", safe));
     
     Node *node7 = new Node(7, "Room 7", true);
     node7->addItem(new Door());
