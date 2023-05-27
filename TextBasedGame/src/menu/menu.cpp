@@ -46,9 +46,19 @@ void handlePauseOptions(int selectedItem){
             return;
         case 1:
             Engine::println("Manual selected", 0);
+
+            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            cin.get();
+
+            demoMenu();    
             break;
         case 2:
             Engine::println("Achievements selected", 0);
+
+            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            cin.get();
+
+            demoMenu();    
             break;
         case 3:
             Engine::println("Quiting game...");
