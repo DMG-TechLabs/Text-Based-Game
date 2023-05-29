@@ -82,7 +82,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             } else if(response.command == "inspect" && response.args.at(0) == "board" && bi != NULL){
                 dynamic_cast<Board *>(bi)->inspect();
             } else if(response.command == "inspect" && response.args.at(0) == "safe" && bi!=NULL){
-                dynamic_cast<Safe *>(bi)->inspect();
+                dynamic_cast<Safe *>(bi)->inspect(player);
             } else if(response.command == "inspect"){
                 println(item_ptr->getDescription());
             } else if(response.command == "save" && si != NULL){

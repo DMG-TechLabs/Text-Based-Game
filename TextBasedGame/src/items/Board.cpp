@@ -7,3 +7,7 @@ void Board::inspect(){
         println(Text::blue + board.at(i)->getItemId() + Text::normal + "\n" + board.at(i)->contents + "\n", 0);
     }
 }
+
+void Board::inspect(Player *player){
+    println(player->currentNode->description);
+}

@@ -8,6 +8,18 @@ void Safe::inspect(){
     println("An old locked safe", 0);
 }
 
+void Safe::inspect(Player *player){
+    if(this->isLocked){
+        inspect();
+        return;
+    }
+
+    for (int i = 0; i < safeItems.size(); i++){
+        player->currentNode->addItem(safeItems.at(i));
+        println(Text::blue + safeItems.at(i)->getItemId() + Text::normal + "\n", 0);
+    }
+}
+
 void Safe::unlock(){
     this->isLocked = false;
 }
