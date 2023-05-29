@@ -47,3 +47,4 @@ set(SOURCES
 
 add_executable(TextBasedGame ${SOURCES})
 target_link_libraries(TextBasedGame TextBasedGameEngine)
+target_link_libraries(TextBasedGame MastermindMinigame)

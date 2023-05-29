@@ -11,7 +11,7 @@
 
 #include "controls.h"
 
-int handleKeys() {
+int Mastermind::handleKeys() {
     #ifdef _WIN32
         switch (getchar()) {
             case 13:
@@ -51,9 +51,10 @@ int handleKeys() {
                 }
         }
     #endif
+    return -1;
 }
 
-void enableInputBuffering() {
+void Mastermind::enableInputBuffering() {
     #ifdef _WIN32
         SetConsoleMode(hInput, mode);
     #else
@@ -66,7 +67,7 @@ void enableInputBuffering() {
     std::cout << "\e[?25h";  // Show the cursor
 }
 
-void disableInputBuffering() {
+void Mastermind::disableInputBuffering() {
     #ifdef _WIN32
         DWORD mode;
         HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);

@@ -7,9 +7,6 @@ set(SOURCES
     src/mastermind/ui/controls.h
     src/mastermind/ui/controls.cpp
 
-    src/mastermind/text/text.h
-    src/mastermind/text/text.cpp
-
     src/mastermind/game/game.h
     src/mastermind/game/game.cpp
     

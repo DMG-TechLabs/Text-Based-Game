@@ -18,7 +18,7 @@ string render(string word, string characters) {
     int selected = 0;
     int *indexes = new int[numOfCharacters];
 
-    disableInputBuffering();
+    Mastermind::disableInputBuffering();
 
     // start every character from 'a'
     for (int i = 0; i < numOfCharacters; i++) {
@@ -33,7 +33,7 @@ string render(string word, string characters) {
         }
 
         // Handle user input
-        int keyPressed = handleKeys();
+        int keyPressed = Mastermind::handleKeys();
         switch (keyPressed) {
             case KEY_LEFT:
                 selected = (selected == 0) ? numOfCharacters - 1 : selected - 1;
@@ -52,7 +52,7 @@ string render(string word, string characters) {
                                         : indexes[selected] - 1;
                 break;
             case ENTER:
-                enableInputBuffering();
+                Mastermind::enableInputBuffering();
                 return makeWord(indexes, characters, numOfCharacters);
         }
     }
