@@ -1,10 +1,8 @@
 #pragma once
 
 #include <vector>
-#include "../../Text-Based-Game-Engine/Engine/src/player/player.h"
 #include "../map/map.h"
-#include "../../Text-Based-Game-Engine/Engine/src/node/node.h"
-#include "../mission/mission.h"
+#include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
 using namespace Engine;
 

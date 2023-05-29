@@ -33,27 +33,20 @@ void Map::initMap() {
         "\nAll of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper."
         "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
     node6->addItem(new Door(true, 1234));
-    node6->addItem(new Terminal('$', "Description", {"exit", "list"}));
+    node6->addItem(new Terminal('$', "Description", {"exit"}));
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
 
     vector<Item *> board;
-    
     board.push_back(new Note("note1", "description", "text1"));
     board.push_back(new Note("note2", "description", "text2"));
     board.push_back(new Note("note3", "description", "text3"));
     board.push_back(new Note("note4", "description", "text4"));
-    
     node6->addItem(new Board("The board", board));
 
     vector<Item*> safe;
-
-    Note *safe_note1 = new Note("NOTE1", "description", "TEXT1");
-    Note *safe_note2 = new Note("NOTE2", "description", "TEXT2");
-
-    safe.push_back(safe_note1);
-    safe.push_back(safe_note2);
-
+    safe.push_back(new Note("NOTE1", "description", "TEXT1"));
+    safe.push_back(new Note("NOTE2", "description", "TEXT2"));
     node6->addItem(new Safe(4321, "An old locked safe", safe));
     
     Node *node7 = new Node(7, "Room 7", true);

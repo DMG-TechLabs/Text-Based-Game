@@ -35,16 +35,43 @@ void Day::demo(Player *player, Map *map){
 
     FormattedPrint::playerTalking("Anyways... Let's search the room");
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect", "unlock", "search"};
+
+    vector<Objective *> objectives = {
+        new Objective("1. Ask for help"),
+        new Objective("2. Inspect the note besides the terminal"),
+        new Objective("3. Read the note"),
+        new Objective("4. Collect the note"),
+        new Objective("5. Open your inventory")
+    };
+    Mission m{"Tutorial", "The tutorial", objectives};
+    Objective::printObjectives(objectives);
+
+    player->setMission(&m);
+
+
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect", "unlock", "search", "objectives"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
     Command::run(r, p, player);
 
-    
+    Objective::completeObjective((r.command == "help"), objectives, 0);
+    Objective::completeObjective((r.command == "inspect" && r.args.at(0) == "note"), objectives, 1);
+    Objective::completeObjective((r.command == "read" && r.args.at(0) == "note"), objectives, 2);
+    Objective::completeObjective((r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
+    Objective::completeObjective((r.command == "inventory"), objectives, 4);
+
     int current_node = player->currentNode->id;
     while(current_node == player->currentNode->id && r.command != "sleep"){
         r = prompt(p, command_list, false);
         Command::run(r, p, player);
+
+
+
+        Objective::completeObjective((r.command == "help"), objectives, 0);
+        Objective::completeObjective((r.command == "inspect" && r.args.at(0) == "note"), objectives, 1);
+        Objective::completeObjective((r.command == "read" && r.args.at(0) == "note"), objectives, 2);
+        Objective::completeObjective((r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
+        Objective::completeObjective((r.command == "inventory"), objectives, 4);
     }
 }
 
@@ -82,8 +109,20 @@ void cutscene_one(Prompt p, Response r, Player *player){
     FormattedPrint::typingInTerminal("terminal", "...");
 
     FormattedPrint::typingInTerminal("player", "PLEASE");
-    // more stuff here
-    FormattedPrint::typingInTerminal("terminal", "We'll talk soon");
+    
+    FormattedPrint::typingInTerminal("terminal", "If you want to talk again, complete these tasks for me");
+
+    FormattedPrint::typingInTerminal("terminal", "1. Ask for help");
+
+    FormattedPrint::typingInTerminal("terminal", "2. Inspect the note besides the terminal");
+
+    FormattedPrint::typingInTerminal("terminal", "3. Read the note");
+
+    FormattedPrint::typingInTerminal("terminal", "4. Collect the note");
+
+    FormattedPrint::typingInTerminal("terminal", "5. Open your inventory");
+
+    FormattedPrint::typingInTerminal("terminal", "We'll talk soon...");
 
     println("Exiting...\n");
 }

@@ -15,11 +15,6 @@ set(SOURCES
     src/achievements/achievement_collection.h
     src/achievements/achievement_collection.cpp
 
-    src/mission/mission.h
-    src/mission/mission.cpp
-    src/mission/Objective.h
-    src/mission/Objective.cpp
-
     src/map/map.h
     src/map/map.cpp
 
