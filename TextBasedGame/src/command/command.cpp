@@ -90,10 +90,10 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 println(item_ptr->getDescription());
             } else if(response.command == "save" && si != NULL){
                 si->save();
-            } else if(response.command == "unlock" && ui != NULL){
-                ui->enterPasscode();
             } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
                 dynamic_cast<Door *>(ui)->enterPasscode(player);
+            } else if(response.command == "unlock" && ui != NULL){
+                ui->enterPasscode();
             } else if(response.command == "search" && sei != NULL) {
                 sei->search(player);
             } else {
