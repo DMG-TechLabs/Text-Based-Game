@@ -1,16 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <unistd.h>
-#include <thread>
-#include <atomic>
-
-#ifdef _WIN32
-    #include <conio.h>
-#else
-    #include <termios.h>
-    #include <unistd.h>
-    #include <fcntl.h>
-#endif
 
 #include "../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "./command/command.h"
