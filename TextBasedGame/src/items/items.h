@@ -16,9 +16,23 @@ static const vector<string> items_list = {
 };
 
 /* Interfaces */
+class SearchableItem {
+    public:
+        virtual void search(Player *player) = 0;
+        virtual void run(Response response, Prompt p, Player *player) = 0;
+};
+
+class BundleItem {
+    public:
+        vector<Item *> bundle_items;
+        virtual void printItems() = 0;
+};
+
+
 class CollectableItem {
     public:
         virtual void collect(Player *player) = 0;
+        virtual void collect(Player *player, BundleItem *bundle) = 0;
 };
 
 class ReadableItem {
@@ -50,11 +64,6 @@ class SaveableItem {
         virtual void save() = 0;
 };
 
-class BundleItem {
-    public:
-        virtual void inspect() = 0;
-        virtual void inspect(Player *player) = 0;
-};
 
 
 /* Items */
@@ -73,6 +82,7 @@ class Note : public Item, public ReadableItem, public CollectableItem{
 
         void saveNote(string note_name);
         void collect(Player *player) override;
+        void collect(Player *player, BundleItem *bundle) override;
         void readContents() override;
 };
 
@@ -145,34 +155,38 @@ class File : public Item, public ReadableItem, public SaveableItem {
         void save() override;
 };
 
-class Board : public Item, public BundleItem {
+class Board : public Item, public BundleItem, public SearchableItem {
     public:
-        vector<Note*> board;
-
         ~Board(){}
         Board(){}
-        Board(vector<Note*> board) : Item("board"){
-            this->board = board;
+        Board(vector<Item *> boardItems) : Item("board"){
+            this->bundle_items = boardItems;
+        }
+        
+        Board(string description, vector<Item *> boardItems) : Item("board", description){
+            this->bundle_items = boardItems;
         }
 
-        void inspect() override;     
-        void inspect(Player *player) override;
+        Board(string description) : Item("board", description){
+        }
+
+        void search(Player *player) override;
+        void run(Response response, Prompt p, Player *player) override;
+        void printItems() override;
 };
 
-class Safe : public Item, public BundleItem, public UnlockableItem {
+class Safe : public Item, public BundleItem, public UnlockableItem, public SearchableItem {
     public:
-        vector<Item *> safeItems;
-
         ~Safe(){}
         Safe(){}
-        Safe(int passcode, string description, vector<Item *> safeItems, bool isLocked = true) : Item("safe"){
+        Safe(int passcode, string description, vector<Item *> safeItems, bool isLocked = true) : Item("safe", description){
             if(passcode > 10000) passcode = -1;
 
-            this->safeItems = safeItems;
+            this->bundle_items = safeItems;
             this->passcode = passcode;
             this->isLocked = isLocked;
         }
-        Safe(int passcode, string description) : Item("safe"){
+        Safe(int passcode, string description) : Item("safe", description){
             if(passcode > 10000) passcode = -1;
 
             this->passcode = passcode;
@@ -184,10 +198,10 @@ class Safe : public Item, public BundleItem, public UnlockableItem {
             this-> isLocked = isLocked;
         }
 
-        void Safe::inspect(Player *player);
 
-        void inspect() override;   
+        void search(Player *player) override;
+        void run(Response response, Prompt p, Player *player) override;
+        void printItems() override;
         bool enterPasscode() override;   
-        
         void unlock() override;
 };

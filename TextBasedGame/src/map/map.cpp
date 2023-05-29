@@ -37,19 +37,14 @@ void Map::initMap() {
     node6->addItem(new Note("", "Description", "ds5yA!bTc"));
     node6->addItem(new Bed("The description"));
 
-    vector<Note*> board;
+    vector<Item *> board;
     
-    Note *board_note1 = new Note("note1", "description", "text1");
-    Note *board_note2 = new Note("note2", "description", "text2");
-    Note *board_note3 = new Note("note3", "description", "text3");
-    Note *board_note4 = new Note("note4", "description", "text4");
+    board.push_back(new Note("note1", "description", "text1"));
+    board.push_back(new Note("note2", "description", "text2"));
+    board.push_back(new Note("note3", "description", "text3"));
+    board.push_back(new Note("note4", "description", "text4"));
     
-    board.push_back(board_note1);
-    board.push_back(board_note2);
-    board.push_back(board_note3);
-    board.push_back(board_note4);
-    
-    node6->addItem(new Board(board));
+    node6->addItem(new Board("The board", board));
 
     vector<Item*> safe;
 

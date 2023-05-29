@@ -23,7 +23,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     EnterableItem *ei;
     SaveableItem *si;
     UnlockableItem *ui;
-    Bed *b;
+    SearchableItem *sei;
     BundleItem *bi;
 
     if(sizeof(response) == 0){
@@ -67,8 +67,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             oi = dynamic_cast<OpenableItem *>(item_ptr);
             ei = dynamic_cast<EnterableItem *>(item_ptr);
             si = dynamic_cast<SaveableItem *>(item_ptr);
-            b = dynamic_cast<Bed *>(item_ptr);
             ui = dynamic_cast<UnlockableItem *>(item_ptr);
+            sei = dynamic_cast<SearchableItem *>(item_ptr);
             bi = dynamic_cast<BundleItem *>(item_ptr);
             
             if (response.command == "read" && ri != NULL) {
@@ -79,18 +79,16 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 oi->open(player);
             } else if(response.command == "enter" && ei != NULL){
                 ei->enter(player);
-            } else if(response.command == "inspect" && response.args.at(0) == "board" && bi != NULL){
-                dynamic_cast<Board *>(bi)->inspect();
-            } else if(response.command == "inspect" && response.args.at(0) == "safe" && bi!=NULL){
-                dynamic_cast<Safe *>(bi)->inspect(player);
             } else if(response.command == "inspect"){
                 println(item_ptr->getDescription());
             } else if(response.command == "save" && si != NULL){
                 si->save();
-            } else if(response.command == "unlock" && ui != NULL){ //Unlocking anything
+            } else if(response.command == "unlock" && ui != NULL){
                 ui->enterPasscode();
             } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
                 dynamic_cast<Door *>(ui)->enterPasscode(player);
+            } else if(response.command == "search" && sei != NULL) {
+                sei->search(player);
             } else {
                 println("The command doesn't match the item", 0);
             }

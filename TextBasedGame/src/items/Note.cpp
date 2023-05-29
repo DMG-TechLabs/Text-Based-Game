@@ -16,6 +16,13 @@ void Note::collect(Player *player){
     println("Note added to inventory", 0);
 }
 
+void Note::collect(Player *player, BundleItem *bundle){
+    player->collectItem(this);
+    bundle->bundle_items.erase(bundle->bundle_items.begin() + matchItemByName(this->getName(), bundle->bundle_items)); // Delete item from bundle
+
+    println("Note added to inventory", 0);
+}
+
 void Note::readContents(){
     println(Text::bold + "The following is written on the note:" + Text::normal, 0);
     println(this->contents);
