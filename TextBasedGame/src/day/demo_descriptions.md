@@ -31,3 +31,5 @@ You decide to take a step back. You notice the board. It has a few pins laying a
 Then you decide to rest on the bed. It makes a screeching sound when you sit. 
 All of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper.
 You take a closer look. It's actually a note. 
+
+## End of day
