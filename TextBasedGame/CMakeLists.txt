@@ -6,6 +6,7 @@ project(TextBasedGame)
 set(LIB_CMAKE_PATH "Text-Based-Game-Engine/Engine/CMakeLists.txt")
 
 include(${LIB_CMAKE_PATH})
+include("./src/mastermind/CMakeLists.txt")
 
 
 # Add source files
@@ -29,7 +30,8 @@ set(SOURCES
     src/items/Safe.cpp
 
     src/day/day.h
-    src/day/demo.cpp
+    src/day/day1.cpp
+    src/day/day2.cpp
 
     src/menu/menu.h
     src/menu/menu.cpp

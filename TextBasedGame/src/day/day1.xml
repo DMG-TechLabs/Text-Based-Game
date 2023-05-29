@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<map>
+    <node number="1" locked="true">
+        <description>
+
+        </description>
+        <itemlist>
+        
+        </itemlist>
+    </node>
+
+    <node number="6" locked="true">
+        <description>
+            You look around you. You decide to examine the corner where the <blue>terminal</blue> is.
+            There is a table there and a chair. You decide to take a closer look.
+            The chair looks rusty and the table looks old and dusty. It feels like everything is going to collapse anytime soon.
+            You decide to take a step back. You notice the <blue>board</blue>. It has a few pins laying around. All in all, nothing special.
+            Then you decide to rest on the bed. It makes a screeching sound when you sit.
+            All of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper.
+            You take a closer look. It's actually a <blue>note</blue>.
+        </description>
+        <itemlist>
+            <item id="" type="door">
+                <description>
+                
+                </description>
+                <passcode>
+                
+                </passcode>
+            </item>
+            <item id="" type="note">
+                <description>
+                
+                </description>
+                <content>
+                
+                </content>
+            </item>
+            <item id="" type="terminal">
+                <description>
+                
+                </description>
+            </item>
+            <item id="" type="bed">
+                <description>
+                
+                </description>
+            </item>
+            <item id="" type="board">
+                <description>
+                
+                </description>
+                <itemlist>
+
+                </itemlist>
+            </item>
+            <item id="" type="safe">
+                <description>
+                
+                </description>
+                <itemlist>
+                    
+                </itemlist>
+                <passcode>
+                
+                </passcode>
+            </item>
+        </itemlist>
+    </node>
+</map>

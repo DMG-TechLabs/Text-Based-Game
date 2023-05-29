@@ -18,7 +18,7 @@ string getPlayerName(){
     return player_name;
 }
 
-void Day::demo(Player *player, Map *map){
+void Day::dayOne(Player *player, Map *map){
     Prompt p;
     p.prompt_char = '>';
     Response r;
@@ -74,6 +74,7 @@ void Day::demo(Player *player, Map *map){
         Objective::completeObjective((r.command == "inventory"), objectives, 4);
     }
 }
+
 
 void cutscene_one(Prompt p, Response r, Player *player){
     println("You wake up tired in a room you've never seen before.");

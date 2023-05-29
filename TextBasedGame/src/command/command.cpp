@@ -39,6 +39,11 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             else if (response.command == "inventory")
                 player->getInventory().printInventory();
             else if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
+                if(!player->getMission()->isCompleted()){
+                    println("Complete your objectives first", 0);
+                    return;
+                }
+
                 dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
             } else if(response.command == "objectives"){
                 Objective::printObjectives(player->getMission()->objectives);
