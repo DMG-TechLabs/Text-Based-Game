@@ -4,14 +4,6 @@
 
 bool isNumber(string s);
 
-int Safe::getPasscode(){
-    return passcode;
-}
-
-string Safe::getDescription(){
-    return description;
-}
-
 void Safe::inspect(){
     println("An old locked safe", 0);
 }
@@ -20,32 +12,28 @@ void Safe::unlock(){
     this->isLocked = false;
 }
 
-void Safe::enterPassword(){
-    if(this->isLocked){
-        if(this->enterPasscode()){
-            println("Safe unlocked");
-        }
-        return;
-    }
-    println("Safe is already unlocked");
-}
-
 bool Safe::enterPasscode(){
     string passcode;
+    if(!this->isLocked) {
+        println("Safe is already unlocked", 0);
+        return true;
+    }
+    
     print("Enter passcode: ");
     getline(cin, passcode);
+
 
     if(!isNumber(passcode)){
         println("Invalid passcode", 0);
         return false;
     }
 
-
-    if(stoi(passcode) != this->getPasscode()) {
+    if(stoi(passcode) != this->passcode) {
         println("Wrong passcode");
         return false;
     } else {
         this->unlock();
+        println("Safe unlocked", 0);
         return true;
     }
 }

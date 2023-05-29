@@ -87,8 +87,8 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 println(item_ptr->getDescription());
             } else if(response.command == "save" && si != NULL){
                 si->save();
-            } else if(response.command == "unlock" && response.args.at(0) == "safe" && ui != NULL){ //Unlocking anything
-                dynamic_cast<Safe *>(ui)->enterPassword();
+            } else if(response.command == "unlock" && ui != NULL){ //Unlocking anything
+                ui->enterPasscode();
             } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
                 dynamic_cast<Door *>(ui)->enterPasscode(player);
             } else {

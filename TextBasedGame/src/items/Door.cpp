@@ -22,7 +22,7 @@ void Door::setPasscode(int passcode){
 }
 
 void Door::enterPasscode(Player *player){
-    if(this->isLocked == true){
+    if(this->isLocked){
         if(this->enterPasscode()){
             player->currentNode->unlock();
         }
