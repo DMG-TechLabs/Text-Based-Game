@@ -29,7 +29,7 @@ void Day::dayOne(Player *player, Map *map){
 
     Text::clearScreen();
 
-    cutscene_one(p, r, player);
+    //cutscene_one(p, r, player);
 
     Text::clearScreen();
 

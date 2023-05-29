@@ -112,7 +112,14 @@ class Door : public Item, public OpenableItem, public UnlockableItem {
 
             this->passcode = passcode;
         }
-        Door(bool isLocked, int passcode) : Item("door"){
+        
+        Door(int passcode, string description) : Item("door", description){
+            if(passcode > 10000) passcode = -1;
+
+            this->passcode = passcode;
+        }
+        
+        Door(bool isLocked, int passcode, string description) : Item("door", description){
             if(passcode > 10000) passcode = -1;
 
             this->isLocked = isLocked;
@@ -133,7 +140,7 @@ class Bed : public Item {
         string epilogue;
 
         ~Bed(){}
-        Bed(string epilogue) : Item("bed"){
+        Bed(string epilogue, string description) : Item("bed", description){
             this->epilogue = epilogue;
         }
 

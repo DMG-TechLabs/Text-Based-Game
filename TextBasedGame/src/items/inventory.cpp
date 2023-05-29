@@ -16,16 +16,16 @@ void Engine::Inventory::printInventory() {
             cout << InventoryUtils::defaultPrint(items.at(i), this);
             ReadableItem *ri = dynamic_cast<ReadableItem *>(items.at(i));
             if(ri != NULL){
-                cout << ", Contents: " << ri->contents;
+                cout << "\nContents: " << ri->contents;
             }
-            cout << endl;
+            cout << endl << endl;
         }
         passed.push_back(*items.at(i));
     }
 }
 
 string InventoryUtils::defaultPrint(Item *i, Inventory *inventory){
-    return "Type: " + i->getName() + ", Quantity: " + to_string(inventory->getQuantity(i)) + ", Description: " + i->getDescription();
+    return "Type: " + i->getName() + "\nQuantity: " + to_string(inventory->getQuantity(i)) + "\nDescription: " + i->getDescription();
 }
 
 // Utils

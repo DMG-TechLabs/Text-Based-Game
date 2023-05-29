@@ -1,11 +1,10 @@
-#include "../items/items.h"
 #include "map.h"
+
+#include "../items/items.h"
 
 using namespace Engine;
 
-
 string nodesToString(vector<Node *> nodes);
-
 
 void Map::initMap() {
     // Init nodes
@@ -25,30 +24,73 @@ void Map::initMap() {
     node5->addItem(new Door());
 
     Node *node6 = new Node(6, "Room 6", false);
-    node6->description = "You look around you. You decide to examine the corner where the "+ Text::blue +"terminal"+ Text::normal + " is."  
-        "\nThere is a table there and a chair. You decide to take a closer look."
-        "\nThe chair looks rusty and the table looks old and dusty. It feels like everything is going to collapse anytime soon. "
-        "\nYou decide to take a step back. You notice the "+ Text::blue + "board"+ Text::normal + ". It has a few pins laying around. All in all, nothing special. "
-        "\nThen you decide to rest on the bed. It makes a screeching sound when you sit. "
-        "\nAll of a sudden, you get a glimpse of something laying on the floor. It's a piece of paper."
-        "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
-    node6->addItem(new Door(true, 1234));
+    node6->description =
+        "You look around you. You decide to examine the corner where the " +
+        Text::blue + "terminal" + Text::normal +
+        " is."
+        "\nThere is a table there and a chair. You decide to take a closer "
+        "look."
+        "\nThe chair looks rusty and the table is old and dusty."
+        "\nIt feels like everything is going to collapse anytime soon."
+        "\nYou decide to take a step back.In the right corner of the room, "
+        "there is a " +
+        Text::blue + "safe" + Text::normal +
+        ". "
+        "\nIt has some rough spots where the colour has faded to copperish red."
+        "\nIt's locked. Above that, you notice the " +
+        Text::blue + "board" + Text::normal +
+        ". It has a few pins laying around with"
+        "\nsome old notes attached.All in all, nothing special.Then you decide "
+        "to rest on the"
+        "\nbed.It makes a \"screeching\" sound when you sit. Besides the "
+        "terminal lies a piece of paper. You take a closer"
+        "\nlook. It's actually a " +
+        Text::blue + "note" + Text::normal + ".";
+
+    node6->addItem(new Door(
+        true, 1234,
+        "A really tall metal door. It's surprisingly in a better condition"
+        "\nthan the rest of the room. It has a few rusty spots here and "
+        "there "
+        "\nbut all in all it's fine. It needs a combination to unlock it."));
     node6->addItem(new Terminal('$', "Description", {"exit"}));
-    node6->addItem(new Note("", "Description", "dmg-techlabs.theworkpc.com/gamesite\n\n8rb3jdsu"));
-    node6->addItem(new Bed("The description"));
+    node6->addItem(
+        new Note("",
+                 "It's a piece of paper. It's wrinckly and its colour turned "
+                 "yellow. The bottom right corner is folded.",
+                 "dmg-techlabs.theworkpc.com/gamesite - 8rb3jdsu"));
+    node6->addItem(new Bed(
+        "Worn-out you deside to call it a day. You are now laying on the bed "
+        "\nlooking at the ceiling, thinking about today."
+        "Am I dreaming? Or is this a sick joke?' you wonder to yourself. "
+        "Your thoughts start rushing but the exhaustion overtakes you."
+        "\nYou dozed off hoping this will just be a bad dream. Tommorow is a "
+        "new day after all...",
+        "\nAn ordinary cheap looking metal bed with a really thin matress. "
+        "It's "
+        "\numcomfortable to sit there for an extended period of time. When you "
+        "\nsit on it, it makes a loud piercing noise."));
 
     vector<Item *> board;
     board.push_back(new Note("note1", "description", "text1"));
     board.push_back(new Note("note2", "description", "text2"));
     board.push_back(new Note("note3", "description", "text3"));
     board.push_back(new Note("note4", "description", "text4"));
-    node6->addItem(new Board("The board", board));
+    node6->addItem(
+        new Board("A regular board made from soft material. There are pins "
+                  "with notes attached to them. There are a few free pins too. "
+                  "Who knows? You might need them later.",
+                  board));
 
-    vector<Item*> safe;
+    vector<Item *> safe;
     safe.push_back(new Note("NOTE1", "description", "TEXT1"));
     safe.push_back(new Note("NOTE2", "description", "TEXT2"));
-    node6->addItem(new Safe(4321, "An old locked safe", safe));
-    
+    node6->addItem(
+        new Safe(4321,
+                 "A worn-out safe. The paint has faded in some spots. Due to "
+                 "oxidation, the colour turned cooper red. It's locked.",
+                 safe));
+
     Node *node7 = new Node(7, "Room 7", true);
     node7->addItem(new Door());
 
@@ -68,11 +110,13 @@ void Map::initMap() {
 
 void printMap(Map map) {
     for (int i = 0; i < map.nodes.size(); i++) {
-        println("ID: " + to_string(map.nodes.at(i)->id) +
+        println(
+            "ID: " + to_string(map.nodes.at(i)->id) +
                 ", Description: " + map.nodes.at(i)->description +
                 ", Unlocked: " + to_string(map.nodes.at(i)->isAccessible()) +
                 ", Accessible Nodes: " +
-                nodesToString(map.nodes.at(i)->accessible_nodes), 0);
+                nodesToString(map.nodes.at(i)->accessible_nodes),
+            0);
     }
 }
 
