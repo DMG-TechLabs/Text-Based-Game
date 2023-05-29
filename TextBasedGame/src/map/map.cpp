@@ -34,7 +34,7 @@ void Map::initMap() {
         "\nYou take a closer look. It's actually a " + Text::blue + "note. " + Text::normal;
     node6->addItem(new Door(true, 1234));
     node6->addItem(new Terminal('$', "Description", {"exit"}));
-    node6->addItem(new Note("", "Description", "ds5yA!bTc"));
+    node6->addItem(new Note("", "Description", "dmg-techlabs.theworkpc.com/gamesite\n\n8rb3jdsu"));
     node6->addItem(new Bed("The description"));
 
     vector<Item *> board;

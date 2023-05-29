@@ -33,6 +33,7 @@ class CollectableItem {
     public:
         virtual void collect(Player *player) = 0;
         virtual void collect(Player *player, BundleItem *bundle) = 0;
+        virtual void collect(Player *player, BundleItem *bundle, int index) = 0;
 };
 
 class ReadableItem {
@@ -83,6 +84,7 @@ class Note : public Item, public ReadableItem, public CollectableItem{
         void saveNote(string note_name);
         void collect(Player *player) override;
         void collect(Player *player, BundleItem *bundle) override;
+        void collect(Player *player, BundleItem *bundle, int index) override;
         void readContents() override;
 };
 

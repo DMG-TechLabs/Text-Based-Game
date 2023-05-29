@@ -29,6 +29,5 @@ void Board::run(Response response, Prompt p, Player *player){
 }
 
 string BoardUtils::defaultPrint(Item *i, int index) {
-    return to_string(index + 1) + ". Type: " + i->getName() +
-           ", Description: " + i->getDescription();
+    return to_string(index + 1) + ". Type: " + i->getName();
 }

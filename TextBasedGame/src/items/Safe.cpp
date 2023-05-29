@@ -6,6 +6,7 @@ bool exists(vector<Item> vector, Item *item);
 bool isNumber(string s);
 string defaultPrint(Item *i, int index);
 int matchItem(vector<Item *> items, string name, int index = -1);
+void printAvailableCommands(Prompt p);
 }  // namespace SafeUtils
 
 void Safe::search(Player *player) {
@@ -18,7 +19,7 @@ void Safe::search(Player *player) {
     printItems();
 
     Prompt p;
-    p.prompt_char = '-';
+    p.prompt_char = '#';
     p.accepted_commands = {"collect", "exit", "help"};
     Response r;
 
@@ -35,12 +36,15 @@ void Safe::run(Response response, Prompt p, Player *player) {
         case 0:
             if (response.command == "exit") {
                 return;
+            } else if (response.command == "help") {
+                SafeUtils::printAvailableCommands(p);
             }
             break;
         case 1:
-            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(SafeUtils::matchItem(this->bundle_items, response.args.at(0))));
+            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(
+                SafeUtils::matchItem(this->bundle_items, response.args.at(0))));
 
-            if(response.command == "collect" && ci != NULL){
+            if (response.command == "collect" && ci != NULL) {
                 ci->collect(player, this);
 
             } else {
@@ -49,10 +53,12 @@ void Safe::run(Response response, Prompt p, Player *player) {
 
             break;
         case 2:
-            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(SafeUtils::matchItem(this->bundle_items, response.args.at(0), stoi(response.args.at(1)))));
+            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(
+                SafeUtils::matchItem(this->bundle_items, response.args.at(0),
+                                     stoi(response.args.at(1)))));
 
-            if(response.command == "collect" && ci != NULL){
-                ci->collect(player, this);
+            if (response.command == "collect" && ci != NULL) {
+                ci->collect(player, this, stoi(response.args.at(1)) - 1);
             } else {
                 println("The command doesn't match the item", 0);
             }
@@ -105,19 +111,27 @@ bool Safe::enterPasscode() {
 int SafeUtils::matchItem(vector<Item *> items, string name, int index) {
     if (index == -1) {
         for (int i = 0; i < items.size(); i++) {
-            if(name == items.at(i)->getName()){
+            if (name == items.at(i)->getName()) {
                 return i;
             }
         }
         return -1;
     }
 
-    if(index > items.size() || index < 1) return -2;
+    if (index > items.size() || index < 1) return -2;
 
-    if(items.at(index-1)->getName() == name) return index-1;
+    if (items.at(index - 1)->getName() == name) return index - 1;
 
     println("Item does not match the number given", 0);
     return -1;
+}
+
+void SafeUtils::printAvailableCommands(Prompt p) {
+    println("-" + Text::b_green + "Available commands" + Text::normal + "-", 0);
+    for (int i = 0; i < p.accepted_commands.size(); i++) {
+        cout << Text::red << i + 1 << ". " << Text::normal << p.accepted_commands.at(i)
+             << endl;
+    }
 }
 
 bool SafeUtils::isNumber(string s) {
