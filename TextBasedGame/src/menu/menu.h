@@ -6,4 +6,5 @@ namespace Menu{
     void mainMenu();
     void demoMenu();
     void pauseMenu();
+    void credits();
 }

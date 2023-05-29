@@ -59,3 +59,39 @@ Concept: After you complete the game you get a passcode that unlocks the safe in
 After you unlock the safe and search through the files you get the door's passcode.
 
 The moment you unlock and open the door the demo ends
+
+# Credits
+
+## A game created by
+
+Despoinidis Konstantinos
+
+Mokas Konstantinos
+
+Georgalis Athanasios
+
+Giantselidis Konstantinos
+
+## Storyboard
+
+Despoinidis Konstantinos
+
+Mokas Konstantinos
+
+Georgalis Athanasios
+
+Giantselidis Konstantinos
+
+## Game and Engine Programming
+
+Despoinidis Konstantinos
+
+Mokas Konstantinos
+
+Georgalis Athanasios
+
+Giantselidis Konstantinos
+
+## Content Writer
+
+Spiridonidou Christina-Maria
