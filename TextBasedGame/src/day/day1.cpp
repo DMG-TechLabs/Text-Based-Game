@@ -29,7 +29,7 @@ void Day::dayOne(Player *player, Map *map){
 
     Text::clearScreen();
 
-    // cutscene_one(p, r, player);
+    cutscene_one(p, r, player);
 
     Text::clearScreen();
 
@@ -83,8 +83,11 @@ void cutscene_one(Prompt p, Response r, Player *player){
 
     p.accepted_commands = {"open", "help"};
     p.message = "Open the " + Text::blue + "door" + Text::normal;
-    r = prompt(p, command_list, true);
-    Command::run(r, p, player);
+    
+    do{
+        r = prompt(p, command_list, true);
+        Command::run(r, p, player);
+    } while((r.command != "open" || r.args.at(0) != "door") && (r.command != "open" || r.args.at(0) != "noor"));
 
 
     FormattedPrint::playerTalking("Fuck!");
