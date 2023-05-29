@@ -29,7 +29,7 @@ void Day::dayOne(Player *player, Map *map){
 
     Text::clearScreen();
 
-    //cutscene_one(p, r, player);
+    // cutscene_one(p, r, player);
 
     Text::clearScreen();
 
@@ -61,7 +61,7 @@ void Day::dayOne(Player *player, Map *map){
     Objective::completeObjective((r.command == "inventory"), objectives, 4);
 
     int current_node = player->currentNode->id;
-    while(current_node == player->currentNode->id && r.command != "sleep"){
+    do{
         r = prompt(p, command_list, false);
         Command::run(r, p, player);
 
@@ -72,7 +72,7 @@ void Day::dayOne(Player *player, Map *map){
         Objective::completeObjective((r.command == "read" && r.args.at(0) == "note"), objectives, 2);
         Objective::completeObjective((r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
         Objective::completeObjective((r.command == "inventory"), objectives, 4);
-    }
+    } while(current_node == player->currentNode->id && r.command != "sleep");
 }
 
 
