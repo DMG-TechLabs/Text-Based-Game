@@ -18,9 +18,9 @@ int main() {
     while(true){
         Day::dayOne(&player, &map);
         Day::dayTwo(&player, &map);
-
         Menu::credits();
     }
     
+
     return 0;
 }

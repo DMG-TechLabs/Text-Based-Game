@@ -31,6 +31,7 @@ void Safe::search(Player *player) {
 
 void Safe::run(Response response, Prompt p, Player *player) {
     CollectableItem *ci;
+    SaveableItem *si;
 
     switch (response.args.size()) {
         case 0:
@@ -41,12 +42,14 @@ void Safe::run(Response response, Prompt p, Player *player) {
             }
             break;
         case 1:
-            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(
-                SafeUtils::matchItem(this->bundle_items, response.args.at(0))));
+            ci = dynamic_cast<CollectableItem *>(this->bundle_items.at(SafeUtils::matchItem(this->bundle_items, response.args.at(0))));
+            si = dynamic_cast<SaveableItem *>(this->bundle_items.at(SafeUtils::matchItem(this->bundle_items, response.args.at(0))));
 
             if (response.command == "collect" && ci != NULL) {
                 ci->collect(player, this);
 
+            } else if (response.command == "save" && si != NULL) {
+                si->save();
             } else {
                 println("The command doesn't match the item", 0);
             }

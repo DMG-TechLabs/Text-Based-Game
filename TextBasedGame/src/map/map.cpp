@@ -80,11 +80,11 @@ void Map::initMap() {
         new Board("A regular board made from soft material. There are pins "
                   "with notes attached to them. There are a few free pins too. "
                   "Who knows? You might need them later.",
-                  board));
+                  board)
+    );
 
     vector<Item *> safe;
-    safe.push_back(new Note("NOTE1", "description", "TEXT1"));
-    safe.push_back(new Note("NOTE2", "description", "TEXT2"));
+    safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", loadFromFile("../../assets/OPERATION_SENTINEL_SHIELD.txt")));
     node6->addItem(
         new Safe(4321,
                  "A worn-out safe. The paint has faded in some spots. Due to "
