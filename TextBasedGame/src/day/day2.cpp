@@ -57,7 +57,7 @@ void Day::dayTwo(Player *player, Map *map){
 }
 
 void cutscene_two(Prompt p, Response r, Player *player){
-
+    Text::clearScreen();
 }
 
 void final_cutscene(){

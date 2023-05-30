@@ -9,7 +9,8 @@ using namespace Engine;
 static const vector<string> command_list = {
     "exit",
     "list",
-    "hack"
+    "hack",
+    "help"
 };
 
 class TerminalCommand {
