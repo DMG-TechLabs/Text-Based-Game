@@ -8,6 +8,8 @@
 #include "./interactions/interactions.h"
 #include "./menu/menu.h"
 
+#include "./mastermind/game/game.h"
+
 int main() {
     Map map{new Node(0, "Hall", true)};
     Player player{};
@@ -16,7 +18,7 @@ int main() {
     Menu::demoMenu();
 
     while(true){
-        Day::dayOne(&player, &map);
+        //Day::dayOne(&player, &map);
         Day::dayTwo(&player, &map);
         Menu::credits();
     }
