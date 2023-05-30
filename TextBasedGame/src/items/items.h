@@ -87,20 +87,45 @@ class Note : public Item, public ReadableItem, public CollectableItem{
         void collect(Player *player, BundleItem *bundle, int index) override;
         void readContents() override;
 };
+class File : public Item, public ReadableItem, public SaveableItem {
+    public:
+        string title;
 
-class Terminal : public Item, public EnterableItem{
+        ~File(){}
+        File(string id, string title) : Item(id, "file"){
+            this->title = title;
+        }
+        File(string id, string title, string description, string contents) : Item(id, "file", description){
+            this->contents = contents;
+            this->title = title;
+        }
+        File(string title, string description, string contents) : Item("file", description){
+            this->title = title;
+            this->contents = contents;
+        }
+        
+
+        void readContents() override;
+        void save() override;
+};
+
+class Terminal : public Item, public EnterableItem, public BundleItem{
     public:
         char prompt_char;
         vector<string> internal_commands;
 
         ~Terminal() {}
         Terminal() : Item("terminal") {}
-        Terminal(char prompt_char, string description, vector<string> internal_commands) : Item("terminal", description) {
+        Terminal(char prompt_char, string description, vector<string> internal_commands, vector<File *> files) : Item("terminal", description) {
             this->prompt_char = prompt_char;
             this->internal_commands = internal_commands;
+            addFiles(files);
         }
 
         void enter(Player *player) override;
+        void printItems() override;
+
+        void addFiles(vector<File *> files);
 };
 
 class Door : public Item, public OpenableItem, public UnlockableItem {
@@ -147,22 +172,6 @@ class Bed : public Item {
         void sleep();
 };
 
-class File : public Item, public ReadableItem, public SaveableItem {
-    public:
-        string title;
-
-        ~File(){}
-        File(string id, string title) : Item(id, "file"){
-            this->title = title;
-        }
-        File(string id, string title, string description, string contents) : Item(id, "file", description){
-            this->contents = contents;
-            this->title = title;
-        }
-
-        void readContents() override;
-        void save() override;
-};
 
 class Board : public Item, public BundleItem, public SearchableItem {
     public:

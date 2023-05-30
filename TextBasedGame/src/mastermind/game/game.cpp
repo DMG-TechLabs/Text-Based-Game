@@ -69,7 +69,7 @@ string render(string word, string characters) {
 bool Mastermind::start(string key, string characters) {
     Text::clearScreen();
 
-    println("Press \'=\' to quit");
+    println("Press \'=\' to quit\n");
 
     std::string user_try = "";
 

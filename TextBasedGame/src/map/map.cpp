@@ -42,7 +42,7 @@ void Map::initMap() {
         ". It has a few pins laying around with"
         "\nsome old notes attached.All in all, nothing special.Then you decide "
         "to rest on the"
-        "\nbed.It makes a \"screeching\" sound when you sit. Besides the "
+        "\n" + Text::blue + "bed" + Text::normal + ".It makes a \"screeching\" sound when you sit. Besides the "
         "terminal lies a piece of paper. You take a closer"
         "\nlook. It's actually a " +
         Text::blue + "note" + Text::normal + ".";
@@ -53,7 +53,7 @@ void Map::initMap() {
         "\nthan the rest of the room. It has a few rusty spots here and "
         "there "
         "\nbut all in all it's fine. It needs a combination to unlock it."));
-    node6->addItem(new Terminal('$', "Description", {"exit"}));
+    node6->addItem(new Terminal('$', "Description", {"exit", "list", "hack"}, {new File("Top Secret File", "File desc", "Top Secret Content")}));
     node6->addItem(
         new Note("",
                  "It's a piece of paper. It's wrinckly and its colour turned "
