@@ -4,6 +4,7 @@
 #else
     #include <termios.h>
     #include <unistd.h>
+    #include <ncurses.h>
 #endif
 
 
@@ -13,45 +14,33 @@
 
 int Mastermind::handleKeys() {
     #ifdef _WIN32
-        switch (getchar()) {
+        switch (_getch()) {
             case 13:
                 return ENTER;
-            case '\x1b':    // Escape character
-                getchar();  // Read '[' character
-                switch (getchar()) {
-                    case 72:
-                        return KEY_UP;
-                    case 80:
-                        return KEY_DOWN;
-                    case 77:
-                        return KEY_RIGHT;
-                    case 75:
-                        return KEY_LEFT;
-                    default:
-                        return -1;
-                }
+            case 64:
+                return F4;
+            case 72:
+                return UP;
+            case 80:
+                return DOWN;
+            case 37:
+                return LEFT;
+            case 39:
+                return RIGHT;
+            default:
+                return -1;
         }
     #else
-        switch (getchar()) {
-            case '\n':
-                return ENTER;
-            case '\x1b':    // Escape character
-                getchar();  // Read '[' character
-                switch (getchar()) {
-                    case 'A':
-                        return KEY_UP;
-                    case 'B':
-                        return KEY_DOWN;
-                    case 'C':
-                        return KEY_RIGHT;
-                    case 'D':
-                        return KEY_LEFT;
-                    default:
-                        return -1;
-                }
+        switch (getchar()){
+            case '\n': return ENTER;
+            case '=': return EQUALS;
+            case 65: return UP;
+            case 66: return DOWN;
+            case 67: return RIGHT;
+            case 68: return LEFT;
+            default: return -1;
         }
     #endif
-    return -1;
 }
 
 void Mastermind::enableInputBuffering() {

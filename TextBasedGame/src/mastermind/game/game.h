@@ -4,5 +4,5 @@
 #include <string>
 
 namespace Mastermind{
-    void start(std::string key, std::string characters);
+    bool start(std::string key, std::string characters);
 }

@@ -8,6 +8,8 @@
 
 using namespace Engine;
 
+static const string EQUALS_PRESSED = "fn8r3u2isjicd392cunhefu93rneuwheduj3n92r8rnyejwheu";
+
 void printCharacter(int selectedItem, int index, int color, char character);
 string makeWord(int *indexes, string characters, int length);
 void clearRow(int num);
@@ -35,22 +37,26 @@ string render(string word, string characters) {
         // Handle user input
         int keyPressed = Mastermind::handleKeys();
         switch (keyPressed) {
-            case KEY_LEFT:
+            case LEFT:
                 selected = (selected == 0) ? numOfCharacters - 1 : selected - 1;
                 break;
-            case KEY_RIGHT:
+            case RIGHT:
                 selected = (selected == numOfCharacters - 1) ? 0 : selected + 1;
                 break;
-            case KEY_UP:
+            case UP:
                 indexes[selected] = (indexes[selected] == characters.size() - 1)
                                         ? 0
                                         : indexes[selected] + 1;
                 break;
-            case KEY_DOWN:
+            case DOWN:
                 indexes[selected] = (indexes[selected] == 0)
                                         ? characters.size() - 1
                                         : indexes[selected] - 1;
                 break;
+            case EQUALS:
+                println("\n\nCrack failed...", 0);
+                println("Terminating...", 2);
+                return EQUALS_PRESSED;
             case ENTER:
                 Mastermind::enableInputBuffering();
                 return makeWord(indexes, characters, numOfCharacters);
@@ -60,19 +66,28 @@ string render(string word, string characters) {
     return "Error";
 }
 
-void Mastermind::start(string key, string characters) {
+bool Mastermind::start(string key, string characters) {
     Text::clearScreen();
+
+    println("Press \'=\' to quit");
+
     std::string user_try = "";
 
     while(user_try != key){
         user_try = render(key, characters);
+
+        if (user_try == EQUALS_PRESSED) return false;
+
         vector<int> correct = checks(key, user_try);
 
         cout << endl << correct.at(0) << " correct but in the wrong position" << endl;
         cout << correct.at(1) << " correct and in the correct posstion" << endl << endl;
     }
 
+
+
     cout << Text::green + "\n\nPassword cracked!" + Text::normal << endl;
+    return true;
 }
 
 void printCharacter(int selectedItem, int index, int color, char character) {
