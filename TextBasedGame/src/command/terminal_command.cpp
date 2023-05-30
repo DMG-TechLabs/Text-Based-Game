@@ -13,8 +13,6 @@ void TerminalCommand::run(Response response, Prompt p, Player *player){
                 return;
             } else if (response.command == "list"){
                dynamic_cast<Terminal *>(player->currentNode->items.at(getTerminal(player->currentNode->items)))->printItems();
-            } else if(response.command == "hack"){
-                
             }
             break;
         default:

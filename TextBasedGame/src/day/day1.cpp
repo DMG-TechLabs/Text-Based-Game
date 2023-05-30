@@ -49,7 +49,7 @@ void Day::dayOne(Player *player, Map *map){
     player->setMission(&m);
 
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "enter", "sleep", "inspect", "unlock", "search", "objectives"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "sleep", "inspect", "unlock", "search", "objectives"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
     Command::run(r, p, player);
@@ -64,8 +64,6 @@ void Day::dayOne(Player *player, Map *map){
     do{
         r = prompt(p, command_list, false);
         Command::run(r, p, player);
-
-
 
         Objective::completeObjective((r.command == "help"), objectives, 0);
         Objective::completeObjective((r.command == "inspect" && r.args.at(0) == "note"), objectives, 1);

@@ -113,6 +113,9 @@ class Terminal : public Item, public EnterableItem, public BundleItem{
     public:
         char prompt_char;
         vector<string> internal_commands;
+        string mastermind_key;
+        string mastermind_chars;
+        string mastermind_reward;
 
         ~Terminal() {}
         Terminal() : Item("terminal") {}
@@ -124,6 +127,9 @@ class Terminal : public Item, public EnterableItem, public BundleItem{
 
         void enter(Player *player) override;
         void printItems() override;
+        void setKey(string key);
+        void setChars(string chars);
+        void setReward(string reward);
 
         void addFiles(vector<File *> files);
 };

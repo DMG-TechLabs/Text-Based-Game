@@ -53,7 +53,12 @@ void Map::initMap() {
         "\nthan the rest of the room. It has a few rusty spots here and "
         "there "
         "\nbut all in all it's fine. It needs a combination to unlock it."));
-    node6->addItem(new Terminal('$', "Description", {"exit", "list", "hack"}, {new File("Top Secret File", "File desc", "Top Secret Content")}));
+
+    Terminal *terminal = new Terminal('$', "Description", {"exit", "list", "hack"}, {new File("Top Secret File", "File desc", "Top Secret Content")});
+    terminal->setKey("abcd");
+    terminal->setChars("abcdef");
+    terminal->setReward("4321");
+    node6->addItem(terminal);
     node6->addItem(
         new Note("",
                  "It's a piece of paper. It's wrinckly and its colour turned "

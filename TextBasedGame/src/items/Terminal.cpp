@@ -5,6 +5,8 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 #include "../command/terminal_command.h"
 #include "./items.h"
+#include "../mastermind/game/game.h"
+
 
 using namespace std;
 
@@ -17,7 +19,16 @@ void Terminal::enter(Player *player) {
 
     do {
         r = Engine::prompt(p, command_list, false);
-        TerminalCommand::run(r, p, player);
+
+        if(r.command == "hack"){
+            bool solved = Mastermind::start(this->mastermind_key, this->mastermind_chars);
+        
+            if(solved){
+                println(Text::green + "\n" + this->mastermind_reward + Text::normal);
+            }
+        }
+        else
+            TerminalCommand::run(r, p, player);
     } while (r.command != "exit");
 }
 
@@ -48,4 +59,14 @@ void Terminal::addFiles(vector<File *> files) {
     for (size_t i = 0; i < files.size(); i++) {
         bundle_items.push_back(files.at(i));
     }
+}
+
+void Terminal::setKey(string key){
+    this->mastermind_key = key;
+}
+void Terminal::setChars(string chars){
+    this->mastermind_chars = chars;
+}
+void Terminal::setReward(string reward){
+    this->mastermind_reward = reward;
 }
