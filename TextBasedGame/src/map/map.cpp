@@ -54,7 +54,7 @@ void Map::initMap() {
         "there "
         "\nbut all in all it's fine. It needs a combination to unlock it."));
 
-    Terminal *terminal = new Terminal('$', "Description", {"exit", "list", "hack"}, {new File("Top Secret File", "File desc", "Top Secret Content")});
+    Terminal *terminal = new Terminal('$', "Description", {"exit", "list", "hack", "help"}, {new File("Top Secret File", "File desc", "Top Secret Content")});
     terminal->setKey("abcd");
     terminal->setChars("abcdef");
     terminal->setReward("4321");

@@ -65,12 +65,14 @@ void Day::dayOne(Player *player, Map *map){
         r = prompt(p, command_list, false);
         Command::run(r, p, player);
 
+        if(r.command == "sleep" && player->getMission()->isCompleted()) break;
+
         Objective::completeObjective((r.command == "help"), objectives, 0);
         Objective::completeObjective((r.command == "inspect" && r.args.at(0) == "note"), objectives, 1);
         Objective::completeObjective((r.command == "read" && r.args.at(0) == "note"), objectives, 2);
         Objective::completeObjective((r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
         Objective::completeObjective((r.command == "inventory"), objectives, 4);
-    } while(current_node == player->currentNode->id && r.command != "sleep");
+    } while(current_node == player->currentNode->id);
 }
 
 

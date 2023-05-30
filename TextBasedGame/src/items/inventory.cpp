@@ -30,7 +30,7 @@ void Engine::Inventory::printInventory() {
 }
 
 string InventoryUtils::defaultPrint(Item *i, Inventory *inventory){
-    return Text::red + "Type: " + Text::normal + i->getName() + Text::red + "\nQuantity: " + Text::normal + to_string(inventory->getQuantity(i)) + Text::red + "\nDescription: " + Text::red + i->getDescription() + Text::normal;
+    return Text::red + "Type: " + Text::normal + i->getName() + Text::red + "\nQuantity: " + Text::normal + to_string(inventory->getQuantity(i)) + Text::red + "\nDescription: " + Text::normal + i->getDescription();
 }
 
 // Utils

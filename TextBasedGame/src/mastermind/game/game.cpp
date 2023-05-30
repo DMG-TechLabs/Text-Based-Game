@@ -56,6 +56,7 @@ string render(string word, string characters) {
             case EQUALS:
                 println("\n\nCrack failed...", 0);
                 println("Terminating...", 2);
+                Mastermind::enableInputBuffering();
                 return EQUALS_PRESSED;
             case ENTER:
                 Mastermind::enableInputBuffering();
