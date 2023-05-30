@@ -9,7 +9,7 @@
 using namespace std;
 
 void Terminal::enter(Player *player) {
-    println("You entered the terminal");
+    println(Text::b_green + "Terminal >_" + Text::normal);
     Response r;
     Prompt p;
     p.prompt_char = this->prompt_char;
@@ -39,9 +39,8 @@ void Terminal::printItems() {
 
     Text::clearScreen();
 
-    println(dynamic_cast<File *>(bundle_items.at(fileIndex-1))->contents, 0);
+    println(dynamic_cast<File *>(bundle_items.at(fileIndex-1))->contents);
 
-    println("\n\nPress any key to continue...", 0);
     cin.get();
 }
 

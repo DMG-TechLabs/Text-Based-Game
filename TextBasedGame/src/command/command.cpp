@@ -82,7 +82,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
                 ri->readContents();
             } else if (response.command == "collect" && ci != NULL) {
                 ci->collect(player);
-            } else if((response.command == "open" && oi != NULL) || (response.command == "open" && response.args.at(0) == "noor")){
+            } else if((response.command == "open" && oi != NULL)){
                 oi->open(player);
             } else if(response.command == "enter" && ei != NULL){
                 ei->enter(player);

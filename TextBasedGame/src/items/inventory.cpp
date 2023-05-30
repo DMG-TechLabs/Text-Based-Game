@@ -10,6 +10,11 @@ namespace InventoryUtils{
 
 
 void Engine::Inventory::printInventory() {
+    if(items.empty()){
+        println("Empty");
+        return;
+    }
+
     vector<Item> passed;
     for(int i = 0; i < items.size(); i++) {
         if (!InventoryUtils::exists(passed, items.at(i))) { // Check if same item already exists
