@@ -18,7 +18,7 @@ void handleDemoOptions(int selectedItem){
         case 1:                                                
             Engine::println("Manual selected", 0);
             
-            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            Engine::println("\n\n\nPress enter to go back to menu...", 0);
             cin.get();
 
             demoMenu();            
@@ -26,7 +26,7 @@ void handleDemoOptions(int selectedItem){
         case 2:
             Engine::println("Achievements selected", 0);
 
-            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            Engine::println("\n\n\nPress enter to go back to menu...", 0);
             cin.get();
 
             demoMenu();
@@ -48,7 +48,7 @@ void handlePauseOptions(int selectedItem){
         case 1:
             Engine::println("Manual selected", 0);
 
-            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            Engine::println("\n\n\nPress enter to go back to menu...", 0);
             cin.get();
 
             demoMenu();    
@@ -56,7 +56,7 @@ void handlePauseOptions(int selectedItem){
         case 2:
             Engine::println("Achievements selected", 0);
 
-            Engine::println("\n\n\nPress any key to go back to menu...", 0);
+            Engine::println("\n\n\nPress enter to go back to menu...", 0);
             cin.get();
 
             demoMenu();    

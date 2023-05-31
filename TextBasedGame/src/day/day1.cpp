@@ -132,5 +132,5 @@ void cutscene_one(Prompt p, Response r, Player *player){
 
     FormattedPrint::typingInTerminal("terminal", "We'll talk soon...");
 
-    println("Exiting...\n");
+    println("\nExiting...\n");
 }

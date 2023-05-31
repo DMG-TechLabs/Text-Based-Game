@@ -72,6 +72,7 @@ void Terminal::printItems() {
 
     println(dynamic_cast<File *>(bundle_items.at(fileIndex-1))->contents);
 
+    println("Press enter to continue...", 0);
     cin.get();
 }
 
