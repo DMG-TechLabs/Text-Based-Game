@@ -8,8 +8,6 @@
 #include "./interactions/interactions.h"
 #include "./menu/menu.h"
 
-#include "./mastermind/game/game.h"
-
 int main() {
     Map map{new Node(0, "Hall", true)};
     Player player{};
@@ -22,7 +20,9 @@ int main() {
         Day::dayTwo(&player, &map);
         Menu::credits();
     }
-    
+
+
+    // cout << Engine::loadFromFile("../assets/OPERATION_SENTINEL_SHIELD.txt") << endl;    
 
     return 0;
 }

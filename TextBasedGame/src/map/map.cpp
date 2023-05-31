@@ -89,7 +89,7 @@ void Map::initMap() {
     );
 
     vector<Item *> safe;
-    safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", loadFromFile("../../assets/OPERATION_SENTINEL_SHIELD.txt")));
+    safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", loadFromFile("../assets/OPERATION_SENTINEL_SHIELD.txt")));
     node6->addItem(
         new Safe(4321,
                  "A worn-out safe. The paint has faded in some spots. Due to "

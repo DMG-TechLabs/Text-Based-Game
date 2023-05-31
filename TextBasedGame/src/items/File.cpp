@@ -3,7 +3,9 @@
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
 
 void File::save(){
-    Engine::saveToFile(title, contents);
+    println("Saving to vault...");
+    Engine::saveToFile("../vault/" + title + ".txt", contents);
+    println("Saved.");
 }
 
 void File::readContents(){

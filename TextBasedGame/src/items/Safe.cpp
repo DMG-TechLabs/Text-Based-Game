@@ -20,7 +20,7 @@ void Safe::search(Player *player) {
 
     Prompt p;
     p.prompt_char = '#';
-    p.accepted_commands = {"collect", "exit", "help"};
+    p.accepted_commands = {"collect", "exit", "help", "save"};
     Response r;
 
     while (r.command != "exit") {
@@ -78,7 +78,7 @@ void Safe::printItems() {
         cout << SafeUtils::defaultPrint(bundle_items.at(i), i);
         ReadableItem *ri = dynamic_cast<ReadableItem *>(bundle_items.at(i));
         if (ri != NULL) {
-            cout << ", Contents: " << ri->contents;
+            (ri->contents.size() > 50) ? cout << ", Contents: [Too long - Save to /vault]" : cout << ", Contents: " << ri->contents;
         }
         cout << endl;
     }
