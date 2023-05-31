@@ -38,18 +38,15 @@ void Day::dayTwo(Player *player, Map *map){
     Objective::completeObjective((r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
     Objective::completeObjective((r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
 
+    bool executed;
     int current_node = player->currentNode->id;
     do{
         r = prompt(p, command_list, false);
-        Command::run(r, p, player);
-
-        if(r.command == "open" && r.args.at(0) == "door"){
-            break;
-        }
+        executed = Command::run(r, p, player);
 
         Objective::completeObjective((r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
         Objective::completeObjective((r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
-    } while(current_node == player->currentNode->id);
+    } while(!(r.command == "open" && (r.args.at(0) == "door" || r.args.at(0) == "noor") && executed) );
     
 
     final_cutscene();

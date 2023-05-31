@@ -13,7 +13,7 @@ namespace CommandUtils{
 
 int matchItemByName(string item, vector<Item> items);
 
-void Engine::Command::run(Response response, Prompt p, Player *player) {
+bool Engine::Command::run(Response response, Prompt p, Player *player) {
     int item_index;
     Item *item_ptr;
     
@@ -29,39 +29,43 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
     if(sizeof(response) == 0){
         Engine::Command::run(prompt(p, command_list), p, player);
         delete item_ptr;
-        return;
+        return false;
     }
 
     switch (response.args.size()) {
         case 0:
             if (response.command == "help")
                 CommandUtils::getAvailableCommands(p);
-            else if (response.command == "inventory")
+                return true;
+            if (response.command == "inventory")
                 player->getInventory().printInventory();
-            else if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
+                return true;
+            if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
                 if(!player->getMission()->isCompleted()){
                     println("Complete your objectives first", 0);
-                    return;
+                    return false;
                 }
 
                 dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
-            } else if(response.command == "objectives"){
+                return true;
+            } 
+            if(response.command == "objectives"){
                 Objective::printObjectives(player->getMission()->objectives);
+                return true;
             }
-
-            // Misc commands so prompt again
-            // Engine::Command::run(prompt(p, command_list), p, player);
-            break;
+            return false;            
         case 1:
             item_index = matchItemByName(response.args.at(0), player->currentNode->items);
             if (item_index < 0 && response.args.at(0) != "passcode") {
                 if(CommandUtils::contains(items_list, response.args.at(0))){
                     println("This item is not in the room you are currently in", 0);
+                    return false;
                 } else {
                     println("Invalid item", 0);
+                    return false;
                 }
 
-                return;
+                return false;
             } else if(response.args.at(0) == "passcode") item_index = 0;
 
             item_ptr = player->currentNode->items.at(item_index);
@@ -80,25 +84,43 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             
             if (response.command == "read" && ri != NULL) {
                 ri->readContents();
-            } else if (response.command == "collect" && ci != NULL) {
+                return true;
+            } 
+            if (response.command == "collect" && ci != NULL) {
                 ci->collect(player);
-            } else if((response.command == "open" && oi != NULL)){
-                oi->open(player);
-            } else if(response.command == "enter" && ei != NULL){
-                ei->enter(player);
-            } else if(response.command == "inspect"){
-                println(item_ptr->getDescription());
-            } else if(response.command == "save" && si != NULL){
-                si->save();
-            } else if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
-                dynamic_cast<Door *>(ui)->enterPasscode(player);
-            } else if(response.command == "unlock" && ui != NULL){
-                ui->enterPasscode();
-            } else if(response.command == "search" && sei != NULL) {
-                sei->search(player);
-            } else {
-                println("The command doesn't match the item", 0);
+                return true;
+            } 
+            if((response.command == "open" && oi != NULL)){
+                return oi->open(player);
             }
+            if(response.command == "enter" && ei != NULL){
+                ei->enter(player);
+                return true;
+            }
+            if(response.command == "inspect"){
+                println(item_ptr->getDescription());
+                return true;
+            }
+            if(response.command == "save" && si != NULL){
+                si->save();
+                return true;
+            }
+            if(response.command == "unlock" && ui != NULL && dynamic_cast<Door *>(ui) != NULL){ // Unlocking the door (It needs to unlock the room at the same time)     
+                dynamic_cast<Door *>(ui)->enterPasscode(player);
+                return true;
+            } 
+            if(response.command == "unlock" && ui != NULL){
+                ui->enterPasscode();
+                return true;
+            }
+            if(response.command == "search" && sei != NULL) {
+                sei->search(player);
+                return true;
+            } 
+            
+            
+            println("The command doesn't match the item", 0);
+            return false;
             
             break;
         default:
@@ -106,7 +128,7 @@ void Engine::Command::run(Response response, Prompt p, Player *player) {
             break;
     }
 
-    // delete item_ptr;
+    return false;
 }
 
 /* Utils */

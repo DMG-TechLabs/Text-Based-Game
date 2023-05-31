@@ -72,6 +72,10 @@ void Day::dayOne(Player *player, Map *map){
         Objective::completeObjective((r.command == "read" && r.args.at(0) == "note"), objectives, 2);
         Objective::completeObjective((r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
         Objective::completeObjective((r.command == "inventory"), objectives, 4);
+
+        if(player->getMission()->isCompleted()){
+            FormattedPrint::playerTalking("I think that was it... I might as well have a nap now");
+        }
     } while(current_node == player->currentNode->id);
 }
 

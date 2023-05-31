@@ -44,7 +44,7 @@ class ReadableItem {
 
 class OpenableItem {
     public:
-        virtual void open(Player *player) = 0;
+        virtual bool open(Player *player) = 0;
 };
 
 class UnlockableItem {
@@ -163,7 +163,7 @@ class Door : public Item, public OpenableItem, public UnlockableItem {
 
         void unlock() override;
         bool enterPasscode() override;
-        void open(Player *player) override;
+        bool open(Player *player) override;
 };
 
 class Bed : public Item {

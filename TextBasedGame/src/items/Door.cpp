@@ -2,12 +2,14 @@
 
 bool isNumber(const std::string& s);
 
-void Door::open(Player *player){
+bool Door::open(Player *player){
     if(!player->currentNode->isAccessible() || this->isLocked){
         println("The door is locked");
+        return false;
     } else {
         isLocked = false;
         println("You opened the door");
+        return true;
     }
 }
 
