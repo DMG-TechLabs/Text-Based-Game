@@ -12,18 +12,18 @@ void NodeSetup::node6Setup(Node *node6){
         "look."
         "\nThe chair looks rusty and the table is old and dusty."
         "\nIt feels like everything is going to collapse anytime soon."
-        "\nYou decide to take a step back.In the right corner of the room, "
+        "\nYou decide to take a step back. In the right corner of the room, "
         "there is a " +
         Text::blue + "safe" + Text::normal +
         ". "
         "\nIt has some rough spots where the colour has faded to copperish red."
         "\nIt's locked. Above that, you notice the " +
-        Text::blue + "board" + Text::normal +
-        ". It has a few pins laying around with"
-        "\nsome old notes attached.All in all, nothing special.Then you decide "
+        Text::blue + "board" + Text::normal + + ". "
+        "It has a few pins laying around with"
+        "\nsome old notes attached. All in all, nothing special. Then you decide "
         "to rest on the"
-        "\n" + Text::blue + "bed" + Text::normal + ".It makes a \"screeching\" sound when you sit. Besides the "
-        "terminal lies a piece of paper. You take a closer"
+        "\n" + Text::blue + "bed" + Text::normal + ". It makes a \"screeching\" sound when"
+        "you sit. Besides the terminal lies a piece of paper. You take a closer"
         "\nlook. It's actually a " +
         Text::blue + "note" + Text::normal + ".";
 

@@ -16,6 +16,8 @@ void TerminalCommand::run(Response response, Prompt p, Player *player){
                dynamic_cast<Terminal *>(player->currentNode->items.at(getTerminal(player->currentNode->items)))->printItems();
             } else if (response.command == "help") {
                 getAvailableCommands(dynamic_cast<Terminal *>(player->currentNode->items.at(getTerminal(player->currentNode->items))));
+            } else {
+                println("Invalid use of command");
             }
             break;
         default:
