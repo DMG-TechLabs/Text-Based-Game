@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <cstdlib>
 #include <string>
 
 #include "../../Text-Based-Game-Engine/Engine/src/engine.h"
@@ -9,6 +10,16 @@
 
 
 using namespace std;
+
+
+bool isNumeric(const std::string& str) {
+    char* endptr;
+    std::strtod(str.c_str(), &endptr);
+
+    // Check if all characters were successfully parsed
+    return *endptr == '\0';
+}
+
 
 void Terminal::enter(Player *player) {
     println(Text::b_green + "Terminal >_" + Text::normal);
@@ -42,10 +53,19 @@ void Terminal::printItems() {
         println(Text::red + to_string(i + 1) + Text::normal + ". " + dynamic_cast<File *>(bundle_items.at(i))->title, 0);
     }
 
+    string fileIndexString;
     int fileIndex;
     do {
         print("\n\nEnter file to read: ");
-        cin >> fileIndex;
+        getline(cin, fileIndexString);
+
+        if(isNumeric(fileIndexString)) {
+            fileIndex = stoi(fileIndexString);
+        } else {
+            println("Enter a number", 0);
+            continue;
+        }
+
     } while (fileIndex < 1 || fileIndex > bundle_items.size());
 
     Text::clearScreen();
