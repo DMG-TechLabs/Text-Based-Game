@@ -17,8 +17,8 @@ int Mastermind::handleKeys() {
         switch (_getch()) {
             case 13:
                 return ENTER;
-            case 64:
-                return F4;
+            case 61:
+                return EQUALS;
             case 72:
                 return UP;
             case 80:
