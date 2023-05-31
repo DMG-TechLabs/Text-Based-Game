@@ -18,6 +18,8 @@ set(SOURCES
 
     src/map/map.h
     src/map/map.cpp
+    src/map/node_setup.h
+    src/map/node_setup.cpp
 
     src/items/items.h
     src/items/inventory.cpp
