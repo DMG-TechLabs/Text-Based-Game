@@ -35,8 +35,8 @@ void Day::dayTwo(Player *player, Map *map){
     r = prompt(p, command_list);
     Command::run(r, p, player);
 
-    Objective::completeObjective((r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
-    Objective::completeObjective((r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
+    Objective::completeObjective((!r.args.empty() && r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
+    Objective::completeObjective((!r.args.empty() && r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
 
     bool executed;
     int current_node = player->currentNode->id;
@@ -44,8 +44,8 @@ void Day::dayTwo(Player *player, Map *map){
         r = prompt(p, command_list, false);
         executed = Command::run(r, p, player);
 
-        Objective::completeObjective((r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
-        Objective::completeObjective((r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
+        Objective::completeObjective((!r.args.empty() && r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
+        Objective::completeObjective((!r.args.empty() && r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
     } while(!(r.command == "open" && (r.args.at(0) == "door" || r.args.at(0) == "noor") && executed) );
     
 

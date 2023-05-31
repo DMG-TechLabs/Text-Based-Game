@@ -34,12 +34,15 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
 
     switch (response.args.size()) {
         case 0:
-            if (response.command == "help")
+            if(response.command == "enter") return false;
+            if (response.command == "help"){
                 CommandUtils::getAvailableCommands(p);
                 return true;
-            if (response.command == "inventory")
+            }
+            if (response.command == "inventory"){
                 player->getInventory().printInventory();
                 return true;
+            }
             if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
                 if(!player->getMission()->isCompleted()){
                     println("Complete your objectives first", 0);
