@@ -89,7 +89,61 @@ void Map::initMap() {
     );
 
     vector<Item *> safe;
-    safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", loadFromFile("../assets/OPERATION_SENTINEL_SHIELD.txt")));
+    string file_content = R"(
+        [CLASSIFIED DOCUMENT]
+        TOP SECRET // EYES ONLY
+
+        OPERATION VIGILANT SHIELD
+
+            Purpose:
+            The purpose of Operation Vigilant Shield is to establish and maintain a robust
+            defense infrastructure to protect national interests and safeguard strategic assets.
+            This operation focuses on enhancing readiness, coordination, and response capabilities across multiple military branches.
+
+            Objective:
+            a. Enhance Situational Awareness: Employ advanced surveillance and reconnaissance systems
+                to gather critical intelligence, monitor potential threats, and enable rapid decision-making.
+            b. Strengthen Defensive Capabilities: Deploy and fortify defensive
+                measures to deter and repel any hostile actions that may compromise national security.
+            c. Conduct Joint Training Exercises: Foster interoperability and coordination among military units
+                through rigorous and realistic training scenarios.
+            d. Ensure Continuity of Operations: Establish resilient communication networks and redundant systems
+                to ensure uninterrupted command and control capabilities.
+
+            Task Force Composition:
+            Operation Vigilant Shield brings together elite military units from various branches to
+            form an integrated task force. The task force comprises highly trained personnel with diverse skill
+            sets and expertise, including infantry, aviation, logistics, and intelligence specialists.
+
+            Command Structure:
+            a. Overall Command: The operation is led by a highly decorated senior officer with extensive combat experience, 
+                who is responsible for overseeing all operational aspects.
+            b. Task Force Command: A seasoned officer, known for exceptional leadership and tactical acumen, is appointed as 
+                the task force commander. This individual manages and directs all activities within the task force.
+            c. Unit Command: Each participating military unit retains its respective chain of command under the task force 
+                structure, ensuring effective communication and streamlined execution of orders.
+
+            Operation Execution:
+            a. Intelligence Gathering: Highly trained intelligence personnel will leverage advanced information
+                systems and traditional intelligence collection methods to identify potential threats and analyze enemy capabilities.
+            b. Defensive Measures: Military units will deploy cutting-edge technologies and conventional defensive systems to secure
+                key strategic locations and critical infrastructure.
+            c. Joint Training Exercises: The task force will conduct joint training exercises simulating various scenarios to enhance
+                coordination, refine tactics, and test the effectiveness of defensive strategies.
+            d. Communication and Command Systems: Advanced communication systems will be employed to ensure seamless coordination
+                between task force elements and higher command, allowing for real-time information exchange and situational updates.
+
+            Conclusion:
+            Operation Vigilant Shield #1234 represents the unwavering commitment of our military forces to protect
+            and defend national interests. Through meticulous planning, rigorous training, and the application
+            of advanced technologies, this operation aims to maintain a high state of readiness and ensure the security of our nation.
+
+        This document is classified as TOP SECRET and must be handled with the utmost confidentiality.
+        Unauthorized disclosure or distribution of its contents is strictly prohibited.
+
+        [END OF DOCUMENT])";
+
+    safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", file_content));
     node6->addItem(
         new Safe(4321,
                  "A worn-out safe. The paint has faded in some spots. Due to "
