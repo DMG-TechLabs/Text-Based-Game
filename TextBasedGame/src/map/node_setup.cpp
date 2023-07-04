@@ -57,10 +57,10 @@ void NodeSetup::node6Setup(Node *node6){
         "\nsit on it, it makes a loud piercing noise."));
 
     vector<Item *> board;
-    board.push_back(new Note("Note1", "description", "text1"));
-    board.push_back(new Note("Note2", "description", "text2"));
-    board.push_back(new Note("Note3", "description", "text3"));
-    board.push_back(new Note("Note4", "description", "text4"));
+    board.push_back(new Note("Note1", "description", "2028/04/25"));
+    board.push_back(new Note("Note2", "description", "Matthew Carter"));
+    board.push_back(new Note("Note3", "description", "(555) 472-349"));
+    board.push_back(new Note("Note4", "description", "37°13'58.9\"N 115°48'41.8\"W"));
     node6->addItem(
         new Board("A regular board made from soft material. There are pins "
                   "with notes attached to them. There are a few free pins too.",
