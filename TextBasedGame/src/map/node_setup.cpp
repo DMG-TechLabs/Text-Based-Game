@@ -28,16 +28,16 @@ void NodeSetup::node6Setup(Node *node6){
         Text::blue + "note" + Text::normal + ".";
 
     node6->addItem(new Door(
-        true, 1234,
+        true, 2942,
         "A really tall metal door. It's surprisingly in a better condition"
         "\nthan the rest of the room. It has a few rusty spots here and "
         "there "
         "\nbut all in all it's fine. It needs a combination to unlock it."));
 
-    Terminal *terminal = new Terminal('$', "Description", {"exit", "list", "hack", "help"}, {new File("Top Secret File", "File desc", "Top Secret Content")});
-    terminal->setKey("abcd");
+    Terminal *terminal = new Terminal('$', "It's an old computer. It's big and it's covered in dust. You touch the curved screen and feel static electricity going through your finger and you pull it back frantically. \"It's a miracle that it still works\" you thought to yourself.", {"exit", "list", "hack", "help"}, {new File("Top Secret File", "10KB", "Top Secret Content")});
+    terminal->setKey("ceab");
     terminal->setChars("abcdef");
-    terminal->setReward("4321");
+    terminal->setReward("8291");
     node6->addItem(terminal);
     node6->addItem(
         new Note("",
@@ -57,14 +57,13 @@ void NodeSetup::node6Setup(Node *node6){
         "\nsit on it, it makes a loud piercing noise."));
 
     vector<Item *> board;
-    board.push_back(new Note("note1", "description", "text1"));
-    board.push_back(new Note("note2", "description", "text2"));
-    board.push_back(new Note("note3", "description", "text3"));
-    board.push_back(new Note("note4", "description", "text4"));
+    board.push_back(new Note("Note1", "description", "2028/04/25"));
+    board.push_back(new Note("Note2", "description", "Matthew Carter"));
+    board.push_back(new Note("Note3", "description", "(555) 472-349"));
+    board.push_back(new Note("Note4", "description", "37°13'58.9\"N 115°48'41.8\"W"));
     node6->addItem(
         new Board("A regular board made from soft material. There are pins "
-                  "with notes attached to them. There are a few free pins too. "
-                  "Who knows? You might need them later.",
+                  "with notes attached to them. There are a few free pins too.",
                   board)
     );
 
@@ -114,7 +113,7 @@ void NodeSetup::node6Setup(Node *node6){
                 between task force elements and higher command, allowing for real-time information exchange and situational updates.
 
             Conclusion:
-            Operation Vigilant Shield #1234 represents the unwavering commitment of our military forces to protect
+            Operation Vigilant Shield #2942 represents the unwavering commitment of our military forces to protect
             and defend national interests. Through meticulous planning, rigorous training, and the application
             of advanced technologies, this operation aims to maintain a high state of readiness and ensure the security of our nation.
 
@@ -125,7 +124,7 @@ void NodeSetup::node6Setup(Node *node6){
 
     safe.push_back(new File("id", "OPERATION SENTINEL SHIELD", "A military like document", file_content));
     node6->addItem(
-        new Safe(4321,
+        new Safe(8291,
                  "A worn-out safe. The paint has faded in some spots. Due to "
                  "oxidation, the colour turned cooper red. It's locked.",
                  safe));

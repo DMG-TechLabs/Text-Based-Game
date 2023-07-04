@@ -109,7 +109,7 @@ void Menu::credits(){
 
     println("Thank you for playing!");
 
-    println("Press any key to go back to menu...", 0);
+    println("\nPress enter to go back to menu...", 0);
     cin.get();
 
     Menu::demoMenu();

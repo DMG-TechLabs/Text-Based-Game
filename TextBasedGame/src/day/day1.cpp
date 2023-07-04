@@ -217,6 +217,7 @@ void Day::dayOne(Player *player, Map *map){
             Objective::completeObjective((r.command == "inventory"), objectives, 4);
 
             if(player->getMission()->isCompleted()){
+                println("", 5);
                 FormattedPrint::playerTalking("I think that was it... I might as well have a nap now");
             }
         }     

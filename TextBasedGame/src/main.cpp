@@ -16,13 +16,15 @@ int main() {
     Menu::demoMenu();
 
     while(true){
-        Day::dayOne(&player, &map);
+        //Day::dayOne(&player, &map);
         Day::dayTwo(&player, &map);
         Menu::credits();
     }
 
 
     // cout << Engine::loadFromFile("../assets/OPERATION_SENTINEL_SHIELD.txt") << endl;    
+
+
 
     return 0;
 }
