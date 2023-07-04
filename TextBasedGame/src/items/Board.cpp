@@ -10,6 +10,8 @@ namespace BoardUtils{
 void Board::search(Player *p){
     println("Searching board...");
 
+    println("You notice 4 pieces of papper pinned on the board. You go a little bit closer and you can now see that there are written words and numbers on them. You wonder if the note you found earlier is related to them.");
+
     printItems();
 }
 
