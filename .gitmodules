@@ -1,3 +1,6 @@
 [submodule "TextBasedGame/Text-Based-Game-Engine"]
 	path = TextBasedGame/Text-Based-Game-Engine
 	url = https://github.com/DMG-TechLabs/Text-Based-Game-Engine
+[submodule "TextBasedGame/Ansi-Text-Manipulation-Library"]
+	path = TextBasedGame/Ansi-Text-Manipulation-Library
+	url = https://github.com/KDesp73/Ansi-Text-Manipulation-Library
