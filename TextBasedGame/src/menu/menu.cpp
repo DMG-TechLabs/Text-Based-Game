@@ -38,7 +38,7 @@ void handleDemoOptions(int selectedItem){
 }
 
 void Menu::demoMenu(){
-    Engine::menu(4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
+    Engine::menu(Text::b_blue + "Orbit of Shadows" + Text::normal, 4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
 }
 
 void handlePauseOptions(int selectedItem){
@@ -68,7 +68,7 @@ void handlePauseOptions(int selectedItem){
 }
 
 void Menu::pauseMenu(){
-    Engine::menu(4, {"Continue", "Manual", "Achievements", "Exit"}, &handlePauseOptions);
+    Engine::menu(Text::b_blue + "Orbit of Shadows" + Text::normal, 4, {"Continue", "Manual", "Achievements", "Exit"}, &handlePauseOptions);
 }
 
 
