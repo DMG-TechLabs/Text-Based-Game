@@ -1,10 +1,10 @@
-/TextBasedGame/saves/
+saves/
 *.sh
-
 out/
 .vscode/
-/TextBasedGame/build/
-/build/
+build/
+scripts/
+.cache/
 
 ### C++ ###
 # Prerequisites

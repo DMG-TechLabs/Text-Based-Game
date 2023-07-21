@@ -1,4 +1,0 @@
-#!/bin/zsh
-
-./scripts/build
-./scripts/run

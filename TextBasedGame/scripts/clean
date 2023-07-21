@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-echo "Cleaning project..."
-
-rm -rf build
-
-echo "Done"
