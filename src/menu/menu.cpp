@@ -25,14 +25,6 @@ void handleDemoOptions(int selectedItem){
 
             demoMenu();            
             break;
-        case 2:
-            Engine::println("Achievements selected", 0);
-
-            Engine::println("\n\n\nPress enter to go back to menu...", 0);
-            cin.get();
-
-            demoMenu();
-            break;
         case 3:
             Engine::println("Quiting game...");
             std::exit(0);
@@ -40,7 +32,7 @@ void handleDemoOptions(int selectedItem){
 }
 
 void GameMenu::demoMenu(){
-    CliKit::Menu::menu(Text::b_blue + "Orbit of Shadows:\nSecrets in Deep Space" + Text::normal, 4, {"Play Demo", "Manual", "Achievements", "Exit"}, &handleDemoOptions);
+    CliKit::Menu::menu(Text::b_blue + "Orbit of Shadows:\nSecrets in Deep Space" + Text::normal, 4, {"Play Demo", "Manual", "Exit"}, &handleDemoOptions);
 }
 
 void handlePauseOptions(int selectedItem){
