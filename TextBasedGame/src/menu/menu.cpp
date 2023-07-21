@@ -119,7 +119,8 @@ void Menu::credits(){
 void manual(){
     Engine::println(Text::b_green +"- Manual - \n" +Text::normal, 0);
     Engine::println(Text::b_blue + "Orbit of Shadows:\nSecrets in Deep Space " + Text::normal + "is a text-based game with the goal to survive and eventually free yourself.", 0);
-    Engine::println("To interact with the game world you need to type to your terminal all the commands. Interactable items will appear with " +Text::b_red +"colored text" + Text::normal + ".\n", 0);
-    Engine::println("The "+ Text::b_green + "help" + Text::normal + " command shows you all available commands at that time. \n",0);          
+    Engine::println("To interact with the game world you need to type to your terminal all the commands. Interactable items will appear with " +Text::blue +"blue" + Text::normal + " colored text.\n", 0);
+    Engine::println("The "+ Text::b_green + "help" + Text::normal + " command shows you all available commands at that time. \n",0);
+    Engine::println(Text::red + "Red" + Text::normal + " prompt symbols indicate the player's involvement with the game", 0);
     Engine::println("Use your mind to discover clues, solve puzzles and connect the story-dots so you can discover what secrets exist in the depths of space...",0);
 }
