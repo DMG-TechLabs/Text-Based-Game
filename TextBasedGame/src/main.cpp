@@ -16,7 +16,7 @@ int main() {
     Menu::demoMenu();
 
     while(true){
-        //Day::dayOne(&player, &map);
+        Day::dayOne(&player, &map);
         Day::dayTwo(&player, &map);
         Menu::credits();
     }
