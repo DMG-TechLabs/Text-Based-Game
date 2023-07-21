@@ -32,7 +32,6 @@ void Day::dayTwo(Player *player, Map *map){
     Response r;
 
     cutscene_two(p, r, player);
-    /*
 
     vector<Objective *> objectives = {
         new Objective("1. Enter terminal"),
@@ -61,7 +60,6 @@ void Day::dayTwo(Player *player, Map *map){
         Objective::completeObjective((!r.args.empty() && r.command == "enter" && r.args.at(0) == "terminal"), objectives, 0);
         Objective::completeObjective((!r.args.empty() && r.command == "unlock" && r.args.at(0) == "safe"), objectives, 1);
     } while(!(r.command == "open" && (r.args.at(0) == "door" || r.args.at(0) == "noor") && executed) );
-    */
     
 
     final_cutscene();
