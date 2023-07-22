@@ -1,6 +1,6 @@
-[submodule "Mastermind-Minigame"]
-	path = Mastermind-Minigame
-	url = git@github.com:DMG-TechLabs/Mastermind-Minigame.git
 [submodule "Text-Based-Game-Engine"]
 	path = Text-Based-Game-Engine
 	url = git@github.com:DMG-TechLabs/Text-Based-Game-Engine.git
+[submodule "Mastermind-Minigame"]
+	path = Mastermind-Minigame
+	url = git@github.com:DMG-TechLabs/Mastermind-Minigame.git
