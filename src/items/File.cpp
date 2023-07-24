@@ -4,7 +4,7 @@
 
 void File::save(){
     println("Saving to vault...");
-    Engine::saveToFile("../vault/" + title + ".txt", contents);
+    Engine::saveToFile("./vault/" + title + ".txt", contents);
     println("Saved.");
 }
 
