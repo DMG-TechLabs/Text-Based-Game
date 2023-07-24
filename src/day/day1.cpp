@@ -1,9 +1,12 @@
 #include "day.h"
 #include "command.h"
+#include "include/command.h"
 #include "interactions.h"
 
 #include "engine.h"
 #include "items.h"
+#include <algorithm>
+#include <unistd.h>
 
 using namespace CliKit;
 
@@ -15,6 +18,8 @@ bool contains(vector<Item *> arr, string item);
 bool contains(vector<string> arr, string item);
 
 void cutscene_one(Prompt p, Response r, Player *player);
+
+/*
 bool run(Response response, Prompt p, Player *player, int counter);
 
 bool run(Response response, Prompt p, Player *player, int counter){
@@ -115,8 +120,21 @@ bool run(Response response, Prompt p, Player *player, int counter){
             return false;            
         case 1:
             item_index = matchItemByName(response.args.at(0), player->currentNode->items);
+			
+			if(response.args.at(0) == "passcode") item_index = 0; // Bed should always be at index 0
+			else if(item_index < 0) {
+                if(find(items_list.begin(), items_list.end(), response.args.at(0)) != items_list.end()){
+                    println("This item is not in the room you are currently in", 0);
+                    return false;
+                } else {
+                    println("Invalid item", 0);
+                    return false;
+                }
 
-            item_ptr = player->currentNode->items.at(item_index);
+                return false;
+			} 
+            
+			item_ptr = player->currentNode->items.at(item_index);
 
             // Check if the command matches one of items interfaces
             // If the casting gives NULL it means that the object doesn't implement
@@ -190,6 +208,7 @@ bool run(Response response, Prompt p, Player *player, int counter){
 
     return false;
 }
+*/
 
 string getPlayerName(){
     string player_name;
@@ -206,6 +225,7 @@ void Day::dayOne(Player *player, Map *map){
     Response r;
     int counter = 1;
     bool flag;
+	bool skip_run = true;
 
     player->setInventory(Inventory{});
     player->currentNode = map->getNode(6); // We are in room 6
@@ -213,55 +233,69 @@ void Day::dayOne(Player *player, Map *map){
 
     Text::clearScreen();
 
-    cutscene_one(p, r, player);
+    // cutscene_one(p, r, player);
 
     Text::clearScreen();
 
+
     FormattedPrint::playerTalking("Anyways... Let's search the room");
 
-
     vector<Objective *> objectives = {
-        new Objective("1. Ask for help"),
-        new Objective("2. Inspect the note besides the terminal"),
-        new Objective("3. Read the note"),
-        new Objective("4. Collect the note"),
-        new Objective("5. Open your inventory")
+        new Objective("Ask for help"),
+        new Objective("Inspect the note besides the terminal"),
+        new Objective("Read the note"),
+        new Objective("Collect the note"),
+        new Objective("Open your inventory")
     };
+
+	objectives.at(3)->parent = objectives.at(2);
+	objectives.at(2)->parent = objectives.at(1);
+
     Mission m{"Tutorial", "The tutorial", objectives};
     Objective::printObjectives(objectives);
 
     player->setMission(&m);
 
-    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "sleep", "inspect", "unlock", "search", "objectives"};
+    p.accepted_commands = {"read", "collect", "open", "help", "inventory", "inspect", "unlock", "search", "objectives"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
-    flag = run(r, p, player, counter);
+	
+	skip_run = !(
+			Objective::completeObjective((r.command == "help"), objectives, 0) && 
+			Objective::completeObjective((!r.args.empty() && r.command == "inspect" && r.args.at(0) == "note"), objectives, 1) &&
+			Objective::completeObjective((!r.args.empty() && r.command == "read" && r.args.at(0) == "note"), objectives, 2) &&
+			Objective::completeObjective((!r.args.empty() && r.command == "collect" && r.args.at(0) == "note"), objectives, 3) &&
+			Objective::completeObjective((r.command == "inventory"), objectives, 4)
+		);
 
-    if(flag){
-        counter++;
-        Objective::completeObjective((r.command == "help"), objectives, 0);
-    }
+	if (!skip_run)
+		flag = Command::run(r, p, player);
 
     int current_node = player->currentNode->id;
+	bool sleep_message_printed_once = false;
     do{
         r = prompt(p, command_list, false);
 
-        flag = run(r, p, player, counter);
-        if(flag){
-            counter++;
-            if(r.command == "sleep" && player->getMission()->isCompleted()) break;
+		skip_run = !(
+			Objective::completeObjective((r.command == "help"), objectives, 0) && 
+			Objective::completeObjective((!r.args.empty() && r.command == "inspect" && r.args.at(0) == "note"), objectives, 1) &&
+			Objective::completeObjective((!r.args.empty() && r.command == "read" && r.args.at(0) == "note"), objectives, 2) &&
+			Objective::completeObjective((!r.args.empty() && r.command == "collect" && r.args.at(0) == "note"), objectives, 3) &&
+			Objective::completeObjective((r.command == "inventory"), objectives, 4)
+		);
 
-            Objective::completeObjective((r.command == "help"), objectives, 0);
-            Objective::completeObjective((!r.args.empty() && r.command == "inspect" && r.args.at(0) == "note"), objectives, 1);
-            Objective::completeObjective((!r.args.empty() && r.command == "read" && r.args.at(0) == "note"), objectives, 2);
-            Objective::completeObjective((!r.args.empty() && r.command == "collect" && r.args.at(0) == "note"), objectives, 3);
-            Objective::completeObjective((r.command == "inventory"), objectives, 4);
+		if (!skip_run)
+			flag = Command::run(r, p, player);
 
-            if(player->getMission()->isCompleted() && counter == 6){
-                println("", 3);
-                FormattedPrint::playerTalking("I think that was it... I might as well have a nap now");
-            }
-        }
+		if(flag && r.command == "sleep" && sleep_message_printed_once) return;
+		
+		if(player->getMission()->isCompleted() && !sleep_message_printed_once){
+			sleep_message_printed_once = true;
+			println("");
+			FormattedPrint::playerTalking("I think that was it... I might as well have a nap now");
+			p.accepted_commands.push_back("sleep");
+		}
+               
     } while(current_node == player->currentNode->id);
 }
 
