@@ -19,196 +19,6 @@ bool contains(vector<string> arr, string item);
 
 void cutscene_one(Prompt p, Response r, Player *player);
 
-/*
-bool run(Response response, Prompt p, Player *player, int counter);
-
-bool run(Response response, Prompt p, Player *player, int counter){
-    int item_index;
-    Item *item_ptr;
-    
-    ReadableItem *ri;
-    CollectableItem *ci;
-    OpenableItem *oi;
-    EnterableItem *ei;
-    SaveableItem *si;
-    UnlockableItem *ui;
-    SearchableItem *sei;
-    BundleItem *bi;
-
-    if(sizeof(response) == 0){
-        run(prompt(p, command_list), p, player, counter);
-        delete item_ptr;
-        return false;
-    }
-
-    switch (response.args.size()) {
-        case 0:
-			if(player->getMission()->isCompleted()){
-				if(response.command == "help"){
-					getAvailableCommands(p);
-					return true;
-				}
-
-				if(response.command == "objectives"){
-					Objective::printObjectives(player->getMission()->objectives);
-					return false;
-				}
-
-				if(response.command == "inventory"){
-					player->getInventory().printInventory();
-                	return true;
-				}
-
-				if(response.command == "sleep" && contains(player->currentNode->items, "bed")){
-					dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
-					return true;
-				}
-
-				if(response.command == "inspect" || response.command == "read" || response.command == "collect" || 
-				response.command == "unlock" || response.command == "search" || response.command == "open" || response.command == "enter"){
-					println("The command doesn't match the item", 0);
-					return false;
-				}
-
-				if(response.command != "help" && response.command != "objectives" && response.command != "sleep" && response.command != "inventory"){
-					println("Command not found");
-					return false;
-				}
-
-			}
-
-			if(response.command == "help"){
-				getAvailableCommands(p);
-                return true;
-			}
-
-			if(response.command == "objectives"){
-				Objective::printObjectives(player->getMission()->objectives);
-				return false;
-            }
-
-            if(response.command == "sleep" && contains(player->currentNode->items, "bed")){
-                if(!player->getMission()->isCompleted()){
-                    println("Complete your objectives first", 0);
-                    return false;
-                }
-
-                dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
-                return true;
-            }
-
-			if(response.command == "inspect" || response.command == "read" || response.command == "collect" || 
-			   response.command == "unlock" || response.command == "search" || response.command == "open" || response.command == "enter"){
-				println("The command doesn't match the item", 0);
-                return false;
-			}
-
-            if((counter == 1 || counter == 2 || counter == 3 || counter == 4) && response.command == "inventory"){
-				println("Complete your current objective");
-				return false;
-            }
-
-            if(counter == 5){
-                if (response.command != "inventory"){
-                    println("Complete your fifth objective");
-                    return false;
-                }
-                player->getInventory().printInventory();
-                return true;
-            }
-			
-            return false;            
-        case 1:
-            item_index = matchItemByName(response.args.at(0), player->currentNode->items);
-			
-			if(response.args.at(0) == "passcode") item_index = 0; // Bed should always be at index 0
-			else if(item_index < 0) {
-                if(find(items_list.begin(), items_list.end(), response.args.at(0)) != items_list.end()){
-                    println("This item is not in the room you are currently in", 0);
-                    return false;
-                } else {
-                    println("Invalid item", 0);
-                    return false;
-                }
-
-                return false;
-			} 
-            
-			item_ptr = player->currentNode->items.at(item_index);
-
-            // Check if the command matches one of items interfaces
-            // If the casting gives NULL it means that the object doesn't implement
-            // the interface
-            ri = dynamic_cast<ReadableItem *>(item_ptr);
-            ci = dynamic_cast<CollectableItem *>(item_ptr);
-            oi = dynamic_cast<OpenableItem *>(item_ptr);
-            ei = dynamic_cast<EnterableItem *>(item_ptr);
-            si = dynamic_cast<SaveableItem *>(item_ptr);
-            ui = dynamic_cast<UnlockableItem *>(item_ptr);
-            sei = dynamic_cast<SearchableItem *>(item_ptr);
-            bi = dynamic_cast<BundleItem *>(item_ptr);
-
-			if(player->getMission()->isCompleted()){
-				if(response.command == "inspect" && (response.args.at(0) == "note" || response.args.at(0) == "bed" || 
-				   response.args.at(0) == "terminal" || response.args.at(0) == "door" || response.args.at(0) == "safe")){
-					println(item_ptr->getDescription());
-					return true;
-				}
-				println("The command doesn't match the item", 0);
-				return false;
-
-				if(response.command == "read" && ri != NULL){
-                    println("The command doesn't match the item", 0);
-                    return false;
-                }    
-                ri->readContents();
-                return true;
-			}
-
-            if(counter == 1) {
-                println("Complete your first objective");
-                return false;
-            }
-
-            if(counter == 2){
-                if(response.command != "inspect" || response.args.at(0) != "note"){
-                    println("Complete your current objective");
-                    return false;
-                }    
-                println(item_ptr->getDescription());
-                return true;
-            }
-
-            if(counter == 3){
-                if(response.command != "read" && ri != NULL){
-                    println("Complete your current objective");
-                    return false;
-                }    
-                ri->readContents();
-                return true;   
-            }
-
-            if(counter == 4){
-                if(response.command != "collect" && ci != NULL){
-                    println("Complete your current objective");
-                    return false;
-                }    
-                ci->collect(player);
-                return true;
-            }        
-            
-            println("The command doesn't match the item", 0);
-            return false;
-            
-            break;
-        default:
-            println("This number of arguments is not yet implemnted", 0);
-            break;
-    }
-
-    return false;
-}
-*/
 
 string getPlayerName(){
     string player_name;
@@ -238,7 +48,7 @@ void Day::dayOne(Player *player, Map *map){
     Text::clearScreen();
 
 
-    FormattedPrint::playerTalking("Anyways... Let's search the room");
+    FormattedPrint::playerTalking("Anyways... I should search the room");
 
     vector<Objective *> objectives = {
         new Objective("Ask for help"),
@@ -248,6 +58,7 @@ void Day::dayOne(Player *player, Map *map){
         new Objective("Open your inventory")
     };
 
+	// Setting objective dependencies
 	objectives.at(3)->parent = objectives.at(2);
 	objectives.at(2)->parent = objectives.at(1);
 
@@ -260,6 +71,7 @@ void Day::dayOne(Player *player, Map *map){
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
 	
+	// If one of them is false means that a objective was completed before its parent so skip run
 	skip_run = !(
 			Objective::completeObjective((r.command == "help"), objectives, 0) && 
 			Objective::completeObjective((!r.args.empty() && r.command == "inspect" && r.args.at(0) == "note"), objectives, 1) &&
@@ -272,10 +84,11 @@ void Day::dayOne(Player *player, Map *map){
 		flag = Command::run(r, p, player);
 
     int current_node = player->currentNode->id;
-	bool sleep_message_printed_once = false;
+	bool sleep_message_printed_once = false; // To not print the sleep message every time after completing the objectives
     do{
         r = prompt(p, command_list, false);
 
+		// If one of them is false means that a objective was completed before its parent so skip run
 		skip_run = !(
 			Objective::completeObjective((r.command == "help"), objectives, 0) && 
 			Objective::completeObjective((!r.args.empty() && r.command == "inspect" && r.args.at(0) == "note"), objectives, 1) &&
@@ -287,13 +100,13 @@ void Day::dayOne(Player *player, Map *map){
 		if (!skip_run)
 			flag = Command::run(r, p, player);
 
-		if(flag && r.command == "sleep" && sleep_message_printed_once) return;
+		if(flag && r.command == "sleep" && sleep_message_printed_once) return; // if `sleep` continue to the next day
 		
 		if(player->getMission()->isCompleted() && !sleep_message_printed_once){
 			sleep_message_printed_once = true;
 			println("");
 			FormattedPrint::playerTalking("I think that was it... I might as well have a nap now");
-			p.accepted_commands.push_back("sleep");
+			p.accepted_commands.push_back("sleep"); // now allow the player to sleep
 		}
                
     } while(current_node == player->currentNode->id);
