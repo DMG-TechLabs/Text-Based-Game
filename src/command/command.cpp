@@ -2,6 +2,7 @@
 
 #include "engine.h"
 #include "items.h"
+#include <iostream>
 
 using namespace Engine;
 using namespace CliKit;
@@ -60,7 +61,9 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
             return false;            
         case 1:
             item_index = matchItemByName(response.args.at(0), player->currentNode->items);
-            if (item_index < 0 && response.args.at(0) != "passcode") {
+			
+			if(response.args.at(0) == "passcode") item_index = 0; // Bed should always be at index 0
+			else if(item_index < 0) {
                 if(CommandUtils::contains(items_list, response.args.at(0))){
                     println("This item is not in the room you are currently in", 0);
                     return false;
@@ -70,7 +73,7 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
                 }
 
                 return false;
-            } else if(response.args.at(0) == "passcode") item_index = 0;
+			} 
 
             item_ptr = player->currentNode->items.at(item_index);
 
@@ -148,7 +151,7 @@ int matchItemByName(string item, vector<Item *> items) {
     if(item == "noor") item = "door"; // Easter egg
 
     for (int i = 0; i < items.size(); i++) {
-        if (item == items.at(i)->getName()) {
+        if (items.at(i)->getName() == item) {
             return i;
         }
     }
@@ -179,13 +182,9 @@ bool CommandUtils::contains(vector<Item *> arr, string item) {
 }
 
 bool CommandUtils::contains(vector<string> arr, string item) {
-    bool exists = false;
-    for (int i = 0; i < arr.size(); i++) {
-        if (item == arr.at(i)) {
-            exists = true;
-            break;
-        }
-    }
+ 	for(string i : arr){
+		if(i == item) return true;
+	}
 
-    return exists;
+    return false;
 }
