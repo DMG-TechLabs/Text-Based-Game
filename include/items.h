@@ -11,7 +11,7 @@ static const vector<string> items_list = {
     "board",
     "terminal",
     "door",
-    "file"
+    "file",
     "safe"
 };
 
