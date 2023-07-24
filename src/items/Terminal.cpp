@@ -68,8 +68,8 @@ void Terminal::printItems() {
 
     } while (fileIndex < 1 || fileIndex > bundle_items.size());
 
-    Text::clearScreen();
-
+    // Text::clearScreen();
+	cout << endl;
     println(dynamic_cast<File *>(bundle_items.at(fileIndex-1))->contents);
 
     println("Press enter to continue...", 0);
