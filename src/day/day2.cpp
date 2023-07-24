@@ -34,8 +34,8 @@ void Day::dayTwo(Player *player, Map *map){
     cutscene_two(p, r, player);
 
     vector<Objective *> objectives = {
-        new Objective("1. Enter terminal"),
-        new Objective("2. Unlock safe")
+        new Objective("Enter terminal"),
+        new Objective("Unlock safe")
     };
     Mission m{"Tutorial", "The tutorial", objectives};
     Objective::printObjectives(objectives);

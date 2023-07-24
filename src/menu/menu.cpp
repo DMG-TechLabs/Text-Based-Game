@@ -4,7 +4,9 @@
 #include <iostream>
 #include <stdio.h>
 
+#include "Cli-Kit/include/text.h"
 #include "engine.h"
+#include "include/prompt.h"
 
 using namespace std;
 using namespace Engine;
@@ -111,9 +113,19 @@ void GameMenu::credits(){
 
 void manual(){
     Engine::println(Text::b_green +"- Manual - \n" +Text::normal, 0);
-    Engine::println(Text::b_blue + "Orbit of Shadows:\nSecrets in Deep Space " + Text::normal + "is a text-based game with the goal to survive and eventually free yourself.", 0);
-    Engine::println("To interact with the game world you need to type to your terminal all the commands. Interactable items will appear with " +Text::blue +"blue" + Text::normal + " colored text.\n", 0);
+    
+	Engine::println(Text::b_blue + "Orbit of Shadows: Secrets in Deep Space \n" + Text::normal + "is a text-based game with the goal to survive and eventually free yourself.\n", 0);
+    
+	
+	Engine::println("Text commands in the form of: " + Text::b_red +  "<command>" + Text::b_blue +" <argument>" + Text::normal + " or just " + Text::b_red + "<command>" + Text::normal + " are your way of controling your player and interacting with your surroundings", 0);
+	Engine::println("Interactable items will appear with " +Text::blue +"blue" + Text::normal + " colored text.\n", 0);
     Engine::println("The "+ Text::b_green + "help" + Text::normal + " command shows you all available commands at that time. \n",0);
-    Engine::println(Text::red + "Red" + Text::normal + " prompt symbols indicate the player's involvement with the game\n", 0);
-    Engine::println("Use your mind to discover clues, solve puzzles and connect the story-dots so you can discover what secrets exist in the depths of space...",0);
+    
+	Engine::println(Text::red + "Red" + Text::normal + " prompt symbols indicate the player's involvement with the game\n", 0);
+	Engine::println(Text::red + "\n- Meaning of prompt symbols -\n" + Text::normal, 0);
+	Engine::println("(" + Text::red + ">" + Text::normal + "): The main prompt symbol. You are controling your character in real life", 0);
+	Engine::println("(" + Text::red + "$" + Text::normal + "): The terminal prompt symbol. You have entered the terminal and have now the ability to write commands in it", 0);
+	Engine::println("(" + Text::red + "#" + Text::normal + "): The safe prompt symbol. This symbol appears when you are searching an unlocked safe. You can collect and/or save items", 0);
+	
+	Engine::println("Use your mind to discover clues, solve puzzles and connect the story-dots so you can discover what secrets exist in the depths of space...",0);
 }

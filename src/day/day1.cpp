@@ -233,7 +233,7 @@ void Day::dayOne(Player *player, Map *map){
 
     Text::clearScreen();
 
-    // cutscene_one(p, r, player);
+    cutscene_one(p, r, player);
 
     Text::clearScreen();
 
@@ -338,16 +338,6 @@ void cutscene_one(Prompt p, Response r, Player *player){
     FormattedPrint::typingInTerminal("player", "PLEASE");
     
     FormattedPrint::typingInTerminal("terminal", "If you want to talk again, complete these tasks for me");
-
-    FormattedPrint::typingInTerminal("terminal", "1. Ask for help");
-
-    FormattedPrint::typingInTerminal("terminal", "2. Inspect the note besides the terminal");
-
-    FormattedPrint::typingInTerminal("terminal", "3. Read the note");
-
-    FormattedPrint::typingInTerminal("terminal", "4. Collect the note");
-
-    FormattedPrint::typingInTerminal("terminal", "5. Open your inventory");
 
     FormattedPrint::typingInTerminal("terminal", "We'll talk soon...");
 

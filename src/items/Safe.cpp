@@ -87,7 +87,7 @@ void Safe::printItems() {
 		cout << SafeUtils::defaultPrint(bundle_items.at(i), i);
 		ReadableItem *ri = dynamic_cast<ReadableItem *>(bundle_items.at(i));
 		if (ri != NULL) {
-			(ri->contents.size() > 50) ? cout << ", Contents: [Too long - Save to /vault]" : cout << ", Contents: " << ri->contents;
+			(ri->contents.size() > 50) ? cout << ", Contents: [Too long - Save to vault/]" : cout << ", Contents: " << ri->contents;
 		}
 		cout << endl;
 	}
