@@ -25,7 +25,7 @@ void handleDemoOptions(int selectedItem){
 
             demoMenu();            
             break;
-        case 3:
+        case 2:
             Engine::println("Quiting game...");
             std::exit(0);
     }
