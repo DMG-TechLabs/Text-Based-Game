@@ -62,7 +62,7 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
         case 1:
             item_index = matchItemByName(response.args.at(0), player->currentNode->items);
 			
-			if(response.args.at(0) == "passcode") item_index = 0; // Bed should always be at index 0
+			if(response.args.at(0) == "passcode") item_index = 0; // Door should always be at index 0
 			else if(item_index < 0) {
                 if(CommandUtils::contains(items_list, response.args.at(0))){
                     println("This item is not in the room you are currently in", 0);
@@ -126,7 +126,7 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
             } 
             
             
-            println("The command doesn't match the item", 0);
+            println("The command doesn't match the item. Type \"help\" for help", 0);
             return false;
             
             break;

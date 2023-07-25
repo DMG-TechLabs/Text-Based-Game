@@ -1,3 +1,4 @@
+#include "Cli-Kit/include/sound.h"
 #include "day.h"
 #include "command.h"
 #include "interactions.h"
@@ -82,6 +83,9 @@ void cutscene_two(Prompt p, Response r, Player *player){
 
 void final_cutscene(){
     Text::clearScreen();
+
+	CliKit::Sound::playSound("./assets/door_opening.ogg");
+
     println("You hear a \"click\" coming from the door and you try to open it.");
 
     println("");
@@ -94,7 +98,7 @@ void final_cutscene(){
     
     println("");
 
-    println("The hallway is long. You can't see clearly but you think there are more rooms like yours as you spot 2 more doors. There are no windows so the lighting is limited. ");
+    println("The hallway is long. You can't see clearly but you think there are more rooms like yours as you spot 2 more doors. There are no windows so the lighting is limited. ", 4);
 
     println("");
     
@@ -102,7 +106,7 @@ void final_cutscene(){
 
     println("");
     
-    println("The sillence is really loud. You can almost hear the blood running through your veins.");
+    println("The sillence is really loud. You can almost hear the blood running through your veins.", 3);
 
     println("");
 
