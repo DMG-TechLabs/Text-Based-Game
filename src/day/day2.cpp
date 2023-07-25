@@ -94,7 +94,7 @@ void final_cutscene(){
     
     println("");
 
-    println("You cant't believe that you finally managed to eescape this nonesense. Until you look around you...You are still stuck in this place.", 4);
+    println("You cant't believe that you finally managed to escape this nonesense. Until you look around you...You are still stuck in this place.", 4);
     
     println("");
 
