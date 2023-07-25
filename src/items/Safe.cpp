@@ -2,6 +2,7 @@
 #include "items.h"
 
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 using namespace CliKit;

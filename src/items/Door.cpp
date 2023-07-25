@@ -1,5 +1,5 @@
 #include "items.h"
-
+#include <algorithm>
 bool isNumber(const std::string& s);
 
 bool Door::open(Player *player){
