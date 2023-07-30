@@ -108,7 +108,7 @@ void GameMenu::credits(){
     println("\nPress enter to go back to menu...", 0);
     cin.get();
 
-    GameMenu::demoMenu();
+	return;
 }
 
 void manual(){
