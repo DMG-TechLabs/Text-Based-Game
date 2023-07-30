@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 
-
+namespace StringUtils{
 string removeSubstring(string originalString, string substringToRemove) {
     size_t startPos = originalString.find(substringToRemove);
     while (startPos != std::string::npos) {
@@ -16,10 +16,11 @@ string removeSubstring(string originalString, string substringToRemove) {
 
 	return originalString;
 }
+};
 
 void File::save(){
     println("Saving to vault...");
-	string path = removeSubstring(Engine::getProjectPath(), "build") + "/vault/" + title + ".txt";
+	string path = StringUtils::removeSubstring(Engine::getProjectPath(), "build") + "/vault/" + title + ".txt";
     Engine::saveToFile(path, contents);
     println("Saved.");
 }

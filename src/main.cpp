@@ -9,19 +9,28 @@
 #include "interactions.h"
 #include "menu.h"
 
-void deleteVaultFile(){
-	if(Engine::getExecutablePath().find("build")){
-		Engine::deleteFile(Engine::getProjectPath().replace(Engine::getProjectPath().find("build"), 5, "") + "vault/OPERATION SENTINEL SHIELD.txt");		
-	} else {
-		Engine::deleteFile(Engine::getProjectPath() + "vault/OPERATION SENTINEL SHIELD.txt");		
+string removeSubstring(string originalString, string substringToRemove) {
+    size_t startPos = originalString.find(substringToRemove);
+    while (startPos != std::string::npos) {
+        originalString.erase(startPos, substringToRemove.length());
+        startPos = originalString.find(substringToRemove, startPos);
+    }
 
-	}	
+	return originalString;
+}
+
+void deleteVaultFile(){
+	string path = removeSubstring(Engine::getProjectPath(), "build")+ "/vault/OPERATION SENTINEL SHIELD.txt";
+	
+	cout << path << endl;
+	Engine::deleteFile(path);		
 }
 
 int main() {
 	Map map{new Node(0, "Hall", true)};
 	Player player{};
 
+	
 	while (true){
 		GameMenu::demoMenu();
 		Day::dayOne(&player, &map);
