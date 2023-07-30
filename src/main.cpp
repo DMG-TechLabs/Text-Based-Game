@@ -22,7 +22,6 @@ string removeSubstring(string originalString, string substringToRemove) {
 void deleteVaultFile(){
 	string path = removeSubstring(Engine::getProjectPath(), "build")+ "/vault/OPERATION SENTINEL SHIELD.txt";
 	
-	cout << path << endl;
 	Engine::deleteFile(path);		
 }
 
