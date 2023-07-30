@@ -1,11 +1,10 @@
-/TextBasedGame/saves/
+saves/
 *.sh
-
 out/
 .vscode/
-/TextBasedGame/build/
-./build/
-./build
+build/
+scripts/
+.cache/
 
 ### C++ ###
 # Prerequisites
@@ -111,7 +110,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-[Bb]uild/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
