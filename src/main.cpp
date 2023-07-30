@@ -22,11 +22,6 @@ int main() {
 	Map map{new Node(0, "Hall", true)};
 	Player player{};
 
-	cout << Engine::getExecutablePath() << endl;
-	cout << Engine::getProjectPath() << endl;
-
-	cin.get();
-		
 	while (true){
 		GameMenu::demoMenu();
 		Day::dayOne(&player, &map);
