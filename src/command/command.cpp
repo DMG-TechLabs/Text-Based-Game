@@ -36,29 +36,23 @@ bool Engine::Command::run(Response response, Prompt p, Player *player) {
 
     switch (response.args.size()) {
         case 0:
-            if(response.command == "enter") return false;
-            if (response.command == "help"){
+			if (response.command == "help"){
                 CommandUtils::getAvailableCommands(p);
-                return true;
-            }
-            if (response.command == "inventory"){
+            } else if (response.command == "inventory"){
                 player->getInventory().printInventory();
-                return true;
-            }
-            if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
+            } else if (response.command == "sleep" && CommandUtils::contains(player->currentNode->items, "bed")){
                 if(!player->getMission()->isCompleted()){
                     println("Complete your objectives first", 0);
                     return false;
                 }
-
                 dynamic_cast<Bed *>(player->currentNode->items.at(matchItemByName("bed", player->currentNode->items)))->sleep();
-                return true;
-            } 
-            if(response.command == "objectives"){
+            } else if(response.command == "objectives"){
                 Objective::printObjectives(player->getMission()->objectives);
-                return true;
-            }
-            return false;            
+            } else {
+				cerr << CliKit::Text::red << "This command needs arguments" << CliKit::Text::normal << endl << endl;
+				return false;            
+			}
+            return true;
         case 1:
             item_index = matchItemByName(response.args.at(0), player->currentNode->items);
 			

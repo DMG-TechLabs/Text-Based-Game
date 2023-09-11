@@ -66,7 +66,7 @@ void Day::dayOne(Player *player, Map *map){
     Objective::printObjectives(objectives);
 
     player->setMission(&m);
-
+ 
     p.accepted_commands = {"read", "collect", "open", "help", "inventory", "inspect", "unlock", "search", "objectives"};
     p.message = player->currentNode->description;
     r = prompt(p, command_list);
@@ -123,7 +123,7 @@ void cutscene_one(Prompt p, Response r, Player *player){
     do{
         r = prompt(p, command_list, true);
         Command::run(r, p, player);
-    } while((r.command != "open" || r.args.at(0) != "door") && (r.command != "open" || r.args.at(0) != "noor"));
+    } while(r.args.empty() || (r.command != "open" || r.args.at(0) != "door") && (r.command != "open" || r.args.at(0) != "noor"));
 
 
     FormattedPrint::playerTalking("Fuck!");
